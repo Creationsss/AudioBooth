@@ -148,7 +148,7 @@ extension LocalBook {
       existingItem.isAbridged = self.isAbridged
       existingItem.publisher = self.publisher
       existingItem.language = self.language
-      existingItem.ebookFile = self.ebookFile
+      existingItem.ebookFile = self.ebookFile ?? existingItem.ebookFile
 
       var mergedTracks: [Track] = []
       for newTrack in self.tracks {

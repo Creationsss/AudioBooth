@@ -22,16 +22,27 @@ final class BookCardModel: BookCard.Model {
 
     self.item = .local(item)
 
-    var details = Duration.seconds(item.duration).formatted(
-      .units(
-        allowed: [.hours, .minutes],
-        width: .narrow
+    var details: String
+    if item.tracks.isEmpty && item.ebookFile != nil {
+      details = "Ebook"
+      if let ebookPath = item.ebookLocalPath,
+        let fileSize = try? FileManager.default.attributesOfItem(atPath: ebookPath.path)[.size] as? Int64,
+        fileSize > 0
+      {
+        details += " • \(fileSize.formatted(.byteCount(style: .file)))"
+      }
+    } else {
+      details = Duration.seconds(item.duration).formatted(
+        .units(
+          allowed: [.hours, .minutes],
+          width: .narrow
+        )
       )
-    )
 
-    let size = item.tracks.reduce(0) { $0 + ($1.size ?? 0) }
-    if size > 0 {
-      details += " • \(size.formatted(.byteCount(style: .file)))"
+      let size = item.tracks.reduce(0) { $0 + ($1.size ?? 0) }
+      if size > 0 {
+        details += " • \(size.formatted(.byteCount(style: .file)))"
+      }
     }
 
     let cover = Cover.Model(
