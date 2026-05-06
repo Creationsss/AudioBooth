@@ -222,7 +222,6 @@ final class LibraryPageModel: LibraryPage.Model {
 
     do {
       let filter: String?
-      var sortBy = self.sortBy
 
       switch self.filter {
       case .progress(let name):
@@ -237,37 +236,30 @@ final class LibraryPageModel: LibraryPage.Model {
       case .authors(let id, _):
         let base64AuthorID = Data(id.utf8).base64EncodedString()
         filter = "authors.\(base64AuthorID)"
-        sortBy = .title
 
       case .narrators(let name):
         let base64NarratorName = Data(name.utf8).base64EncodedString()
         filter = "narrators.\(base64NarratorName)"
-        sortBy = .title
 
       case .genres(let name):
         let base64GenreName = Data(name.utf8).base64EncodedString()
         filter = "genres.\(base64GenreName)"
-        sortBy = .title
 
       case .tags(let name):
         let base64TagName = Data(name.utf8).base64EncodedString()
         filter = "tags.\(base64TagName)"
-        sortBy = .title
 
       case .languages(let name):
         let base64LanguageName = Data(name.utf8).base64EncodedString()
         filter = "languages.\(base64LanguageName)"
-        sortBy = .title
 
       case .publishers(let name):
         let base64PublisherName = Data(name.utf8).base64EncodedString()
         filter = "publishers.\(base64PublisherName)"
-        sortBy = .title
 
       case .publishedDecades(let decade):
         let base64Decade = Data(decade.utf8).base64EncodedString()
         filter = "publishedDecades.\(base64Decade)"
-        sortBy = .title
 
       case .explicit:
         filter = "explicit"
@@ -284,7 +276,7 @@ final class LibraryPageModel: LibraryPage.Model {
       let response = try await audiobookshelf.books.fetch(
         limit: itemsPerPage,
         page: currentPage,
-        sortBy: sortBy,
+        sortBy: isRoot ? self.sortBy : nil,
         ascending: ascending,
         collapseSeries: collapseSeries,
         filter: filter,
