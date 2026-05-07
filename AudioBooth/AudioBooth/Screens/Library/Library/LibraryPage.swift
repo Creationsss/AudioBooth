@@ -128,6 +128,10 @@ struct LibraryPage: View {
             }
           }
 
+          Toggle(isOn: $preferences.showBookSubtitle) {
+            Label("Show Subtitle", systemImage: "text.below.photo")
+          }
+
           if !model.sortOptions.isEmpty {
             Divider()
 

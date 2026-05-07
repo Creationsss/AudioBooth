@@ -23,6 +23,7 @@ extension UserPreferences {
     "volumeLevel",
     "libraryDisplayMode",
     "collapseSeriesInLibrary",
+    "showBookSubtitle",
     "groupSeriesInOffline",
     "librarySortBy",
     "librarySortAscending",

@@ -74,8 +74,10 @@ extension BookCard {
     let model: BookCard.Model
     @Environment(\.itemDisplayMode) private var displayMode
     @Environment(\.editMode) private var editMode
+    @ObservedObject private var preferences = UserPreferences.shared
 
     @ScaledMetric(relativeTo: .title) private var rowCoverSize: CGFloat = 60
+    @ScaledMetric(relativeTo: .caption2) private var subtitleFontSize: CGFloat = 10
 
     private var isEditing: Bool {
       editMode?.wrappedValue.isEditing ?? false
@@ -94,8 +96,16 @@ extension BookCard {
       VStack(alignment: .leading, spacing: 8) {
         cover
 
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: 2) {
           title
+
+          if preferences.showBookSubtitle, let subtitle = model.subtitle, !subtitle.isEmpty {
+            Text(subtitle)
+              .font(.system(size: subtitleFontSize))
+              .foregroundColor(.secondary)
+              .lineLimit(1)
+          }
+
           details
         }
         .multilineTextAlignment(.leading)
@@ -108,8 +118,15 @@ extension BookCard {
       HStack(spacing: 12) {
         rowCover
 
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 4) {
           title
+
+          if preferences.showBookSubtitle, let subtitle = model.subtitle, !subtitle.isEmpty {
+            Text(subtitle)
+              .font(.system(size: subtitleFontSize))
+              .foregroundColor(.secondary)
+              .lineLimit(1)
+          }
 
           if let author = model.author {
             rowMetadata(icon: "pencil", value: author)
@@ -299,6 +316,7 @@ extension BookCard {
     let id: String
     let podcastID: String?
     let title: String
+    let subtitle: String?
     var details: String?
     let cover: Cover.Model
     let sequence: String?
@@ -316,6 +334,7 @@ extension BookCard {
       id: String = UUID().uuidString,
       podcastID: String? = nil,
       title: String,
+      subtitle: String? = nil,
       details: String? = nil,
       cover: Cover.Model = Cover.Model(url: nil),
       sequence: String? = nil,
@@ -330,6 +349,7 @@ extension BookCard {
       self.id = id
       self.podcastID = podcastID
       self.title = title
+      self.subtitle = subtitle
       self.details = details
       self.cover = cover
       self.sequence = sequence

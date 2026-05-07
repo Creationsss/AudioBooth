@@ -85,6 +85,9 @@ final class UserPreferences: ObservableObject {
   @AppStorage("collapseSeriesInLibrary")
   var collapseSeriesInLibrary: Bool = false
 
+  @AppStorage("showBookSubtitle")
+  var showBookSubtitle: Bool = false
+
   @AppStorage("groupSeriesInOffline")
   var groupSeriesInOffline: Bool = false
 

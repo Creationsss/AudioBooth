@@ -55,6 +55,7 @@ final class BookCardModel: BookCard.Model {
     super.init(
       id: id,
       title: item.title,
+      subtitle: item.subtitle,
       details: details,
       cover: cover,
       sequence: options.contains(.showSequence) ? item.series.first?.sequence : nil,
@@ -144,6 +145,7 @@ final class BookCardModel: BookCard.Model {
     super.init(
       id: item.id,
       title: title,
+      subtitle: item.media.metadata.subtitle,
       details: details,
       cover: cover,
       sequence: sequence,
