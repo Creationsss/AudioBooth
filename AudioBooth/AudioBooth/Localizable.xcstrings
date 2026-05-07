@@ -32,6 +32,12 @@
             "value" : "**Débit :** %lld kbps"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Velocità in bit :** %lld kbps"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -80,6 +86,12 @@
             "value" : "**Canal :** %1$lld (%2$@)"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Canale :** %1$lld (%2$@)"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -117,6 +129,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Codec :** %@"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "**Codec :** %@"
@@ -164,6 +182,12 @@
             "value" : "**Durée :** %@"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Durata :** %@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -204,6 +228,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "**Épisodes :** %lld"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Episodi :** %lld"
           }
         },
         "zh-Hans" : {
@@ -248,6 +278,12 @@
             "value" : "**Langue :** %@"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Lingua :** %@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -288,6 +324,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "**Publié :** %@"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Pubblicato :** %@"
           }
         },
         "zh-Hans" : {
@@ -332,6 +374,12 @@
             "value" : "**Éditeur :** %@"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Editore :** %@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -372,6 +420,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "**Taille :** %@"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Dimensione :** %@"
           }
         },
         "zh-Hans" : {
@@ -416,6 +470,12 @@
             "value" : "**Type :** %@"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Tipo :** %@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -458,6 +518,12 @@
             "value" : "# d'épisodes"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "# di episodi"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -493,6 +559,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@"
@@ -540,6 +612,12 @@
             "value" : "%@ auteur"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ autore"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -580,6 +658,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ terminé"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ completato"
           }
         },
         "zh-Hans" : {
@@ -624,6 +708,12 @@
             "value" : "%@ restant"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ rimanenti"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -664,6 +754,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ narrateur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ narratore"
           }
         },
         "zh-Hans" : {
@@ -714,6 +810,12 @@
             "value" : "%1$@ sur %2$@"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ di %2$@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -754,6 +856,12 @@
             "value" : "%@ restant"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ rimanenti"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -789,6 +897,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld"
@@ -835,6 +949,12 @@
             "value" : "%1$lld sur %2$lld"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld di %lld"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -875,6 +995,12 @@
             "value" : "%lld secondes"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld secondi"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -912,6 +1038,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lldms"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lldms"
@@ -959,6 +1091,12 @@
             "value" : "^[%lld livre](inflect: true)"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "^[%lld libro](inflect: true)"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1001,6 +1139,12 @@
             "value" : "^[%lld Livre](inflect: true)"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "^[%lld Libro](inflect: true)"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1039,6 +1183,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "^[%lld jour](inflect: true)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "^[%lld giorno](inflect: true)"
           }
         },
         "zh-Hans" : {
@@ -1083,6 +1233,12 @@
             "value" : "^[%lld élément](inflect: true)"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "^[%lld elemento](inflect: true)"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1123,6 +1279,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Encore ^[%lld minute](inflect: true)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mancano ^[%lld minuti](inflect: true)"
           }
         },
         "zh-Hans" : {
@@ -1167,6 +1329,12 @@
             "value" : "⚠️ Cela supprimera TOUTES les données de l'app, y compris le contenu téléchargé, les réglages et la progression. Vous devrez vous reconnecter. Redémarrage de l'app requis."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Questa operazione eliminerà tutti i dati dell’applicazione, inclusi i contenuti scaricati, le impostazioni e l’avanzamento. Dovrai accedere di nuovo. È necessario riavviare l’app."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1207,6 +1375,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "À propos"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informazioni"
           }
         },
         "zh-Hans" : {
@@ -1251,6 +1425,12 @@
             "value" : "Abrégé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ridotto"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1291,6 +1471,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Couleur d'accentuation"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colore di evidenziazione"
           }
         },
         "zh-Hans" : {
@@ -1335,6 +1521,12 @@
             "value" : "Compte"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profilo utente"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1375,6 +1567,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajoutez **audiobooth://oauth** aux URI de redirection du serveur audiobookshelf"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi **audiobooth://oauth** agli URI di reindirizzamento del server Audiobookshelf"
           }
         },
         "zh-Hans" : {
@@ -1419,6 +1617,12 @@
             "value" : "Ajouter un signet"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi un segnalibro"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1461,6 +1665,12 @@
             "value" : "Ajouter un signet"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi segnalibro"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1499,6 +1709,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajouter un signet ${content}"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi segnalibro ${content}"
           }
         },
         "zh-Hans" : {
@@ -1543,6 +1759,12 @@
             "value" : "Ajoutez des livres à la queue depuis la bibliothèque"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi libri alla coda dalla libreria"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1583,6 +1805,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajouter un en-tête"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi titolo"
           }
         },
         "zh-Hans" : {
@@ -1627,6 +1855,12 @@
             "value" : "Ajouter un serveur"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi un server"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1667,6 +1901,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajouter à la collection"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi a una raccolta"
           }
         },
         "zh-Hans" : {
@@ -1711,6 +1951,12 @@
             "value" : "Ajouter à la playlist"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi a una playlist"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1751,6 +1997,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajouter à la queue"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi alla coda"
           }
         },
         "zh-Hans" : {
@@ -1795,6 +2047,12 @@
             "value" : "Ajoute un signet à la position actuelle du livre audio en cours de lecture."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiunge un segnalibro alla posizione corrente dell’audiolibro in riproduzione."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1837,6 +2095,12 @@
             "value" : "Ajuster l'objectif"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifica traguardo"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1875,6 +2139,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajuste la progression du chapitre"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifica progresso capitolo"
           }
         },
         "zh-Hans" : {
@@ -1919,6 +2189,12 @@
             "value" : "Ajuste la taille des couvertures pour les sections Continuer l'écoute et Continuer la lecture."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifica la dimensione delle copertine nelle sezioni Continua ad ascoltare e Continua a leggere."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1957,6 +2233,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajuste le temps restant"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regola il tempo rimanente in base alla velocità di riproduzione"
           }
         },
         "zh-Hans" : {
@@ -2001,6 +2283,12 @@
             "value" : "Avancé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avanzate"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2041,6 +2329,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Typographie avancée"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipografia avanzata"
           }
         },
         "zh-Hans" : {
@@ -2085,6 +2379,12 @@
             "value" : "Alias (optionnel)"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alias (facoltativo)"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2126,6 +2426,12 @@
             "value" : "Tout"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vedi tutto"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2164,6 +2470,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser le changement de position de lecture"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consenti la modifica della posizione di riproduzione"
           }
         },
         "zh-Hans" : {
@@ -2208,6 +2520,12 @@
             "value" : "Vous êtes déjà au premier chapitre."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sei già al primo capitolo."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2248,6 +2566,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vous êtes déjà au dernier chapitre."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sei già all'ultimo capitolo."
           }
         },
         "zh-Hans" : {
@@ -2292,6 +2616,12 @@
             "value" : "Alternatif"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alternativo"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2332,6 +2662,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL alternative"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL alternativo"
           }
         },
         "zh-Hans" : {
@@ -2376,6 +2712,12 @@
             "value" : "Une URL alternative à utiliser lors de la connexion depuis un autre réseau (par ex. depuis la maison)."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un URL alternativo da usare quando ti connetti da una rete diversa (ad esempio da casa)."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2416,6 +2758,12 @@
             "value" : "Toute"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qualsiasi"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2454,6 +2802,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Toute pause"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qualsiasi pausa"
           }
         },
         "zh-Hans" : {
@@ -2498,6 +2852,12 @@
             "value" : "Clé API"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiave API"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2538,6 +2898,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Icône de l'app"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icona dell'app"
           }
         },
         "zh-Hans" : {
@@ -2582,6 +2948,12 @@
             "value" : "Apparence"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aspetto"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2622,6 +2994,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Voulez-vous vraiment supprimer cette collection ?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sei sicuro di voler rimuovere questa raccolta?"
           }
         },
         "zh-Hans" : {
@@ -2666,6 +3044,12 @@
             "value" : "Voulez-vous vraiment supprimer votre liste de lecture « %@ » ?"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sei sicuro di voler rimuovere la tua playlist \"%@\"?"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2704,6 +3088,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fondu audio"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dissolvenza in uscita audio"
           }
         },
         "zh-Hans" : {
@@ -2748,6 +3138,12 @@
             "value" : "Livres audio et numériques"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audiolibri e Libri"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2788,6 +3184,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "S'authentifier"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accedi"
           }
         },
         "zh-Hans" : {
@@ -2832,6 +3234,12 @@
             "value" : "Authentification..."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accesso in corso..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2872,6 +3280,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Authentification"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accedi"
           }
         },
         "zh-Hans" : {
@@ -2916,6 +3330,12 @@
             "value" : "Erreur d'authentification"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Errore di autenticazione"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2956,6 +3376,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Méthode d'authentification"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metodo di autenticazione"
           }
         },
         "zh-Hans" : {
@@ -3000,6 +3426,12 @@
             "value" : "Authentification requise"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accesso richiesto"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3040,6 +3472,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Auteur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autore"
           }
         },
         "zh-Hans" : {
@@ -3084,6 +3522,12 @@
             "value" : "Auteur (Nom, Prénom)"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autore (cognome, nome)"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3124,6 +3568,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nom de l'auteur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome dell'autore"
           }
         },
         "zh-Hans" : {
@@ -3168,6 +3618,12 @@
             "value" : "Auteurs"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autori"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3206,6 +3662,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Auto"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatica"
           }
         },
         "zh-Hans" : {
@@ -3250,6 +3712,12 @@
             "value" : "Défilement automatique"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scorrimento automatico"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3288,6 +3756,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Minuterie automatique"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modalità timer automatico"
           }
         },
         "zh-Hans" : {
@@ -3332,6 +3806,12 @@
             "value" : "Téléchargement automatique"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download automatico"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3372,6 +3852,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Téléchargement automatique"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download automatico libri"
           }
         },
         "zh-Hans" : {
@@ -3416,6 +3902,12 @@
             "value" : "Lecture auto suivante"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riproduci automaticamente il successivo"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3454,6 +3946,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Minuterie de sommeil"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timer di sospensione automatico"
           }
         },
         "zh-Hans" : {
@@ -3496,6 +3994,12 @@
             "value" : "Démarrer automatiquement une minuterie de sommeil lors de la lecture pendant une plage horaire définie."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avvia automaticamente un timer di spegnimento quando la riproduzione avviene in una determinata fascia oraria."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3534,6 +4038,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reculer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indietro"
           }
         },
         "zh-Hans" : {
@@ -3582,6 +4092,12 @@
             "value" : "Reculer %1$llds Avancer %2$llds"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indietro di %lld s Avanti di %lld s"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3622,6 +4138,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Détails du livre"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dettagli del libro"
           }
         },
         "zh-Hans" : {
@@ -3666,6 +4188,12 @@
             "value" : "Détails du livre"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dettagli del Libro"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3706,6 +4234,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Signet ajouté à %@"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segnalibro aggiunto a %@"
           }
         },
         "zh-Hans" : {
@@ -3750,6 +4284,12 @@
             "value" : "Titre du signet"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Titolo del segnalibro"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3790,6 +4330,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Signets"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segnialibri"
           }
         },
         "zh-Hans" : {
@@ -3834,6 +4380,12 @@
             "value" : "Livres"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Libri"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3874,6 +4426,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les livres et épisodes que vous téléchargez apparaîtront ici."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I libri e gli episodi scaricati compariranno qui."
           }
         },
         "zh-Hans" : {
@@ -3918,6 +4476,12 @@
             "value" : "Taille du cache"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dimensione della cache"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3958,6 +4522,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Annuler"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annulla"
           }
         },
         "zh-Hans" : {
@@ -4002,6 +4572,12 @@
             "value" : "Annuler le téléchargement"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annulla il download"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4042,6 +4618,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Annuler la minuterie de sommeil"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annulla timer di spegnimento"
           }
         },
         "zh-Hans" : {
@@ -4086,6 +4668,12 @@
             "value" : "Annule toute minuterie de sommeil active."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annulla tutti i timer di spegnimento"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4124,6 +4712,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chapitre"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capitolo"
           }
         },
         "zh-Hans" : {
@@ -4168,6 +4762,12 @@
             "value" : "Chapitres"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capitoli"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4206,6 +4806,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Choisissez la durée de saut en avant et en arrière pendant l'écoute."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli di quanto saltare avanti e indietro durante l’ascolto."
           }
         },
         "zh-Hans" : {
@@ -4250,6 +4856,12 @@
             "value" : "Effacer"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancella"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4290,6 +4902,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Supprimer tous les téléchargements"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancella tutti i downloads"
           }
         },
         "zh-Hans" : {
@@ -4334,6 +4952,12 @@
             "value" : "Supprimer tous les téléchargements ?"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vuoi cancellare tutti i downloads ?"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4374,6 +4998,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vider le cache d'images"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancella tutta la chache immagini"
           }
         },
         "zh-Hans" : {
@@ -4418,6 +5048,12 @@
             "value" : "Vider le cache d'images ?"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vuoi cancellare tutta la cache immagini ?"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4458,6 +5094,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Effacer le stockage persistant"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancella archivio persistente"
           }
         },
         "zh-Hans" : {
@@ -4502,6 +5144,12 @@
             "value" : "Fermer"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiudi"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4542,6 +5190,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réduire les séries"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprimi serie"
           }
         },
         "zh-Hans" : {
@@ -4586,6 +5240,12 @@
             "value" : "Type de collection"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo di raccolta"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4626,6 +5286,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Collections"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raccolte"
           }
         },
         "zh-Hans" : {
@@ -4670,6 +5336,12 @@
             "value" : "Les collections sont partagées entre tous les utilisateurs du serveur."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le raccolte sono condivise tra tutti gli utenti del server."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4710,6 +5382,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apparence"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schema colori"
           }
         },
         "zh-Hans" : {
@@ -4754,6 +5432,12 @@
             "value" : "Colonnes"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colonne"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4792,6 +5476,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Configurez l'affichage de la lecture et de la progression pour les livres avec chapitres."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura come vengono visualizzati la riproduzione e i progressi nei libri con capitoli."
           }
         },
         "zh-Hans" : {
@@ -4834,6 +5524,12 @@
             "value" : "Configurez le comportement des contrôles de lecture sur l'écran de verrouillage."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura il comportamento dei controlli di riproduzione nella schermata di blocco."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4872,6 +5568,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Configurez l'impact de la vitesse de lecture sur l'affichage du temps."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura come la velocità di riproduzione influisce sulla visualizzazione del tempo."
           }
         },
         "zh-Hans" : {
@@ -4916,6 +5618,12 @@
             "value" : "Connecté"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connesso"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4958,6 +5666,12 @@
             "value" : "Erreur de connexion"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Errore di connessione"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4995,6 +5709,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Console"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Console"
@@ -5042,6 +5762,12 @@
             "value" : "Contenu"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contenuto"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5082,6 +5808,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Table des matières"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contenuti"
           }
         },
         "zh-Hans" : {
@@ -5126,6 +5858,12 @@
             "value" : "Continuer l'écoute"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continua ad ascoltare"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5166,6 +5904,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Continuer la lecture"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continua a leggere"
           }
         },
         "zh-Hans" : {
@@ -5210,6 +5954,12 @@
             "value" : "Taille de la section Continuer"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dimensione della sezione Continua"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5250,6 +6000,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Continuer la série"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continua la serie"
           }
         },
         "zh-Hans" : {
@@ -5294,6 +6050,12 @@
             "value" : "Contrôles"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controlli"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5334,6 +6096,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les images de couverture seront retéléchargées si nécessaire."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le copertine verranno riscaricate quando necessario."
           }
         },
         "zh-Hans" : {
@@ -5378,6 +6146,12 @@
             "value" : "Créer"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5418,6 +6192,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Créer une clé API"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea una chiave API"
           }
         },
         "zh-Hans" : {
@@ -5462,6 +6242,12 @@
             "value" : "Créez votre premier signet ci-dessous."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea qui il tuo primo segnalibro."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5502,6 +6288,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Créez votre première collection ci-dessous."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea qui la tua prima raccolta."
           }
         },
         "zh-Hans" : {
@@ -5546,6 +6338,12 @@
             "value" : "Créez votre première liste de lecture ci-dessous."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea qui la tua prima playlist."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5586,6 +6384,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Créez votre première liste de lecture pour commencer."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea la tua prima playlist per iniziare."
           }
         },
         "zh-Hans" : {
@@ -5630,6 +6434,12 @@
             "value" : "Identifiants"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credenziali"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5670,6 +6480,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "En-têtes personnalisés"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intestazioni personalizzate"
           }
         },
         "zh-Hans" : {
@@ -5714,6 +6530,12 @@
             "value" : "Les en-têtes personnalisés seront envoyés avec chaque requête à votre serveur."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gli header personalizzati verranno inviati con ogni richiesta al tuo server."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5754,6 +6576,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Durée personnalisée"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durata personalizzata"
           }
         },
         "zh-Hans" : {
@@ -5798,6 +6626,12 @@
             "value" : "Objectif d'écoute quotidien"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obiettivo giornaliero di ascolto"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5838,6 +6672,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sombre"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scuro"
           }
         },
         "zh-Hans" : {
@@ -5882,6 +6722,12 @@
             "value" : "Date d'ajout"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data di aggiunta"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5920,6 +6766,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Jour"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giorno"
           }
         },
         "zh-Hans" : {
@@ -5964,6 +6816,12 @@
             "value" : "jours consécutifs"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "giorni consecutivi"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6004,6 +6862,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Débogage"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Debug"
           }
         },
         "zh-Hans" : {
@@ -6048,6 +6912,12 @@
             "value" : "Par défaut"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Predefinito"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6088,6 +6958,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "DÉFAUT"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PREDEFINITO"
           }
         },
         "zh-Hans" : {
@@ -6132,6 +7008,12 @@
             "value" : "Délai avant le téléchargement"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ritardo prima del download"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6172,6 +7054,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Supprimer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elimina"
           }
         },
         "zh-Hans" : {
@@ -6216,6 +7104,12 @@
             "value" : "Supprimer la collection"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elimina la raccolta"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6256,6 +7150,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Supprimer la liste de lecture"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elimina la palylist"
           }
         },
         "zh-Hans" : {
@@ -6300,6 +7200,12 @@
             "value" : "Description"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descrizione"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6340,6 +7246,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Description (optionnel)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descrizione (facoltativa)"
           }
         },
         "zh-Hans" : {
@@ -6384,6 +7296,12 @@
             "value" : "Déconnecté"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disconnetti"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6424,6 +7342,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Découvrir"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scopri"
           }
         },
         "zh-Hans" : {
@@ -6468,6 +7392,12 @@
             "value" : "Port de découverte"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Porta per la ricerca automatica"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6508,6 +7438,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Échelle d’affichage"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scala di visualizzazione"
           }
         },
         "zh-Hans" : {
@@ -6552,6 +7488,12 @@
             "value" : "Terminé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fine"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6592,6 +7534,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Télécharger"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download"
           }
         },
         "zh-Hans" : {
@@ -6636,6 +7584,12 @@
             "value" : "Tout télécharger"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scarica tutto"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6676,6 +7630,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réglages de téléchargement"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scarica le impostazioni"
           }
         },
         "zh-Hans" : {
@@ -6720,6 +7680,12 @@
             "value" : "Onglet téléchargement"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sezione Download"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6760,6 +7726,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Téléchargés"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scaricati"
           }
         },
         "zh-Hans" : {
@@ -6804,6 +7776,12 @@
             "value" : "Livres téléchargés"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Libri Scaricati"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6846,6 +7824,12 @@
             "value" : "Contenu téléchargé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contenuto Scaricato"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6884,6 +7868,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Téléchargement"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In download"
           }
         },
         "zh-Hans" : {
@@ -6928,6 +7918,12 @@
             "value" : "Téléchargements"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Downloads"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6968,6 +7964,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Faites glisser pour réordonner les sections. Continuer l'écoute et Continuer la lecture ne peuvent pas être désactivés."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trascina per riordinare le sezioni abilitate. Continua ascolto e Continua lettura non possono essere disattivate."
           }
         },
         "zh-Hans" : {
@@ -7012,6 +8014,12 @@
             "value" : "Faites glisser pour réorganiser. Les contrôles désactivés passent dans le menu du lecteur."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trascina per riordinare. I controlli disattivati vengono spostati nel menu del player."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7052,6 +8060,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Durée"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durata"
           }
         },
         "zh-Hans" : {
@@ -7096,6 +8110,12 @@
             "value" : "Durée de la minuterie de sommeil"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durata del timer di sospensione"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7136,6 +8156,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "La durée doit être supérieure à 0 minutes."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La durata deve essere maggiore di 0 minuti."
           }
         },
         "zh-Hans" : {
@@ -7180,6 +8206,12 @@
             "value" : "Durée du saut en arrière"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durata del salto indietro"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7222,6 +8254,12 @@
             "value" : "Durée du saut en avant"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durata del salto in avanti"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7259,6 +8297,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E%@"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "E%@"
@@ -7306,6 +8350,12 @@
             "value" : "Livres numériques"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "eBooks"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7346,6 +8396,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Modifier"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifica"
           }
         },
         "zh-Hans" : {
@@ -7390,6 +8446,12 @@
             "value" : "Modifier le signet"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifica il Segnalibro"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7430,6 +8492,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Modifier la playlist"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifica la playlist"
           }
         },
         "zh-Hans" : {
@@ -7474,6 +8542,12 @@
             "value" : "Contacter le support"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contatta il supporto via email"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7514,6 +8588,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Activé"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attivato"
           }
         },
         "zh-Hans" : {
@@ -7564,6 +8644,12 @@
             "value" : "Fin de %1$lld %2$@"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lunghezza di %lld %@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7606,6 +8692,12 @@
             "value" : "Fin de %lld chapitres"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fine di %lld capitoli"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7646,6 +8738,12 @@
             "value" : "Fin de 2 chapitres"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fine di 2 capitoli"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7684,6 +8782,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fin de 3 chapitres"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fine di 3 capitoli"
           }
         },
         "zh-Hans" : {
@@ -7728,6 +8832,12 @@
             "value" : "Fin du chapitre"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fine del capitolo"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7766,6 +8876,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Heure de fin"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ora di fine"
           }
         },
         "zh-Hans" : {
@@ -7810,6 +8926,12 @@
             "value" : "Entrez un nouveau titre pour ce signet"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inserisci un'altro titolo per questo segnalibro"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7850,6 +8972,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Entrez du texte pour rechercher dans ce livre"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digita il testo da cercare in questo libro"
           }
         },
         "zh-Hans" : {
@@ -7894,6 +9022,12 @@
             "value" : "Entrez le numéro de port pour rechercher les serveurs Audiobookshelf sur votre réseau local."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inserisci il numero di porta da scansionare per trovare i server Audiobookshelf nella tua rete locale."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7936,6 +9070,12 @@
             "value" : "Épisodes"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Episodi"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7974,6 +9114,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Égaliseur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Equalizzatore"
           }
         },
         "zh-Hans" : {
@@ -8018,6 +9164,12 @@
             "value" : "Exemple : X-API-Key, Authorization, etc."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esempio: X-API-Key, Authorization, ecc."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8058,6 +9210,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Explicite"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esplicito"
           }
         },
         "zh-Hans" : {
@@ -8102,6 +9260,12 @@
             "value" : "Prolonger %@"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prolunga di %@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8142,6 +9306,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Prolongez la minuterie ou secouez votre téléphone pour continuer l'écoute."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estendi il timer oppure scuoti il telefono per continuare ad ascoltare."
           }
         },
         "zh-Hans" : {
@@ -8186,6 +9356,12 @@
             "value" : "Très grand"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Extra Large"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8226,6 +9402,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Échec du chargement"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caricamento non riuscito"
           }
         },
         "zh-Hans" : {
@@ -8270,6 +9452,12 @@
             "value" : "Échec du chargement des épisodes"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caricamento degli episodi non riuscito"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8310,6 +9498,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Création du fichier"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data di creazione del file"
           }
         },
         "zh-Hans" : {
@@ -8354,6 +9548,12 @@
             "value" : "Modification du fichier"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File Modificato"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8394,6 +9594,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Taille du fichier"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dimensione file"
           }
         },
         "zh-Hans" : {
@@ -8438,6 +9644,12 @@
             "value" : "Filtrer"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtra"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8478,6 +9690,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Filtrer les livres"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtra i libri"
           }
         },
         "zh-Hans" : {
@@ -8522,6 +9740,12 @@
             "value" : "Filtrer les téléchargements"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtra i downloads"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8562,6 +9786,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Filtrer la bibliothèque"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtra la libreria"
           }
         },
         "zh-Hans" : {
@@ -8606,6 +9836,12 @@
             "value" : "Terminé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminato"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8646,6 +9882,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Police de caractères"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo di carattere"
           }
         },
         "zh-Hans" : {
@@ -8690,6 +9932,12 @@
             "value" : "Taille de police"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grandezza del carattere"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8732,6 +9980,12 @@
             "value" : "Épaisseur de police"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peso del carattere"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8770,6 +10024,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Avancer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indietro"
           }
         },
         "zh-Hans" : {
@@ -8814,6 +10074,12 @@
             "value" : "Général"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Generali"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8854,6 +10120,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Genres"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Generi"
           }
         },
         "zh-Hans" : {
@@ -8898,6 +10170,12 @@
             "value" : "Objectif atteint !"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obbiettivo raggiunto!"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8938,6 +10216,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vue grille"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vista a griglia"
           }
         },
         "zh-Hans" : {
@@ -8982,6 +10266,12 @@
             "value" : "Retour haptique"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback aptico"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9022,6 +10312,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Détails de l'en-tête"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dettagli dell'intestazione"
           }
         },
         "zh-Hans" : {
@@ -9066,6 +10362,12 @@
             "value" : "Nom de l'en-tête"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome dell’intestazione"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9106,6 +10408,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Valeur de l'en-tête"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valore dell’intestazione"
           }
         },
         "zh-Hans" : {
@@ -9150,6 +10458,12 @@
             "value" : "Aide et commentaires"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aiuto & Feedback"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9190,6 +10504,12 @@
             "value" : "Masquer les boutons de saut de chapitre"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nascondi i pulsanti per saltare i capitoli"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9228,6 +10548,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Élevé"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alto"
           }
         },
         "zh-Hans" : {
@@ -9272,6 +10598,12 @@
             "value" : "Historique"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Storico"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9312,6 +10644,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Accueil"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Principale"
           }
         },
         "zh-Hans" : {
@@ -9356,6 +10694,12 @@
             "value" : "heure"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ora"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9396,6 +10740,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "heures"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ore"
           }
         },
         "zh-Hans" : {
@@ -9440,6 +10790,12 @@
             "value" : "Heures"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ore"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9477,6 +10833,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "iCloud"
@@ -9524,6 +10886,12 @@
             "value" : "Cache d'images"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cache immagini"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9564,6 +10932,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Inclure les identifiants"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Includi le credenziali"
           }
         },
         "zh-Hans" : {
@@ -9608,6 +10982,12 @@
             "value" : "Rejoignez notre Discord"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unisciti al nostro Discord"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9646,6 +11026,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Paysage"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orizzontale"
           }
         },
         "zh-Hans" : {
@@ -9690,6 +11076,12 @@
             "value" : "Langues"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lingue"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9730,6 +11122,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Grand"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grande"
           }
         },
         "zh-Hans" : {
@@ -9774,6 +11172,12 @@
             "value" : "Dernière mise à jour"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ultimo aggiornamento"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9814,6 +11218,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Récents"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Novità"
           }
         },
         "zh-Hans" : {
@@ -9858,6 +11268,12 @@
             "value" : "Mise en page"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Layout"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9898,6 +11314,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mentions légales"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Legal"
           }
         },
         "zh-Hans" : {
@@ -9942,6 +11364,12 @@
             "value" : "Espacement des lettres"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spaziatura carattere"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9982,6 +11410,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bibliothèques"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Librerie"
           }
         },
         "zh-Hans" : {
@@ -10026,6 +11460,12 @@
             "value" : "Bibliothèque"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Libreria"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10066,6 +11506,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Type de bibliothèque"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo di libreria"
           }
         },
         "zh-Hans" : {
@@ -10110,6 +11556,12 @@
             "value" : "Clair"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiaro"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10150,6 +11602,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hauteur de ligne"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Altezza interlinea"
           }
         },
         "zh-Hans" : {
@@ -10194,6 +11652,12 @@
             "value" : "Vue liste"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualizzazione elenco"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10234,6 +11698,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réécouter"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ascolta Dinuovo"
           }
         },
         "zh-Hans" : {
@@ -10278,6 +11748,12 @@
             "value" : "Statistiques d'écoute"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistiche di ascolto"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10318,6 +11794,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Charger plus"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carica altro"
           }
         },
         "zh-Hans" : {
@@ -10362,6 +11844,12 @@
             "value" : "Chargement des détails de l'auteur..."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caricamento dettagli autore..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10402,6 +11890,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chargement des auteurs..."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caricamento autori..."
           }
         },
         "zh-Hans" : {
@@ -10446,6 +11940,12 @@
             "value" : "Chargement des détails du livre..."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caricamento dettagli libro..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10486,6 +11986,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chargement des livres..."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caricamento libri..."
           }
         },
         "zh-Hans" : {
@@ -10530,6 +12036,12 @@
             "value" : "Chargement des collections..."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caricamento delle raccolte..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10570,6 +12082,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chargement des téléchargements…"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caricamento downloads…"
           }
         },
         "zh-Hans" : {
@@ -10614,6 +12132,12 @@
             "value" : "Chargement du livre numérique..."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caricamento ebook..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10654,6 +12178,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chargement des épisodes..."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caricamento episodi..."
           }
         },
         "zh-Hans" : {
@@ -10698,6 +12228,12 @@
             "value" : "Chargement des bibliothèques..."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caricamento librerie..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10738,6 +12274,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chargement des narrateurs..."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caricamento narratori..."
           }
         },
         "zh-Hans" : {
@@ -10782,6 +12324,12 @@
             "value" : "Chargement des listes de lecture..."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caricamento playlists..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10822,6 +12370,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chargement des détails du podcast…"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caricamento dettagli podcast…"
           }
         },
         "zh-Hans" : {
@@ -10866,6 +12420,12 @@
             "value" : "Chargement des podcasts..."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caricamento Podcasts..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10906,6 +12466,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chargement des séries..."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caricamento serie..."
           }
         },
         "zh-Hans" : {
@@ -10950,6 +12516,12 @@
             "value" : "Chargement..."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caricamento..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10988,6 +12560,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Contrôles de l'écran de verrouillage"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controlli schermata di blocco"
           }
         },
         "zh-Hans" : {
@@ -11030,6 +12608,12 @@
             "value" : "Boutons suivant/précédent sur l'écran de verrouillage"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulsanti successivo/precedente nella schermata di blocco"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11068,6 +12652,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Verrouiller l'orientation de l'écran du lecteur."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blocca l'orientamento del lettore"
           }
         },
         "zh-Hans" : {
@@ -11112,6 +12702,12 @@
             "value" : "Connexion..."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accesso in corso..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11152,6 +12748,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se connecter"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accedi"
           }
         },
         "zh-Hans" : {
@@ -11196,6 +12798,12 @@
             "value" : "Se connecter avec SSO"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accedi con SSO"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11238,6 +12846,12 @@
             "value" : "Se déconnecter"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esci"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11276,6 +12890,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Faible"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basso"
           }
         },
         "zh-Hans" : {
@@ -11320,6 +12940,12 @@
             "value" : "Gérer les serveurs"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestisci server"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11358,6 +12984,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gérer le stockage"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestisci archiviazione"
           }
         },
         "zh-Hans" : {
@@ -11402,6 +13034,12 @@
             "value" : "Tout marquer comme terminé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segna tutti come completati"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11442,6 +13080,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Marquer comme lu"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segna come completato"
           }
         },
         "zh-Hans" : {
@@ -11486,6 +13130,12 @@
             "value" : "Marquer comme lu"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segna come completato"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11528,6 +13178,12 @@
             "value" : "Stockage maximum"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spazio massimo"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11566,6 +13222,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Moyen"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medio"
           }
         },
         "zh-Hans" : {
@@ -11610,6 +13272,12 @@
             "value" : "Informations"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metadata"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11652,6 +13320,12 @@
             "value" : "Méthode"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metodo"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11689,6 +13363,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "min"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "min"
@@ -11736,6 +13416,12 @@
             "value" : "min/jour"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "min/giorno"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11778,6 +13464,12 @@
             "value" : "Réduire"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minimizza"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11816,6 +13508,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pause minimale"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pausa minima"
           }
         },
         "zh-Hans" : {
@@ -11860,6 +13558,12 @@
             "value" : "mins"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "minuti"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11900,6 +13604,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Minutes"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minuti"
           }
         },
         "zh-Hans" : {
@@ -11944,6 +13654,12 @@
             "value" : "Minutes d'écoute (7 derniers jours)"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minuti di ascolto (ultimi 7 giorni)"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11984,6 +13700,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plus"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Altro"
           }
         },
         "zh-Hans" : {
@@ -12028,6 +13750,12 @@
             "value" : "Nom"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12066,6 +13794,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vitesse de narration"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Velocità narrazione"
           }
         },
         "zh-Hans" : {
@@ -12110,6 +13844,12 @@
             "value" : "Narrateurs"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Narratori"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12150,6 +13890,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Découverte réseau"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ricerca in rete locale"
           }
         },
         "zh-Hans" : {
@@ -12194,6 +13940,12 @@
             "value" : "Jamais"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mai"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12234,6 +13986,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nom de la nouvelle collection"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome dell nuova raccolta"
           }
         },
         "zh-Hans" : {
@@ -12278,6 +14036,12 @@
             "value" : "Nom de la nouvelle liste de lecture"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome della nuova playlist"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12318,6 +14082,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Derniers auteurs"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autori più recenti"
           }
         },
         "zh-Hans" : {
@@ -12362,6 +14132,12 @@
             "value" : "Derniers épisodes"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Episodi recenti"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12402,6 +14178,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chapitre suivant"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prossimo capitolo"
           }
         },
         "zh-Hans" : {
@@ -12446,6 +14228,12 @@
             "value" : "Écriture de Tag NFC"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scrittura Tag NFC"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12486,6 +14274,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucune minuterie de sommeil active à annuler."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non c’è alcun timer di spegnimento attivo da annullare."
           }
         },
         "zh-Hans" : {
@@ -12530,6 +14324,12 @@
             "value" : "Aucun livre audio n'est en cours de lecture."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non è in riproduzione alcun audiolibro."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12570,6 +14370,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucun auteur trouvé"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun autore trovato"
           }
         },
         "zh-Hans" : {
@@ -12614,6 +14420,12 @@
             "value" : "Aucun signet"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun segnalibro"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12654,6 +14466,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucun livre"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun Libro"
           }
         },
         "zh-Hans" : {
@@ -12698,6 +14516,12 @@
             "value" : "Aucun livre trouvé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun libro trovato"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12738,6 +14562,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucun livre ne correspond à votre recherche."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun libro corrisponde alla tua ricerca."
           }
         },
         "zh-Hans" : {
@@ -12782,6 +14612,12 @@
             "value" : "Aucune collection"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessuna raccolta"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12822,6 +14658,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucune collection"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessuna raccolta"
           }
         },
         "zh-Hans" : {
@@ -12866,6 +14708,12 @@
             "value" : "Aucune collection disponible."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessuna raccolta disponibile."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12906,6 +14754,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucun contenu disponible"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun contenuto disponibile"
           }
         },
         "zh-Hans" : {
@@ -12950,6 +14804,12 @@
             "value" : "Aucun téléchargement"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun downloads"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12990,6 +14850,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucun épisode"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun pisodio"
           }
         },
         "zh-Hans" : {
@@ -13034,6 +14900,12 @@
             "value" : "Aucun historique"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessuna cronologia"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13074,6 +14946,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucun résultat pour « %@ »"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun risultato trovato per '%@'"
           }
         },
         "zh-Hans" : {
@@ -13118,6 +14996,12 @@
             "value" : "Aucun narrateur trouvé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun narratore trovato"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13158,6 +15042,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucun contenu hors ligne"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun contenuto offline"
           }
         },
         "zh-Hans" : {
@@ -13202,6 +15092,12 @@
             "value" : "Aucune liste de lecture"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessuna playlist"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13242,6 +15138,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucun podcast"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessuna playlist"
           }
         },
         "zh-Hans" : {
@@ -13286,6 +15188,12 @@
             "value" : "Aucun épisode récent"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun episodio recente"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13326,6 +15234,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucun résultat"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun risultato"
           }
         },
         "zh-Hans" : {
@@ -13370,6 +15284,12 @@
             "value" : "Aucun résultat trouvé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun risultato trovato"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13410,6 +15330,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucune série trouvée"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessuna serie trovata"
           }
         },
         "zh-Hans" : {
@@ -13454,6 +15380,12 @@
             "value" : "Aucun serveur connecté"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun server connesso"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13494,6 +15426,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucun"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non selezionato"
           }
         },
         "zh-Hans" : {
@@ -13538,6 +15476,12 @@
             "value" : "Pas assez de chapitres restants. Le maximum est %lld."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non ci sono abbastanza capitoli rimanenti. Il massimo è %lld."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13578,6 +15522,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "En cours de lecture"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In riproduzione"
           }
         },
         "zh-Hans" : {
@@ -13622,6 +15572,12 @@
             "value" : "Nombre de chapitres (0 = chapitre actuel)"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numero di capitoli (0 = capitolo corrente)"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13662,6 +15618,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "de mon objectif de %lld minutes"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "del mio obiettivo di %lld minuti"
           }
         },
         "zh-Hans" : {
@@ -13706,6 +15668,12 @@
             "value" : "Désactivé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spegni"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13747,6 +15715,12 @@
             "value" : "Hors ligne"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offline"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13784,6 +15758,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OIDC (SSO)"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "OIDC (SSO)"
@@ -13829,6 +15809,12 @@
             "value" : "En cas d'interruption"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All'interruzione"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13869,6 +15855,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ouvrir sur le web"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apri sul web"
           }
         },
         "zh-Hans" : {
@@ -13913,6 +15905,12 @@
             "value" : "Ouvrir le lecteur au lancement"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apri il player all'avvio"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13953,6 +15951,12 @@
             "value" : "Orientation"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orientamento"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13991,6 +15995,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Verrouillage de l'orientation"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blocca orientamento"
           }
         },
         "zh-Hans" : {
@@ -14035,6 +16045,12 @@
             "value" : "Marges de page"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Margini pagina"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14075,6 +16091,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Retrait de paragraphe"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indentazione paragrafi"
           }
         },
         "zh-Hans" : {
@@ -14119,6 +16141,12 @@
             "value" : "Espacement des paragraphes"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spaziatura paragrafo"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14159,6 +16187,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mot de passe"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password"
           }
         },
         "zh-Hans" : {
@@ -14203,6 +16237,12 @@
             "value" : "Pause"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pausa"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14245,6 +16285,12 @@
             "value" : "Mettre en pause"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pausa riproduzione"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14283,6 +16329,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "S'arrête à %@"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pausa a %@"
           }
         },
         "zh-Hans" : {
@@ -14327,6 +16379,12 @@
             "value" : "Liste de lecture épinglée"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playlist in evidenza"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14369,6 +16427,12 @@
             "value" : "Lecture"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riproduci"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14407,6 +16471,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Affichage de la lecture"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schermata di riproduzione"
           }
         },
         "zh-Hans" : {
@@ -14451,6 +16521,12 @@
             "value" : "La lecture est déjà en cours."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La riproduzione è già attiva."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14491,6 +16567,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "La lecture est déjà en pause."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La riproduzione è già in pausa."
           }
         },
         "zh-Hans" : {
@@ -14535,6 +16617,12 @@
             "value" : "Sessions de lecture"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessioni di Riproduzione"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14573,6 +16661,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajustements de la vitesse de lecture"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Velocità di riproduzione"
           }
         },
         "zh-Hans" : {
@@ -14617,6 +16711,12 @@
             "value" : "Lecteur"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Player"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14655,6 +16755,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Orientation du lecteur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orientamento del player"
           }
         },
         "zh-Hans" : {
@@ -14699,6 +16805,12 @@
             "value" : "Paramètres du lecteur"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impostazioni del player"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14741,6 +16853,12 @@
             "value" : "Nom de la playlist"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome playlist"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14778,6 +16896,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playlists"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Playlists"
@@ -14825,6 +16949,12 @@
             "value" : "Les listes de lecture sont privées. Seul l'utilisateur qui les crée peut les voir."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le playlist sono private. Solo l'utente che le crea può vederle."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14867,6 +16997,12 @@
             "value" : "Détails du podcast"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dettagli podcast"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14904,6 +17040,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podcasts"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Podcasts"
@@ -14949,6 +17091,12 @@
             "value" : "Portrait"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verticale"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14989,6 +17137,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Préamplificateur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preamplificatore"
           }
         },
         "zh-Hans" : {
@@ -15033,6 +17187,12 @@
             "value" : "Préférences"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferenze"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15073,6 +17233,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Préréglages"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Presets"
           }
         },
         "zh-Hans" : {
@@ -15117,6 +17283,12 @@
             "value" : "Chapitre précédent"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capitolo precedente"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15157,6 +17329,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Principal"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Principale"
           }
         },
         "zh-Hans" : {
@@ -15201,6 +17379,12 @@
             "value" : "Politique de confidentialité"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15241,6 +17425,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Progression"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progresso"
           }
         },
         "zh-Hans" : {
@@ -15285,6 +17475,12 @@
             "value" : "Progression : Terminé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progresso: Terminato"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15325,6 +17521,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Progression : Dernière mise à jour"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progresso: Ultimo Aggiornamento"
           }
         },
         "zh-Hans" : {
@@ -15369,6 +17571,12 @@
             "value" : "Progression : Commencé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progresso: avviato"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15409,6 +17617,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Protocole"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Protocollo"
           }
         },
         "zh-Hans" : {
@@ -15453,6 +17667,12 @@
             "value" : "Décennies de publication"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Decennio di pubblicazione"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15493,6 +17713,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Année de publication"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anno di pubblicazione"
           }
         },
         "zh-Hans" : {
@@ -15537,6 +17763,12 @@
             "value" : "Styles de l'éditeur"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stili dell'editore"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15577,6 +17809,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Éditeurs"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editori"
           }
         },
         "zh-Hans" : {
@@ -15621,6 +17859,12 @@
             "value" : "Queue"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coda"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15661,6 +17905,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "La file queue est vide"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La coda è vuota"
           }
         },
         "zh-Hans" : {
@@ -15705,6 +17955,12 @@
             "value" : "Aléatoirement"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Random"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15745,6 +18001,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se ré-authentifier"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ri-autentica"
           }
         },
         "zh-Hans" : {
@@ -15789,6 +18051,12 @@
             "value" : "Lire"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Letto"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15829,6 +18097,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Relire"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leggi dinuovo"
           }
         },
         "zh-Hans" : {
@@ -15873,6 +18147,12 @@
             "value" : "Réglages de la liseuse"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impostazioni del lettore"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15913,6 +18193,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les épisodes récents du podcast apparaîtront ici."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gli episodi recenti dei podcast appariranno qui."
           }
         },
         "zh-Hans" : {
@@ -15957,6 +18243,12 @@
             "value" : "Séries récentes"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serie Recenti"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15997,6 +18289,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sessions récentes"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessioni recenti"
           }
         },
         "zh-Hans" : {
@@ -16041,6 +18339,12 @@
             "value" : "Ajoutés récemment"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessioni Recenti"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16081,6 +18385,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Supprimer après inutilisation pendant"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimuovi dopo essere rimasti inutilizzati per"
           }
         },
         "zh-Hans" : {
@@ -16125,6 +18435,12 @@
             "value" : "Supprimer les terminés"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimuovi Completato"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16165,6 +18481,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Supprimer le téléchargement"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimuovi Download"
           }
         },
         "zh-Hans" : {
@@ -16209,6 +18531,12 @@
             "value" : "Supprimer le téléchargement une fois terminé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimuovi il download al completamento"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16249,6 +18577,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Supprimer les téléchargements"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimuovi i downloads"
           }
         },
         "zh-Hans" : {
@@ -16293,6 +18627,12 @@
             "value" : "Retirer de la playlist"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimuovi da continua ad ascoltare"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16333,6 +18673,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Retirer de la queue"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimuovi dalla coda"
           }
         },
         "zh-Hans" : {
@@ -16377,6 +18723,12 @@
             "value" : "Renommer"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimuovi"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16417,6 +18769,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réinitialiser"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripristina"
           }
         },
         "zh-Hans" : {
@@ -16461,6 +18819,12 @@
             "value" : "Réinitialiser toute la progression"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripristina tutti i progressi"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16501,6 +18865,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réinitialiser la progression"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetta i progressi"
           }
         },
         "zh-Hans" : {
@@ -16545,6 +18915,12 @@
             "value" : "Réinitialiser la minuterie"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetta il timer"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16585,6 +18961,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réinitialiser"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripristina predefinito"
           }
         },
         "zh-Hans" : {
@@ -16629,6 +19011,12 @@
             "value" : "Reprendre la lecture"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riprendi la riproduzione"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16669,6 +19057,12 @@
             "value" : "Rembobiner après une pause d'une durée configurable ou après des interruptions audio."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riavvolgi dopo essere stato in pausa per una durata configurabile o dopo interruzioni audio."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16707,6 +19101,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rembobiner de"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riavvolgi di"
           }
         },
         "zh-Hans" : {
@@ -16757,6 +19157,12 @@
             "value" : "S%1$@E%2$@"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "S%1$@E%2$@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16797,6 +19203,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enregistrer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salva"
           }
         },
         "zh-Hans" : {
@@ -16841,6 +19253,12 @@
             "value" : "Analyser"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scansiona"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16881,6 +19299,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Analyser le réseau local"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scansiona reti locali"
           }
         },
         "zh-Hans" : {
@@ -16925,6 +19349,12 @@
             "value" : "Analyse du réseau..."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scansione della rete in corso..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16965,6 +19395,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mode défilement"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modalità di scorrimento"
           }
         },
         "zh-Hans" : {
@@ -17009,6 +19445,12 @@
             "value" : "Recherche"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerca"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17049,6 +19491,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rechercher un livre"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerca libro"
           }
         },
         "zh-Hans" : {
@@ -17093,6 +19541,12 @@
             "value" : "Rechercher des épisodes"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerca episodi"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17133,6 +19587,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Recherchez des livres, séries, auteurs, narrateurs, tags ou genres"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerca libri, serie, autori, narratori, tag o generi"
           }
         },
         "zh-Hans" : {
@@ -17177,6 +19637,12 @@
             "value" : "Recherche..."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ricerca..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17215,6 +19681,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Secondes"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Secondi"
           }
         },
         "zh-Hans" : {
@@ -17259,6 +19731,12 @@
             "value" : "Section"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sezioni"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17299,6 +19777,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Recherche"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ricerca"
           }
         },
         "zh-Hans" : {
@@ -17343,6 +19827,12 @@
             "value" : "Sélectionner"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleziona"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17383,6 +19873,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sélectionnez un livre pour commencer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleziona un libro per continuare"
           }
         },
         "zh-Hans" : {
@@ -17427,6 +19923,12 @@
             "value" : "Tout sélectionner"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleziona tutto"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17467,6 +19969,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Envoyer le livre numérique à"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invia l'ebook a"
           }
         },
         "zh-Hans" : {
@@ -17511,6 +20019,12 @@
             "value" : "Séries"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serie"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17551,6 +20065,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Serveur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server"
           }
         },
         "zh-Hans" : {
@@ -17595,6 +20115,12 @@
             "value" : "Configuration du serveur"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configurazione del server"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17637,6 +20163,12 @@
             "value" : "Détails du serveur"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dettagli del server"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17677,6 +20209,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL du serveur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server URL"
           }
         },
         "zh-Hans" : {
@@ -17727,6 +20265,12 @@
             "value" : "Serveur : %1$@, %2$@"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server: %1$@, %2$@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17767,6 +20311,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Serveurs"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server"
           }
         },
         "zh-Hans" : {
@@ -17811,6 +20361,12 @@
             "value" : "Sessions"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessioni"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17853,6 +20409,12 @@
             "value" : "Régler la minuterie de sommeil"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imposta timer di spegnimento"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17893,6 +20455,12 @@
             "value" : "Régler la minuterie de sommeil pour ${duration}"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imposta timer di spegnimento per ${duration}"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17931,6 +20499,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Régler la minuterie de sommeil à la fin de ${chapters} chapitres"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imposta timer di spegnimento alla fine di ${chapters} capitoli"
           }
         },
         "zh-Hans" : {
@@ -17975,6 +20549,12 @@
             "value" : "Régler la minuterie à la fin du chapitre"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imposta il timer di spegnimento alla fine del capitolo"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18017,6 +20597,12 @@
             "value" : "Régler la minuterie de sommeil avec une durée"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imposta timer di spegnimento con durata"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18055,6 +20641,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Définissez votre vitesse de narration par défaut pour les nouveaux livres."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imposta la velocità di narrazione predefinita per i nuovi libri."
           }
         },
         "zh-Hans" : {
@@ -18099,6 +20691,12 @@
             "value" : "Règle la minuterie de sommeil pour mettre en pause après une durée définie."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imposta il timer di spegnimento per mettere in pausa dopo una durata specificata."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18139,6 +20737,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règle la minuterie de sommeil pour mettre en pause à la fin d'un nombre de chapitres défini."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imposta il timer di spegnimento per mettere in pausa alla fine di un numero specificato di capitoli."
           }
         },
         "zh-Hans" : {
@@ -18183,6 +20787,12 @@
             "value" : "Réglages"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impostazioni"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18221,6 +20831,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sensibilité de la secousse pour réinitialiser"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sensibilità dello scuotimento per il ripristino"
           }
         },
         "zh-Hans" : {
@@ -18263,6 +20879,12 @@
             "value" : "Sensibilité de la secousse pour réinitialiser la minuterie"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sensibilità dello scuotimento per il ripristino del timer"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18301,6 +20923,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Secouez votre téléphone pour réinitialiser la minuterie pendant la lecture."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scuoti il telefono per reimpostare il timer durante la riproduzione."
           }
         },
         "zh-Hans" : {
@@ -18345,6 +20973,12 @@
             "value" : "Partager la connexion"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condividi dettagli connessione"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18385,6 +21019,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Partager le lien"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condividi Link"
           }
         },
         "zh-Hans" : {
@@ -18429,6 +21069,12 @@
             "value" : "Partager le code QR"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condividi il codice QR"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18469,6 +21115,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Partagez ce code QR ou ce lien avec un autre utilisateur AudioBooth pour l'aider à se connecter à votre serveur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condividi questo codice QR o questo link con un altro utente di AudioBooth per aiutarlo a connettersi al tuo server."
           }
         },
         "zh-Hans" : {
@@ -18513,6 +21165,12 @@
             "value" : "Le partage des identifiants les invalidera sur cet appareil dès qu'un autre appareil les utilisera. Vous devrez vous reconnecter pour continuer à utiliser cette connexion."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La condivisione delle credenziali le invaliderà su questo dispositivo non appena un altro dispositivo le utilizzerà. Per continuare a usare questa connessione, dovrai riconnetterti."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18553,6 +21211,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Voir moins"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra meno"
           }
         },
         "zh-Hans" : {
@@ -18597,6 +21261,12 @@
             "value" : "Voir plus"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra di più"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18639,6 +21309,12 @@
             "value" : "Afficher l'option dans le menu des détails du livre pour écrire les informations sur des tags NFC pour un accès rapide."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra l'opzione nel menu dei dettagli del libro per scrivere le informazioni del libro sui tag NFC per un accesso rapido alla riproduzione."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18655,7 +21331,15 @@
     },
     "Show Subtitle" : {
       "comment" : "A toggle that shows or hides book subtitles in the library view.",
-      "isCommentAutoGenerated" : true
+      "isCommentAutoGenerated" : true,
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra sottotitolo"
+          }
+        }
+      }
     },
     "Show Supplementary Book Progress Bar" : {
       "localizations" : {
@@ -18681,6 +21365,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Afficher la barre de progression supplémentaire"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra barra di avanzamento supplementare dei libri"
           }
         },
         "zh-Hans" : {
@@ -18725,6 +21415,12 @@
             "value" : "Reculer"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indietro"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18767,6 +21463,12 @@
             "value" : "Reculer de %lld secondes"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indietro di %lld secondi"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18805,6 +21507,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reculer de ${duration}"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indietro di ${duration}"
           }
         },
         "zh-Hans" : {
@@ -18849,6 +21557,12 @@
             "value" : "Reculer de la durée indiquée"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indietro per la durata specificata"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18887,6 +21601,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Avancer par"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salta per"
           }
         },
         "zh-Hans" : {
@@ -18931,6 +21651,12 @@
             "value" : "Avancer"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avanti"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18973,6 +21699,12 @@
             "value" : "Avancer de %lld secondes"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avanti di %lld secondi"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19013,6 +21745,12 @@
             "value" : "Avancer de ${duration}"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avanri di ${duration}"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19051,6 +21789,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Avancer et Reculer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salta avanti e indietro"
           }
         },
         "zh-Hans" : {
@@ -19095,6 +21839,12 @@
             "value" : "Avancer de la durée indiquée"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salta avanti per la durata specificata"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19135,6 +21885,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Passer au chapitre suivant"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salta al capitolo successivo"
           }
         },
         "zh-Hans" : {
@@ -19179,6 +21935,12 @@
             "value" : "Revenir au chapitre précédent"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salta al capitolo precedente"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19219,6 +21981,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Recule dans le livre audio en cours de lecture d'une durée définie."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salta all’indietro nell’audiolibro in riproduzione di una durata specificata."
           }
         },
         "zh-Hans" : {
@@ -19263,6 +22031,12 @@
             "value" : "Avance dans le livre audio en cours de lecture d'une durée définie."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salta avanti nell’audiolibro in riproduzione di una durata specificata."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19303,6 +22077,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Passe au chapitre suivant du livre audio en cours de lecture."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passa al capitolo successivo dell’audiolibro in riproduzione."
           }
         },
         "zh-Hans" : {
@@ -19347,6 +22127,12 @@
             "value" : "Revient au chapitre précédent du livre audio en cours de lecture."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passa al capitolo precedente dell’audiolibro in riproduzione."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19385,6 +22171,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Minuterie de sommeil"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sleep-timer"
           }
         },
         "zh-Hans" : {
@@ -19429,6 +22221,12 @@
             "value" : "Minuterie de sommeil annulée"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sleep-timer annullato"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19469,6 +22267,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Minuterie de sommeil jusqu'à la fin du chapitre"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timer di spegnimento fino alla fine del capitolo"
           }
         },
         "zh-Hans" : {
@@ -19513,6 +22317,12 @@
             "value" : "Reprise intelligente"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuazione intelligente"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19551,6 +22361,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rembobinage intelligent"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riavvolgimento intelligente"
           }
         },
         "zh-Hans" : {
@@ -19593,6 +22409,12 @@
             "value" : "Durée du rembobinage intelligent après pause"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riavvolgimento intelligente dopo una pausa"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19633,6 +22455,12 @@
             "value" : "Durée du rembobinage intelligent en cas d'interruption"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riavvolgimento intelligente dopo un’interruzione"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19671,6 +22499,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seuil de pause pour rembobinage intelligent"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soglia di pausa del riavvolgimento intelligente"
           }
         },
         "zh-Hans" : {
@@ -19715,6 +22549,12 @@
             "value" : "Trier par"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ordina per"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19757,6 +22597,12 @@
             "value" : "Vitesse"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Velocità"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19794,6 +22640,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sponsor"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sponsor"
@@ -19841,6 +22693,12 @@
             "value" : "Démarrer"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inizia"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19879,6 +22737,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Heure de début"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orario di inizio"
           }
         },
         "zh-Hans" : {
@@ -19923,6 +22787,12 @@
             "value" : "Commencé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iniziato"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19963,6 +22833,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Arrêter"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ferma"
           }
         },
         "zh-Hans" : {
@@ -20007,6 +22883,12 @@
             "value" : "Stockage"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spazio di archiviazione"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20047,6 +22929,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Limites de stockage"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limite di archiviazione"
           }
         },
         "zh-Hans" : {
@@ -20091,6 +22979,12 @@
             "value" : "Assistance"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supporto"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20131,6 +23025,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Balayez pour supprimer ou faites glisser pour réordonner"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scorri per rimuovere o trascina per riordinare"
           }
         },
         "zh-Hans" : {
@@ -20175,6 +23075,12 @@
             "value" : "Synchronisation"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sincronizza"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20217,6 +23123,12 @@
             "value" : "Synchronisez vos préférences sur tous vos appareils avec iCloud."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sincronizza le tue impostazioni tra tutti i device attraverso iCloud."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20254,6 +23166,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tags"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tags"
@@ -20301,6 +23219,12 @@
             "value" : "Toucher pour naviguer"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tocca per navigare"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20341,6 +23265,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Touchez pour voir vos statistiques"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tocca per vedere le tue statistiche"
           }
         },
         "zh-Hans" : {
@@ -20385,6 +23315,12 @@
             "value" : "Zones de pression"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zone di tocco"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20425,6 +23361,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les appuis hors des zones affichent/masquent les contrôles"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tocca al di fuori delle zone per mostrare o nascondere i controlli"
           }
         },
         "zh-Hans" : {
@@ -20469,6 +23411,12 @@
             "value" : "Conditions d'utilisation"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termini d'uso"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20509,6 +23457,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Avis TestFlight : "
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avviso TestFlight: "
           }
         },
         "zh-Hans" : {
@@ -20553,6 +23507,12 @@
             "value" : "Normalisation du texte"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Normalizzazione del testo"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20593,6 +23553,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Merci pour votre soutien !"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grazie per il tuo supporto !"
           }
         },
         "zh-Hans" : {
@@ -20637,6 +23603,12 @@
             "value" : "Le titre du signet"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il titolo del segnalibro"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20677,6 +23649,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Le livre audio actuel n'a pas de chapitres."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'audiolibro corrente non ha capitoli."
           }
         },
         "zh-Hans" : {
@@ -20721,6 +23699,12 @@
             "value" : "Thème"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tema"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20761,6 +23745,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ce sont des achats de test uniquement. Vous souhaitez soutenir le développement ? Téléchargez depuis l'App Store pour laisser un vrai pourboire. [Ouvrir l'App Store](https://apps.apple.com/us/app/id6753017503)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questi sono solo acquisti di prova. Vuoi supportare lo sviluppo? Scarica l’app dall’App Store per lasciare una vera mancia. Apri l’App Store [Apri l'App Store](https://apps.apple.com/us/app/id6753017503)"
           }
         },
         "zh-Hans" : {
@@ -20805,6 +23795,12 @@
             "value" : "Cette collection est vide."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa raccolta è vuota."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20845,6 +23841,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cette liste de lecture est vide."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa playlist è vuota."
           }
         },
         "zh-Hans" : {
@@ -20889,6 +23891,12 @@
             "value" : "cette semaine"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "questa settimana"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20929,6 +23937,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cela effacera toutes les images de couverture en cache. Elles seront retéléchargées si nécessaire."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questo cancellerà tutte le immagini di copertina memorizzate nella cache. Verranno scaricate di nuovo quando necessario."
           }
         },
         "zh-Hans" : {
@@ -20973,6 +23987,12 @@
             "value" : "Cela supprimera tous les livres audio et livres numériques téléchargés. Vous pourrez les retélécharger plus tard."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questo eliminerà tutti gli audiolibri e gli ebook scaricati. Potrai riscaricarli in seguito."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21013,6 +24033,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cela supprimera tout le contenu téléchargé. Cette action est irréversible."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questo eliminerà tutti i contenuti scaricati. Questa azione non può essere annullata."
           }
         },
         "zh-Hans" : {
@@ -21057,6 +24083,12 @@
             "value" : "Temps"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tempo"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21097,6 +24129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Temps écoulé"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tempo scaduto"
           }
         },
         "zh-Hans" : {
@@ -21141,6 +24179,12 @@
             "value" : "Minuterie"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timer"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21179,6 +24223,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fondu audio de la minuterie"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dissolvenza audio del timer"
           }
         },
         "zh-Hans" : {
@@ -21223,6 +24273,12 @@
             "value" : "Minuterie terminée"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timer completato"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21263,6 +24319,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Minuterie prolongée"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timer esteso"
           }
         },
         "zh-Hans" : {
@@ -21307,6 +24369,12 @@
             "value" : "La minuterie n'est pas disponible."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il timer non è disponibile."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21347,6 +24415,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Minuterie démarrée"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il timer è iniziato"
           }
         },
         "zh-Hans" : {
@@ -21391,6 +24465,12 @@
             "value" : "Titre"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Titolo"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21431,6 +24511,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "aujourd'hui"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "oggi"
           }
         },
         "zh-Hans" : {
@@ -21475,6 +24561,12 @@
             "value" : "Aujourd'hui"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oggi"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21515,6 +24607,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Écoute du jour"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ascolti di oggi"
           }
         },
         "zh-Hans" : {
@@ -21559,6 +24657,12 @@
             "value" : "Stockage total utilisé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spazio totale utilizzato"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21597,6 +24701,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pistes"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traccie"
           }
         },
         "zh-Hans" : {
@@ -21641,6 +24751,12 @@
             "value" : "Essayez d'ajuster vos termes de recherche"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prova ad aggiornare i termini di ricerca"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21681,6 +24797,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réessayer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prova dinuovo"
           }
         },
         "zh-Hans" : {
@@ -21725,6 +24847,12 @@
             "value" : "Typographie"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipografia"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21765,6 +24893,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impossible de charger l'auteur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossibile caricare l'autore"
           }
         },
         "zh-Hans" : {
@@ -21809,6 +24943,12 @@
             "value" : "Impossible de charger le livre"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossibile caricare il libro"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21849,6 +24989,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impossible de charger le livre numérique"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossibile caricare l'ebook"
           }
         },
         "zh-Hans" : {
@@ -21893,6 +25039,12 @@
             "value" : "Impossible de charger le podcast"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossibile caricare il podcast"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21933,6 +25085,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Illimité"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Illimitato"
           }
         },
         "zh-Hans" : {
@@ -21977,6 +25135,12 @@
             "value" : "Détacher"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimuovi fissato"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22017,6 +25181,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tout désélectionner"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deseleziona tutto"
           }
         },
         "zh-Hans" : {
@@ -22061,6 +25231,12 @@
             "value" : "À suivre"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In coda"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22099,6 +25275,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Utiliser la durée du livre (au lieu du chapitre)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilizza la durata del libro (invece del capitolo)"
           }
         },
         "zh-Hans" : {
@@ -22143,6 +25325,12 @@
             "value" : "Nom d'utilisateur"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome utente"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22183,6 +25371,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nom d'utilisateur et mot de passe"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome utente e Password"
           }
         },
         "zh-Hans" : {
@@ -22227,6 +25421,12 @@
             "value" : "Vérifier et enregistrer"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verifica e Salva"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22269,6 +25469,12 @@
             "value" : "Version : %@"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versione : %@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22309,6 +25515,12 @@
             "value" : "Très élevé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Molto alto"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22347,6 +25559,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Très faible"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Molto basso"
           }
         },
         "zh-Hans" : {
@@ -22391,6 +25609,12 @@
             "value" : "Voir l'auteur"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualizza Autori"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22429,6 +25653,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Voir le narrateur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualizza Narratori"
           }
         },
         "zh-Hans" : {
@@ -22473,6 +25703,12 @@
             "value" : "Voir la série"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualizza Serie"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22515,6 +25751,12 @@
             "value" : "Visible"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visibile"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22552,6 +25794,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volume"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Volume"
@@ -22599,6 +25847,12 @@
             "value" : "Comment souhaitez-vous nommer le signet ?"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Come deve essere chiamato il segnalibro?"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22639,6 +25893,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Espacement des mots"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spaziatura carattere"
           }
         },
         "zh-Hans" : {
@@ -22683,6 +25943,12 @@
             "value" : "Écrire un tag NFC"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scrivi un tag NFC"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22723,6 +25989,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rétrospective de l'année"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revisione annuale"
           }
         },
         "zh-Hans" : {
@@ -22767,6 +26039,12 @@
             "value" : "Hier"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ieri"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22807,6 +26085,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vous n'avez aucune liste de lecture"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non hai nessuna Playlist"
           }
         },
         "zh-Hans" : {
@@ -22851,6 +26135,12 @@
             "value" : "Vous n'avez pas encore créé de signet pour ce livre."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non hai creato nessun segnalibro per questo libro"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22891,6 +26181,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vos signets"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I tuoi segnalibri"
           }
         },
         "zh-Hans" : {
@@ -22935,6 +26231,12 @@
             "value" : "Votre bibliothèque semble vide ou aucune bibliothèque n'est sélectionnée."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La tua libreria sembra vuota oppure non hai selezionato nessuna libreria"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22975,6 +26277,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Votre bibliothèque ne semble avoir aucun auteur ou aucune bibliothèque n'est sélectionnée."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La tua libreria sembra non avere autori oppure non hai selezionato nessuna libreria"
           }
         },
         "zh-Hans" : {
@@ -23019,6 +26327,12 @@
             "value" : "Votre bibliothèque ne semble avoir aucun narrateur ou aucune bibliothèque n'est sélectionnée."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La tua libreria sembra non avere nattatori oppure non hai selezionato nessuna libreria"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23059,6 +26373,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Votre bibliothèque ne semble avoir aucune série ou aucune bibliothèque n'est sélectionnée."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La tua libreria sembra non avere serie oppure non hai selezionato nessuna libreria"
           }
         },
         "zh-Hans" : {
@@ -23103,6 +26423,12 @@
             "value" : "Votre contenu personnalisé apparaîtra ici"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I tuoi servizi personalizzati appariranno quà"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23145,6 +26471,12 @@
             "value" : "Votre historique de lecture apparaîtra ici."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La tua cronologia di ascolto apparirà quà"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23183,6 +26515,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Votre bibliothèque de podcasts est vide"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La tua libreria podcast è vuota"
           }
         },
         "zh-Hans" : {
@@ -23225,6 +26563,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vos statistiques"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le tue statistiche"
           }
         },
         "zh-Hans" : {
