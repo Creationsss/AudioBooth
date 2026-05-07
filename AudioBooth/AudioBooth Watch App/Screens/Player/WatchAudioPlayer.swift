@@ -191,7 +191,7 @@ private extension WatchAudioPlayer {
   func loadTrack(at index: Int, seekTo offset: TimeInterval, autoPlay: Bool) {
     guard index < trackURLs.count else { return }
 
-    let item = AVPlayerItem(url: trackURLs[index])
+    let item = AVPlayerItem(url: trackURLs[index], headers: WatchConnectivityManager.shared.customHeaders)
     item.audioTimePitchAlgorithm = .timeDomain
     observeItem(item)
     player.replaceCurrentItem(with: item)
@@ -352,5 +352,16 @@ private extension WatchAudioPlayer {
 private extension AVPlayer {
   var currentSeconds: TimeInterval {
     currentTime().seconds.isNaN ? 0 : currentTime().seconds
+  }
+}
+
+extension AVPlayerItem {
+  convenience init(url: URL, headers: [String: String]?) {
+    if !url.isFileURL, let headers, !headers.isEmpty {
+      let asset = AVURLAsset(url: url, options: ["AVURLAssetHTTPHeaderFieldsKey": headers])
+      self.init(asset: asset)
+    } else {
+      self.init(asset: AVURLAsset(url: url))
+    }
   }
 }

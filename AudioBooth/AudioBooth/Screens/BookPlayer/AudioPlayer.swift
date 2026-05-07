@@ -1,3 +1,4 @@
+import API
 import AVFoundation
 import Combine
 import CoreAudio
@@ -191,7 +192,7 @@ private extension AudioPlayer {
   func loadTrack(at index: Int, seekTo offset: TimeInterval, autoPlay: Bool) {
     guard index < trackURLs.count else { return }
 
-    let item = AVPlayerItem(url: trackURLs[index])
+    let item = AVPlayerItem(url: trackURLs[index], headers: Audiobookshelf.shared.authentication.server?.customHeaders)
     observeItem(item)
     applyEQ(to: item)
     player.replaceCurrentItem(with: item)
@@ -501,6 +502,17 @@ extension AudioPlayer {
       let audioMix = AVMutableAudioMix()
       audioMix.inputParameters = [params]
       item.audioMix = audioMix
+    }
+  }
+}
+
+extension AVPlayerItem {
+  convenience init(url: URL, headers: [String: String]?) {
+    if !url.isFileURL, let headers, !headers.isEmpty {
+      let asset = AVURLAsset(url: url, options: ["AVURLAssetHTTPHeaderFieldsKey": headers])
+      self.init(asset: asset)
+    } else {
+      self.init(asset: AVURLAsset(url: url))
     }
   }
 }
