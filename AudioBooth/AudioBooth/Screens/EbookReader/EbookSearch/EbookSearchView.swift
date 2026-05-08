@@ -22,6 +22,8 @@ struct EbookSearchView: View {
           emptyStateView
         }
       }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .background(Color.Background.page)
       .navigationTitle("Search")
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
@@ -74,6 +76,7 @@ struct EbookSearchView: View {
               model.onLoadNextPage()
             }
           }
+          .listRowBackground(Color.Background.card)
       }
 
       if model.isLoadingMore {
@@ -83,9 +86,11 @@ struct EbookSearchView: View {
           Spacer()
         }
         .listRowSeparator(.hidden)
+        .listRowBackground(Color.Background.page)
       }
     }
     .listStyle(.plain)
+    .scrollContentBackground(.hidden)
   }
 
   private func resultRow(locator: Locator, index: Int) -> some View {

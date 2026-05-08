@@ -45,8 +45,11 @@ struct EbookChapterPickerSheet: View {
             }
             .buttonStyle(.plain)
             .id(chapter.id)
+            .listRowBackground(Color.Background.card)
           }
         }
+        .scrollContentBackground(.hidden)
+        .background(Color.Background.page)
         .onAppear {
           if let current = model.current {
             proxy.scrollTo(current.id, anchor: .center)

@@ -23,6 +23,7 @@ struct StatsPageView: View {
       }
       .padding()
     }
+    .background(Color.Background.page)
     .navigationTitle("Your Stats")
     .navigationBarTitleDisplayMode(.large)
     .onAppear(perform: model.onAppear)
@@ -95,7 +96,7 @@ struct StatsPageView: View {
       }
     }
     .padding()
-    .background(.secondary.opacity(0.07))
+    .background(Color.Background.card)
     .clipShape(RoundedRectangle(cornerRadius: 16))
   }
 
@@ -193,7 +194,7 @@ struct StatsPageView: View {
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
     .padding()
-    .background(.secondary.opacity(0.1))
+    .background(Color.Background.card)
     .clipShape(RoundedRectangle(cornerRadius: 12))
   }
 
@@ -229,7 +230,7 @@ struct StatsPageView: View {
         }
         .padding(.vertical, 4)
         .padding(.horizontal)
-        .background(.secondary.opacity(0.05))
+        .background(Color.Background.card)
         .clipShape(RoundedRectangle(cornerRadius: 12))
       }
     }

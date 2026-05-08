@@ -36,6 +36,7 @@ struct OfflineListView: View {
           }
       }
     }
+    .background(Color.Background.page)
     .navigationTitle("Downloaded")
     .searchable(text: $model.searchText, prompt: "Filter downloads")
     .toolbar {

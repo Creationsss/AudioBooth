@@ -7,50 +7,48 @@ struct AdvancedPreferencesView: View {
   var body: some View {
     Form {
       Section {
-        VStack(alignment: .leading) {
-          Text("iCloud")
-            .textCase(.uppercase)
-            .bold()
-
-          Text(
-            "Sync your preferences across all your devices using iCloud."
+        Toggle(isOn: $preferences.iCloudSyncEnabled) {
+          PreferenceRow(
+            systemImage: "icloud.fill",
+            tint: .blue,
+            title: "iCloud Sync"
           )
         }
-        .font(.caption)
-
-        Toggle("Enabled", isOn: $preferences.iCloudSyncEnabled)
-          .font(.subheadline)
-          .bold()
-          .onChange(of: preferences.iCloudSyncEnabled) { _, enabled in
-            if enabled {
-              preferences.syncToCloud()
-            } else {
-              preferences.purgeCloud()
-            }
+        .listRowBackground(Color.Background.card)
+        .onChange(of: preferences.iCloudSyncEnabled) { _, enabled in
+          if enabled {
+            preferences.syncToCloud()
+          } else {
+            preferences.purgeCloud()
           }
+        }
+      } header: {
+        Text("iCloud")
+      } footer: {
+        Text("Sync your preferences across all your devices using iCloud.")
+          .font(.caption)
       }
-      .listRowSeparator(.hidden)
 
       if NFCNDEFReaderSession.readingAvailable {
         Section {
-          VStack(alignment: .leading) {
-            Text("NFC Tag Writing")
-              .textCase(.uppercase)
-              .bold()
-
-            Text(
-              "Show option in book details menu to write book information to NFC tags for quick playback access."
+          Toggle(isOn: $preferences.showNFCTagWriting) {
+            PreferenceRow(
+              systemImage: "wave.3.right",
+              tint: .indigo,
+              title: "NFC Tag Writing"
             )
           }
-          .font(.caption)
-
-          Toggle("Visible", isOn: $preferences.showNFCTagWriting)
-            .font(.subheadline)
-            .bold()
+          .listRowBackground(Color.Background.card)
+        } header: {
+          Text("NFC")
+        } footer: {
+          Text("Show option in book details menu to write book information to NFC tags for quick playback access.")
+            .font(.caption)
         }
-        .listRowSeparator(.hidden)
       }
     }
+    .scrollContentBackground(.hidden)
+    .background(Color.Background.page)
     .navigationTitle("Advanced")
   }
 }

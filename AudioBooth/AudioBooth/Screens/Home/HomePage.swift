@@ -79,6 +79,7 @@ struct HomePage: View {
       }
       .padding(.bottom)
     }
+    .background(Color.Background.page)
     .navigationTitle("Home")
     .toolbar {
       serverMenuToolbarItem

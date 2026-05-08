@@ -1,435 +1,217 @@
 import SwiftUI
 
-struct TimePicker: View {
-  @Binding var minutesSinceMidnight: Int
-
-  private var date: Binding<Date> {
-    Binding(
-      get: {
-        let calendar = Calendar.current
-        let now = Date()
-        let hours = minutesSinceMidnight / 60
-        let minutes = minutesSinceMidnight % 60
-        return calendar.date(bySettingHour: hours, minute: minutes, second: 0, of: now) ?? now
-      },
-      set: { newDate in
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: newDate)
-        let minute = calendar.component(.minute, from: newDate)
-        minutesSinceMidnight = hour * 60 + minute
-      }
-    )
-  }
-
-  var body: some View {
-    DatePicker(selection: date, displayedComponents: .hourAndMinute) {}
-      .labelsHidden()
-  }
-}
-
 struct PlayerPreferencesView: View {
   @ObservedObject var preferences = UserPreferences.shared
-
-  @State private var allControls: [PlayerControl] = []
-  @State private var enabledControls: Set<PlayerControl> = []
 
   var body: some View {
     Form {
       Section {
-        List {
-          ForEach(allControls) { control in
-            HStack {
-              Text(control.displayName)
-                .font(.subheadline)
-                .bold()
-              Spacer()
-              Toggle(isOn: controlBinding(for: control)) {}
-            }
-          }
-          .onMove { source, destination in
-            allControls.move(fromOffsets: source, toOffset: destination)
-          }
-        }
-      } header: {
-        Text("Controls")
-      } footer: {
-        Text("Drag to reorder. Disabled controls move to the player menu.")
-          .font(.caption)
-      }
+        NarrationSpeedCard(speed: $preferences.defaultPlaybackSpeed)
+          .listRowInsets(EdgeInsets())
+          .listRowBackground(Color.Background.card)
 
-      playerPreferencesForm
-    }
-    .navigationTitle("Player")
-    .environment(\.editMode, .constant(.active))
-    .onAppear(perform: loadControls)
-    .onDisappear(perform: saveControls)
-  }
-
-  private func controlBinding(for control: PlayerControl) -> Binding<Bool> {
-    Binding(
-      get: { enabledControls.contains(control) },
-      set: { isEnabled in
-        if isEnabled {
-          enabledControls.insert(control)
-        } else {
-          enabledControls.remove(control)
-        }
-      }
-    )
-  }
-
-  private func loadControls() {
-    let stored = preferences.playerControls
-    let storedSet = Set(stored)
-    let disabled = PlayerControl.allCases.filter { !storedSet.contains($0) }
-    allControls = stored + disabled
-    enabledControls = storedSet
-  }
-
-  private func saveControls() {
-    preferences.playerControls = allControls.filter { enabledControls.contains($0) }
-  }
-
-  private var autoTimerModeAccessibilityValue: String {
-    switch preferences.autoTimerMode {
-    case .off: String(localized: "Off")
-    case .duration(let seconds):
-      Duration.seconds(seconds).formatted(.units(allowed: [.minutes], width: .wide))
-    case .chapters(let count): String(localized: "End of \(count) \(count == 1 ? "chapter" : "chapters")")
-    }
-  }
-
-  @ViewBuilder
-  private var playerPreferencesForm: some View {
-    Section {
-      VStack(alignment: .leading) {
-        Text("Skip forward and back")
-          .textCase(.uppercase)
-          .bold()
-          .accessibilityAddTraits(.isHeader)
-
-        Text("Choose how far to skip forward and back while listening.")
-      }
-      .font(.caption)
-
-      DisclosureGroup(
-        content: {
-          HStack {
-            VStack(spacing: .zero) {
-              Text("Back").bold()
-
-              Picker("Back", selection: $preferences.skipBackwardInterval) {
-                ForEach([10.0, 15.0, 30.0, 60.0, 90.0], id: \.self) { seconds in
-                  Text(Duration.seconds(seconds).formatted(.units(allowed: [.seconds], width: .abbreviated)))
-                    .tag(seconds)
-                }
-              }
-            }
-            .frame(maxWidth: .infinity, alignment: .center)
-
-            VStack(spacing: .zero) {
-              Text("Forward").bold()
-
-              Picker("Forward", selection: $preferences.skipForwardInterval) {
-                ForEach([10.0, 15.0, 30.0, 60.0, 90.0], id: \.self) { seconds in
-                  Text(Duration.seconds(seconds).formatted(.units(allowed: [.seconds], width: .abbreviated)))
-                    .tag(seconds)
-                }
-              }
-            }
-            .frame(maxWidth: .infinity, alignment: .center)
-          }
-          .pickerStyle(.wheel)
-          .labelsHidden()
-        },
-        label: {
-          Text(
-            "Back \(Int(preferences.skipBackwardInterval))s Forward \(Int(preferences.skipForwardInterval))s"
+        Toggle(isOn: $preferences.timeRemainingAdjustsWithSpeed) {
+          PreferenceRow(
+            systemImage: "clock.arrow.circlepath",
+            tint: .orange,
+            title: "Adjusts Time Remaining",
+            subtitle: "Time displays scale with speed"
           )
-          .font(.subheadline)
-          .bold()
         }
-      )
-    }
-    .listRowSeparator(.hidden)
-    .listSectionSpacing(.custom(12))
+        .listRowBackground(Color.Background.card)
 
-    Section {
-      VStack(alignment: .leading) {
-        Text("Smart Rewind")
-          .textCase(.uppercase)
-          .bold()
-          .accessibilityAddTraits(.isHeader)
-
-        Text("Rewind after being paused for a configurable duration or after audio interruptions.")
-      }
-      .font(.caption)
-
-      VStack(alignment: .leading) {
-        Picker("Minimum Pause", selection: $preferences.smartRewindAfterPauseThreshold) {
-          Text("Any").tag(0.0)
-          ForEach([60.0, 120.0, 300.0, 600.0, 900.0, 1800.0, 3600.0], id: \.self) { seconds in
-            Text(Duration.seconds(seconds).formatted(.units(allowed: [.minutes], width: .abbreviated)))
-              .tag(seconds)
-          }
+        Toggle(isOn: $preferences.chapterProgressionAdjustsWithSpeed) {
+          PreferenceRow(
+            systemImage: "slider.horizontal.below.rectangle",
+            tint: .pink,
+            title: "Adjusts Chapter Progression",
+            subtitle: "Chapter time displays scale with speed"
+          )
         }
-        .accessibilityLabel("Smart Rewind Pause Threshold")
-        .accessibilityValue(
-          preferences.smartRewindAfterPauseThreshold == 0
-            ? "Any pause"
-            : Duration.seconds(preferences.smartRewindAfterPauseThreshold)
-              .formatted(.units(allowed: [.minutes], width: .wide))
-        )
-
-        Picker("Rewind By", selection: $preferences.smartRewindInterval) {
-          Text("Off").tag(0.0)
-          ForEach([5.0, 10.0, 15.0, 30.0, 45.0, 60.0, 75.0, 90.0], id: \.self) { seconds in
-            Text(Duration.seconds(seconds).formatted(.units(allowed: [.seconds], width: .abbreviated)))
-              .tag(seconds)
-          }
-        }
-        .accessibilityLabel("Smart Rewind After Pause Duration")
-        .accessibilityValue(
-          preferences.smartRewindInterval == 0 ? "Off" : "\(Int(preferences.smartRewindInterval)) seconds"
-        )
-      }
-      .font(.subheadline)
-      .bold()
-
-      Picker("On Interruption", selection: $preferences.smartRewindOnInterruptionInterval) {
-        Text("Off").tag(0.0)
-        ForEach([5.0, 10.0, 15.0, 30.0, 45.0, 60.0, 75.0, 90.0], id: \.self) { seconds in
-          Text(Duration.seconds(seconds).formatted(.units(allowed: [.seconds], width: .abbreviated)))
-            .tag(seconds)
-        }
-      }
-      .font(.subheadline)
-      .bold()
-      .accessibilityLabel("Smart Rewind On Interruption Duration")
-      .accessibilityValue(
-        preferences.smartRewindOnInterruptionInterval == 0
-          ? "Off" : "\(Int(preferences.smartRewindOnInterruptionInterval)) seconds"
-      )
-    }
-    .listRowSeparator(.hidden)
-    .listSectionSpacing(.custom(12))
-
-    Section {
-      VStack(alignment: .leading) {
-        Text("Timer")
-          .textCase(.uppercase)
-          .bold()
-          .accessibilityAddTraits(.isHeader)
-
-        Text("Shake your phone to reset the timer during playback.")
-      }
-      .font(.caption)
-
-      Picker("Shake Sensitivity to Reset", selection: $preferences.shakeSensitivity) {
-        Text("Off").tag(ShakeSensitivity.off)
-        Text("Very Low").tag(ShakeSensitivity.veryLow)
-        Text("Low").tag(ShakeSensitivity.low)
-        Text("Medium").tag(ShakeSensitivity.medium)
-        Text("High").tag(ShakeSensitivity.high)
-        Text("Very High").tag(ShakeSensitivity.veryHigh)
-      }
-      .font(.subheadline)
-      .bold()
-      .accessibilityLabel("Shake to Reset Timer Sensitivity")
-      .accessibilityValue(preferences.shakeSensitivity.displayText)
-
-      Picker("Audio Fade Out", selection: $preferences.timerFadeOut) {
-        Text("Off").tag(0.0)
-        ForEach([15.0, 30.0, 60.0], id: \.self) { seconds in
-          Text(Duration.seconds(seconds).formatted(.units(allowed: [.seconds], width: .abbreviated)))
-            .tag(seconds)
-        }
-      }
-      .font(.subheadline)
-      .bold()
-      .accessibilityLabel("Timer Audio Fade Out")
-      .accessibilityValue(
-        preferences.timerFadeOut == 0 ? "Off" : "\(Int(preferences.timerFadeOut)) seconds"
-      )
-    }
-    .listRowSeparator(.hidden)
-    .listSectionSpacing(.custom(12))
-
-    Section {
-      VStack(alignment: .leading) {
-        Text("Automatic Sleep Timer")
-          .textCase(.uppercase)
-          .bold()
-          .accessibilityAddTraits(.isHeader)
-
-        Text(
-          "Automatically start a sleep timer when playing during a specific time window."
-        )
-      }
-      .font(.caption)
-
-      Picker("Sleep Timer", selection: $preferences.autoTimerMode) {
-        Text("Off").tag(AutoTimerMode.off)
-        Divider()
-        ForEach([300.0, 600.0, 900.0, 1200.0, 1800.0, 2700.0, 3600.0], id: \.self) { seconds in
-          Text(Duration.seconds(seconds).formatted(.units(allowed: [.minutes], width: .abbreviated)))
-            .tag(AutoTimerMode.duration(seconds))
-        }
-        Divider()
-        Text("End of chapter").tag(AutoTimerMode.chapters(1))
-        Text("End of 2 chapters").tag(AutoTimerMode.chapters(2))
-        Text("End of 3 chapters").tag(AutoTimerMode.chapters(3))
-      }
-      .font(.subheadline)
-      .bold()
-      .accessibilityLabel("Auto Timer Mode")
-      .accessibilityValue(autoTimerModeAccessibilityValue)
-
-      if preferences.autoTimerMode != .off {
-        HStack {
-          Text("Start Time")
-          Spacer()
-          TimePicker(minutesSinceMidnight: $preferences.autoTimerWindowStart)
-        }
-        .font(.subheadline)
-        .bold()
-
-        HStack {
-          Text("End Time")
-          Spacer()
-          TimePicker(minutesSinceMidnight: $preferences.autoTimerWindowEnd)
-        }
-        .font(.subheadline)
-        .bold()
-      }
-    }
-    .listRowSeparator(.hidden)
-    .listSectionSpacing(.custom(12))
-
-    Section {
-      VStack(alignment: .leading) {
-        Text("Lock Screen Controls")
-          .textCase(.uppercase)
-          .bold()
-          .accessibilityAddTraits(.isHeader)
-
-        Text("Configure how the lock screen playback controls behave.")
-      }
-      .font(.caption)
-
-      Picker("Skip By", selection: $preferences.lockScreenNextPreviousUsesChapters) {
-        Text("Seconds").tag(false)
-        Text("Chapter").tag(true)
-      }
-      .font(.subheadline)
-      .bold()
-      .accessibilityLabel("Lock Screen Next/Previous Buttons")
-      .accessibilityValue(preferences.lockScreenNextPreviousUsesChapters ? "Chapter" : "Seconds")
-
-      Toggle(
-        "Allow Playback Position Change",
-        isOn: $preferences.lockScreenAllowPlaybackPositionChange
-      )
-      .font(.subheadline)
-      .bold()
-    }
-    .listRowSeparator(.hidden)
-    .listSectionSpacing(.custom(12))
-
-    Section {
-      VStack(alignment: .leading) {
+        .listRowBackground(Color.Background.card)
+      } header: {
         Text("Narration Speed")
-          .textCase(.uppercase)
-          .bold()
-          .accessibilityAddTraits(.isHeader)
-
-        Text("Set your default narration speed for new books.")
       }
-      .font(.caption)
 
-      Stepper(value: $preferences.defaultPlaybackSpeed, in: 0.5...3.5, step: 0.05) {
-        HStack {
-          Text("Default")
+      Section {
+        NavigationLink {
+          ControlsLayoutPreferencesView()
+        } label: {
+          PreferenceRow(
+            systemImage: "slider.horizontal.3",
+            tint: .orange,
+            title: "Controls & Layout",
+            subtitle: controlsLayoutSubtitle
+          )
+        }
+        .listRowBackground(Color.Background.card)
+
+        NavigationLink {
+          SkipRewindPreferencesView()
+        } label: {
+          PreferenceRow(
+            systemImage: "gobackward",
+            tint: .orange,
+            title: "Skip & Smart Rewind",
+            subtitle:
+              "Back \(Int(preferences.skipBackwardInterval))s · Forward \(Int(preferences.skipForwardInterval))s"
+          )
+        }
+        .listRowBackground(Color.Background.card)
+
+        NavigationLink {
+          SleepPreferencesView()
+        } label: {
+          PreferenceRow(
+            systemImage: "moon",
+            tint: .purple,
+            title: "Sleep Timer",
+            subtitle: sleepShakeSubtitle
+          )
+        }
+        .listRowBackground(Color.Background.card)
+
+        NavigationLink {
+          LockScreenPreferencesView()
+        } label: {
+          PreferenceRow(
+            systemImage: "lock",
+            tint: .blue,
+            title: "Lock Screen",
+            subtitle: preferences.lockScreenNextPreviousUsesChapters ? "Skip by chapters" : "Skip by seconds"
+          )
+        }
+        .listRowBackground(Color.Background.card)
+
+        NavigationLink {
+          PlaybackDisplayPreferencesView()
+        } label: {
+          PreferenceRow(
+            systemImage: "play.square",
+            tint: .indigo,
+            title: "Playback Display",
+            subtitle: playbackDisplaySubtitle
+          )
+        }
+        .listRowBackground(Color.Background.card)
+      } header: {
+        Text("Configure")
+      }
+    }
+    .scrollContentBackground(.hidden)
+    .background(Color.Background.page)
+    .navigationTitle("Player")
+  }
+
+  private var controlsLayoutSubtitle: String {
+    let enabled = preferences.playerControls
+    let extraCount = max(PlayerControl.allCases.count - 3, 0)
+    let names = enabled.prefix(3).map { String(localized: $0.displayName) }.joined(separator: ", ")
+    return extraCount > 0 ? "\(names) +\(extraCount)" : names
+  }
+
+  private var sleepShakeSubtitle: String {
+    let sensitivity = preferences.shakeSensitivity.displayText
+    switch preferences.autoTimerMode {
+    case .off: return String(localized: "Sensitivity: \(sensitivity)")
+    case .duration(let s):
+      let mins = Int(s / 60)
+      return String(localized: "\(mins) min · \(sensitivity)")
+    case .chapters(let n):
+      return String(localized: "\(n) chapter \(sensitivity)")
+    }
+  }
+
+  private var playbackDisplaySubtitle: String {
+    preferences.playerOrientation.displayText
+  }
+}
+
+private struct NarrationSpeedCard: View {
+  @Binding var speed: Double
+
+  private let presets: [Double] = [0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 3.0]
+
+  var body: some View {
+    VStack(alignment: .leading, spacing: 16) {
+      HStack(alignment: .top) {
+        VStack(alignment: .leading, spacing: 4) {
+          Text("Default for new books")
             .font(.subheadline)
-            .bold()
-          Spacer()
-          Text(verbatim: "\(preferences.defaultPlaybackSpeed.formatted(.number.precision(.fractionLength(2))))×")
             .foregroundStyle(.secondary)
+          HStack(alignment: .firstTextBaseline, spacing: 2) {
+            Text(speed, format: .number.precision(.fractionLength(2)))
+              .font(.system(size: 44, weight: .bold))
+              .foregroundStyle(Color.accentColor)
+            Text(verbatim: "×")
+              .font(.title3)
+              .fontWeight(.bold)
+              .foregroundStyle(Color.accentColor)
+          }
+        }
+        Spacer()
+        VStack(spacing: 8) {
+          stepperButton(systemImage: "plus", tint: Color.accentColor, foreground: .white) {
+            speed = min(3.5, (speed + 0.05).rounded(toPlaces: 2))
+          }
+          stepperButton(systemImage: "minus", tint: Color.gray.opacity(0.15), foreground: .primary) {
+            speed = max(0.5, (speed - 0.05).rounded(toPlaces: 2))
+          }
+        }
+      }
+
+      HStack(spacing: 6) {
+        ForEach(presets, id: \.self) { value in
+          presetChip(value)
         }
       }
     }
-    .listRowSeparator(.hidden)
-    .listSectionSpacing(.custom(12))
+    .padding(16)
+  }
 
-    Section {
-      VStack(alignment: .leading) {
-        Text("Playback Speed Adjustments")
-          .textCase(.uppercase)
-          .bold()
-          .accessibilityAddTraits(.isHeader)
-
-        Text("Configure how time displays are affected by playback speed.")
-      }
-      .font(.caption)
-
-      Toggle("Adjusts Time Remaining", isOn: $preferences.timeRemainingAdjustsWithSpeed)
+  private func presetChip(_ value: Double) -> some View {
+    let isSelected = abs(speed - value) < 0.001
+    return Button {
+      speed = value
+    } label: {
+      Text(value, format: .number.precision(.fractionLength(2)))
         .font(.subheadline)
-        .bold()
-
-      Toggle("Adjusts Chapter Progression", isOn: $preferences.chapterProgressionAdjustsWithSpeed)
-        .font(.subheadline)
-        .bold()
+        .fontWeight(.semibold)
+        .foregroundStyle(isSelected ? Color.white : Color.primary)
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 10)
+        .background(
+          RoundedRectangle(cornerRadius: 10, style: .continuous)
+            .fill(isSelected ? Color.black : Color.gray.opacity(0.12))
+        )
     }
-    .listRowSeparator(.hidden)
+    .buttonStyle(.plain)
+  }
 
-    Section {
-      VStack(alignment: .leading) {
-        Text("Playback Display")
-          .textCase(.uppercase)
-          .bold()
-          .accessibilityAddTraits(.isHeader)
-
-        Text("Configure how playback and progress is displayed for books with chapters.")
-      }
-      .font(.caption)
-
-      Toggle("Use Book Duration (Instead of Chapter)", isOn: $preferences.showFullBookDuration)
-        .font(.subheadline)
-        .bold()
-
-      Toggle("Show Supplementary Book Progress Bar", isOn: $preferences.showBookProgressBar)
-        .font(.subheadline)
-        .bold()
-
-      Toggle("Hide Chapter Skip Buttons", isOn: $preferences.hideChapterSkipButtons)
-        .font(.subheadline)
-        .bold()
+  private func stepperButton(
+    systemImage: String,
+    tint: Color,
+    foreground: Color,
+    action: @escaping () -> Void
+  ) -> some View {
+    Button(action: action) {
+      RoundedRectangle(cornerRadius: 12, style: .continuous)
+        .fill(tint)
+        .frame(width: 50, height: 44)
+        .overlay(
+          Image(systemName: systemImage)
+            .font(.system(size: 18, weight: .bold))
+            .foregroundStyle(foreground)
+        )
     }
-    .listRowSeparator(.hidden)
-    .listSectionSpacing(.custom(12))
+    .buttonStyle(.plain)
+  }
+}
 
-    Section {
-      VStack(alignment: .leading) {
-        Text("Orientation Lock")
-          .textCase(.uppercase)
-          .bold()
-          .accessibilityAddTraits(.isHeader)
-
-        Text("Lock the player screen orientation.")
-      }
-      .font(.caption)
-
-      Picker("Orientation", selection: $preferences.playerOrientation) {
-        Text("Auto").tag(PlayerOrientation.auto)
-        Text("Portrait").tag(PlayerOrientation.portrait)
-        Text("Landscape").tag(PlayerOrientation.landscape)
-      }
-      .font(.subheadline)
-      .bold()
-      .accessibilityLabel("Player Orientation")
-      .accessibilityValue(preferences.playerOrientation.displayText)
-    }
-    .listRowSeparator(.hidden)
+private extension Double {
+  func rounded(toPlaces places: Int) -> Double {
+    let factor = pow(10.0, Double(places))
+    return (self * factor).rounded() / factor
   }
 }
 

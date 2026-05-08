@@ -26,6 +26,9 @@ struct SessionsContent: View {
         .padding(.top, 16)
       }
     }
+    .padding()
+    .background(Color.Background.card)
+    .cornerRadius(8)
   }
 
   private func sessionRow(_ session: Session, showDate: Bool, isLast: Bool) -> some View {

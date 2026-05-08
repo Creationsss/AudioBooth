@@ -15,6 +15,7 @@ struct DownloadingListView: View {
         }
       }
     }
+    .background(Color.Background.page)
     .navigationTitle("Downloading")
     .onAppear(perform: model.onAppear)
   }

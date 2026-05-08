@@ -35,10 +35,19 @@ final class UserPreferences: ObservableObject {
   var skipBackwardInterval: Double = 30.0
 
   @AppStorage("smartRewindInterval")
-  var smartRewindInterval: Double = 30.0
+  var smartRewindInterval: Double = 15.0
+
+  @AppStorage("smartRewindMaxInterval")
+  var smartRewindMaxInterval: Double = 30.0
 
   @AppStorage("smartRewindAfterPauseThreshold")
   var smartRewindAfterPauseThreshold: Double = 600.0
+
+  @AppStorage("smartRewindChapterBarrier")
+  var smartRewindChapterBarrier: Bool = true
+
+  @AppStorage("smartRewindOnSessionStart")
+  var smartRewindOnSessionStart: Bool = true
 
   @AppStorage("smartRewindOnInterruptionInterval")
   var smartRewindOnInterruptionInterval: Double = 0.0

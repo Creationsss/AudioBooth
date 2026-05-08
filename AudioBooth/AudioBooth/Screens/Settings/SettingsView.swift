@@ -15,123 +15,121 @@ struct SettingsView: View {
   var body: some View {
     NavigationStack(path: $model.navigationPath) {
       Form {
-        Section("Preferences") {
+        Section {
           NavigationLink(value: "general") {
-            HStack {
-              Image(systemName: "gear")
-              Text("General")
-            }
+            PreferenceRow(
+              systemImage: "sun.max",
+              tint: .gray,
+              title: "General",
+              subtitle: "Launch, haptics, appearance"
+            )
           }
+          .listRowBackground(Color.Background.card)
 
           NavigationLink(value: "home") {
-            HStack {
-              Image(systemName: "house")
-              Text("Home")
-            }
+            PreferenceRow(
+              systemImage: "house",
+              tint: .green,
+              title: "Home",
+              subtitle: "Sections & order"
+            )
           }
+          .listRowBackground(Color.Background.card)
 
           NavigationLink(value: "player") {
-            HStack {
-              Image(systemName: "play.circle")
-              Text("Player")
-            }
+            PreferenceRow(
+              systemImage: "play.circle",
+              tint: .orange,
+              title: "Player",
+              subtitle: "Controls, sleep, skip"
+            )
           }
+          .listRowBackground(Color.Background.card)
+
+          NavigationLink(value: "storage") {
+            PreferenceRow(
+              systemImage: "cylinder",
+              tint: .blue,
+              title: "Storage",
+              subtitle: storageSubtitle
+            )
+          }
+          .listRowBackground(Color.Background.card)
 
           NavigationLink(value: "advanced") {
-            HStack {
-              Image(systemName: "ellipsis.circle")
-              Text("Advanced")
-            }
+            PreferenceRow(
+              systemImage: "slider.horizontal.3",
+              tint: .purple,
+              title: "Advanced",
+              subtitle: "System integrations & extras"
+            )
           }
+          .listRowBackground(Color.Background.card)
+        } header: {
+          Text("Preferences")
         }
 
         TipJarView(model: model.tipJar)
 
-        Section("Support") {
-          Link(destination: URL(string: "https://github.com/AudioBooth/AudioBooth/issues")!) {
-            HStack {
-              Image(systemName: "questionmark.bubble")
-              Text("Help & Feedback")
-              Spacer()
-              Image(systemName: "arrow.up.forward")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-            }
-          }
-
-          Link(destination: URL(string: "https://discord.gg/D2BgqfBVCJ")!) {
-            HStack {
-              Image(systemName: "bubble.left.and.bubble.right")
-              Text("Join our Discord")
-              Spacer()
-              Image(systemName: "arrow.up.forward")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-            }
-          }
-
-          Link(destination: URL(string: "mailto:AudioBooth@proton.me")!) {
-            HStack {
-              Image(systemName: "envelope")
-              Text("Email Support")
-              Spacer()
-              Image(systemName: "arrow.up.forward")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-            }
-          }
+        Section {
+          externalLink(
+            url: "https://github.com/AudioBooth/AudioBooth/issues",
+            systemImage: "questionmark.bubble",
+            tint: .blue,
+            title: "Help & Feedback"
+          )
+          externalLink(
+            url: "https://discord.gg/D2BgqfBVCJ",
+            systemImage: "bubble.left.and.bubble.right",
+            tint: .purple,
+            title: "Join our Discord"
+          )
+          externalLink(
+            url: "mailto:AudioBooth@proton.me",
+            systemImage: "envelope",
+            tint: .orange,
+            title: "Email Support"
+          )
+        } header: {
+          Text("Support")
         }
-        .tint(.primary)
 
-        Section("Storage") {
-          NavigationLink(value: "storage") {
-            HStack {
-              Image(systemName: "internaldrive")
-              Text("Manage Storage")
-            }
-          }
+        Section {
+          externalLink(
+            url: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+            systemImage: "doc.text",
+            tint: .gray,
+            title: "Terms of Use"
+          )
+          externalLink(
+            url: "https://github.com/AudioBooth/AudioBooth/blob/main/PRIVACY.md",
+            systemImage: "hand.raised",
+            tint: .brown,
+            title: "Privacy Policy"
+          )
+        } header: {
+          Text("Legal")
         }
 
         debug
 
-        Section("Legal") {
-          Link(destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!) {
-            HStack {
-              Image(systemName: "doc.text")
-              Text("Terms of Use")
-              Spacer()
-              Image(systemName: "arrow.up.forward")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-            }
-          }
-
-          Link(destination: URL(string: "https://github.com/AudioBooth/AudioBooth/blob/main/PRIVACY.md")!) {
-            HStack {
-              Image(systemName: "hand.raised")
-              Text("Privacy Policy")
-              Spacer()
-              Image(systemName: "arrow.up.forward")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-            }
-          }
-        }
-        .tint(.primary)
-
         Section {
           Text(model.appVersion)
             .font(.caption)
-            .foregroundColor(.secondary)
+            .foregroundStyle(.secondary)
             .frame(maxWidth: .infinity, alignment: .center)
             .textSelection(.enabled)
+            .listRowBackground(Color.clear)
         }
         .contentShape(Rectangle())
         .onTapGesture(count: 5) {
           preferences.showDebugSection.toggle()
         }
       }
+      .scrollContentBackground(.hidden)
+      .background(Color.Background.page)
       .navigationTitle("Settings")
+      .onAppear { model.storagePreferences?.onAppear() }
       .navigationDestination(for: String.self) { destination in
         switch destination {
         case "playbackSession":
@@ -165,31 +163,45 @@ struct SettingsView: View {
     }
   }
 
+  private var storageSubtitle: String {
+    guard let storage = model.storagePreferences, storage.totalBytes > 0 else {
+      return String(localized: "Manage downloads & cache")
+    }
+    let bookCount = storage.audiobooksCount + storage.ebooksCount
+    let bookText = bookCount == 1 ? String(localized: "1 book") : String(localized: "\(bookCount) books")
+    return "\(storage.totalSize) · \(bookText)"
+  }
+
+  @ViewBuilder
+  private func externalLink(url: String, systemImage: String, tint: Color, title: LocalizedStringKey) -> some View {
+    Link(destination: URL(string: url)!) {
+      HStack {
+        PreferenceRow(systemImage: systemImage, tint: tint, title: title)
+        Spacer()
+        Image(systemName: "arrow.up.forward")
+          .font(.caption)
+          .foregroundStyle(.secondary)
+      }
+    }
+    .tint(.primary)
+    .listRowBackground(Color.Background.card)
+  }
+
   @ViewBuilder
   var debug: some View {
     if preferences.showDebugSection {
-      Section("Debug") {
+      Section {
         NavigationLink(destination: ConsoleView().navigationBarBackButtonHidden(true)) {
-          HStack {
-            Image(systemName: "ladybug")
-            Text("Console")
-          }
+          PreferenceRow(systemImage: "ladybug", tint: .blue, title: "Console")
         }
+        .listRowBackground(Color.Background.card)
 
         NavigationLink(value: "playbackSession") {
-          HStack {
-            Image(systemName: "chart.line.uptrend.xyaxis")
-            Text("Playback Sessions")
-          }
+          PreferenceRow(systemImage: "chart.line.uptrend.xyaxis", tint: .green, title: "Playback Sessions")
         }
-
-        Button("Clear Persistent Storage", action: model.onClearStorageTapped)
-          .foregroundColor(.red)
-
-        Text(
-          "⚠️ This will delete ALL app data including downloaded content, settings, and progress. You will need to log in again. Requires app restart."
-        )
-        .font(.caption)
+        .listRowBackground(Color.Background.card)
+      } header: {
+        Text("Debug")
       }
     }
   }

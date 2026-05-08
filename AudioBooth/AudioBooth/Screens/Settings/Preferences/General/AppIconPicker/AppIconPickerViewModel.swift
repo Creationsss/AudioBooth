@@ -2,6 +2,8 @@ import Logging
 import SwiftUI
 
 final class AppIconPickerViewModel: AppIconPickerView.Model {
+  static let shared = AppIconPickerViewModel()
+
   override init(currentIcon: AppIcon = .default, isChanging: Bool = false) {
     super.init(currentIcon: currentIcon, isChanging: isChanging)
   }

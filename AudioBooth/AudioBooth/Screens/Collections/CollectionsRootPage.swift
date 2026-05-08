@@ -22,6 +22,7 @@ struct CollectionsRootPage: View {
     NavigationStack(path: $model.path) {
       CollectionsRootContent(selected: $model.selected)
         .id(libraries.current?.id)
+        .background(Color.Background.page)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
           ToolbarItem(placement: .principal) {

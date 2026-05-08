@@ -16,7 +16,7 @@ struct ProgressCard: View {
     }
     .frame(maxWidth: .infinity, alignment: .leading)
     .padding()
-    .background(.fill.tertiary)
+    .background(Color.Background.card)
     .clipShape(RoundedRectangle(cornerRadius: 8))
   }
 

@@ -21,6 +21,7 @@ struct PodcastsRootPage: View {
     NavigationStack(path: $model.path) {
       PodcastsRootContent(selected: $model.selected)
         .id(libraries.current?.id)
+        .background(Color.Background.page)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
           ToolbarItem(placement: .principal) {

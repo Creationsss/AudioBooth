@@ -11,6 +11,7 @@ struct AuthorsPage: View {
 
   var body: some View {
     content
+      .background(Color.Background.page)
       .navigationTitle("Authors")
       .refreshable {
         await model.refresh()
@@ -185,7 +186,7 @@ struct AuthorsPage: View {
       .frame(maxWidth: .infinity, alignment: .leading)
       .padding(.horizontal)
       .padding(.vertical, 8)
-      .background(Color(uiColor: .systemBackground))
+      .background(Color.Background.page)
   }
 }
 

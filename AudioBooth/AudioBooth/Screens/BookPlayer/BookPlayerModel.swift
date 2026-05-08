@@ -38,6 +38,7 @@ final class BookPlayerModel: BookPlayer.Model {
   private var isRecovering = false
   private var interruptionBeganAt: Date?
   private var volumeObservation: NSKeyValueObservation?
+  private var hasPlayedThisSession = false
 
   init(_ book: Book) {
     self.item = nil
@@ -279,7 +280,12 @@ final class BookPlayerModel: BookPlayer.Model {
       }
     }
 
-    applySmartRewind(reason: .afterPause)
+    if !hasPlayedThisSession, userPreferences.smartRewindOnSessionStart {
+      applySmartRewind(reason: .sessionStart)
+    } else {
+      applySmartRewind(reason: .afterPause)
+    }
+    hasPlayedThisSession = true
 
     lastSyncedTime = mediaProgress.currentTime
     configureAudioSession()
@@ -451,23 +457,28 @@ extension BookPlayerModel {
   private enum SmartRewindReason {
     case afterPause
     case onInterruption
+    case sessionStart
+  }
 
-    var interval: TimeInterval {
-      switch self {
-      case .afterPause:
-        return UserPreferences.shared.smartRewindInterval
-      case .onInterruption:
-        return UserPreferences.shared.smartRewindOnInterruptionInterval
-      }
-    }
+  private static let smartRewindCeiling: TimeInterval = 3600
 
-    var minimumTimeSinceLastPlayed: TimeInterval? {
-      switch self {
-      case .afterPause:
-        return UserPreferences.shared.smartRewindAfterPauseThreshold
-      case .onInterruption:
-        return nil
-      }
+  private func smartRewindInterval(for reason: SmartRewindReason) -> TimeInterval {
+    let prefs = UserPreferences.shared
+    switch reason {
+    case .afterPause:
+      let pause = Date().timeIntervalSince(mediaProgress.lastPlayedAt)
+      let threshold = prefs.smartRewindAfterPauseThreshold
+      guard pause >= threshold else { return 0 }
+      let min = prefs.smartRewindInterval
+      let max = prefs.smartRewindMaxInterval
+      guard max > 0 else { return min }
+      let span = Swift.max(Self.smartRewindCeiling - threshold, 1)
+      let progress = Swift.min(Swift.max((pause - threshold) / span, 0), 1)
+      return min + progress * (max - min)
+    case .onInterruption:
+      return prefs.smartRewindOnInterruptionInterval
+    case .sessionStart:
+      return prefs.smartRewindMaxInterval
     }
   }
 
@@ -477,28 +488,19 @@ extension BookPlayerModel {
       return
     }
 
-    let interval = reason.interval
-    let minimumTimeSinceLastPlayed = reason.minimumTimeSinceLastPlayed
+    let interval = smartRewindInterval(for: reason)
 
     guard interval > 0 else {
-      AppLogger.player.debug("Smart rewind is disabled")
+      AppLogger.player.debug("Smart rewind not applied - interval is 0")
       return
-    }
-
-    if let minimumTime = minimumTimeSinceLastPlayed {
-      let timeSinceLastPlayed = Date().timeIntervalSince(mediaProgress.lastPlayedAt)
-      guard timeSinceLastPlayed >= minimumTime else {
-        AppLogger.player.debug(
-          "Smart rewind not applied - only \(Int(timeSinceLastPlayed / 60)) minutes since last playback"
-        )
-        return
-      }
     }
 
     let currentTime = mediaProgress.currentTime
     var rewindTarget = currentTime - interval
 
-    if let chapters = chapters?.chapters, !chapters.isEmpty {
+    if userPreferences.smartRewindChapterBarrier,
+      let chapters = chapters?.chapters, !chapters.isEmpty
+    {
       let index = chapters.index(for: currentTime)
       let chapter = chapters[index]
       rewindTarget = max(chapter.start, rewindTarget)
@@ -513,7 +515,7 @@ extension BookPlayerModel {
     player?.seek(to: newTime)
 
     AppLogger.player.info(
-      "Smart rewind applied: rewound \(Int(currentTime - newTime))s"
+      "Smart rewind applied (\(String(describing: reason))): rewound \(String(format: "%.1f", currentTime - newTime))s"
     )
   }
 }

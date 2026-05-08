@@ -31,6 +31,7 @@ struct AlternativeURLView: View {
       } footer: {
         Text("An alternative URL to use when connecting from a different network (e.g. when at home).")
       }
+      .listRowBackground(Color.Background.card)
 
       if model.hasUnsavedChanges {
         Section {
@@ -45,8 +46,11 @@ struct AlternativeURLView: View {
           }
           .disabled(model.isValidating)
         }
+        .listRowBackground(Color.Background.card)
       }
     }
+    .scrollContentBackground(.hidden)
+    .background(Color.Background.page)
     .navigationTitle("Alternative URL")
     .navigationBarTitleDisplayMode(.inline)
   }

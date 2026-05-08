@@ -33,6 +33,7 @@ struct CollectionDetailPage: View {
         listView
       }
     }
+    .background(Color.Background.page)
     .navigationBarTitleDisplayMode(.inline)
     .toolbar {
       if model.mode == .playlists {

@@ -2,72 +2,90 @@ import Combine
 import SwiftUI
 
 struct AppIconPickerView: View {
-  @Environment(\.colorScheme) private var colorScheme
-
-  @ObservedObject var model: Model
+  @ObservedObject private var model: Model = AppIconPickerViewModel.shared
 
   var body: some View {
-    ScrollView {
-      VStack(spacing: 20) {
-        HStack(spacing: 40) {
-          VStack(spacing: 12) {
-            Image(model.currentIcon.previewImageName)
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .frame(width: 80, height: 80)
-              .cornerRadius(16)
-              .shadow(radius: 10)
-              .padding(.top, 20)
-              .colorScheme(.light)
-
-            Text("Light")
-          }
-
-          VStack(spacing: 12) {
-            Image(model.currentIcon.previewImageName)
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .frame(width: 80, height: 80)
-              .cornerRadius(16)
-              .shadow(radius: 10)
-              .padding(.top, 20)
-              .colorScheme(.dark)
-
-            Text("Dark")
-          }
-        }
-        .font(.callout)
-        .fontWeight(.medium)
-        .foregroundColor(.secondary)
-
-        LazyVGrid(
-          columns: [
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-          ],
-          spacing: 20
-        ) {
-          ForEach(Model.AppIcon.allCases) { icon in
-            Button {
-              model.setAlternateAppIcon(icon: icon)
-            } label: {
-              VStack(spacing: 8) {
-                Image(icon.previewImageName)
-                  .resizable()
-                  .aspectRatio(contentMode: .fit)
-                  .frame(width: 80, height: 80)
-              }
-            }
-            .disabled(model.isChanging)
-          }
-        }
-        .padding(.horizontal)
-        .padding(.vertical, 20)
+    VStack(alignment: .leading, spacing: 12) {
+      HStack {
+        Text("App Icon")
+          .font(.subheadline)
+          .fontWeight(.medium)
+        Spacer()
+        Text("Light · Dark variants")
+          .font(.caption)
+          .foregroundStyle(.secondary)
       }
+
+      Row(model: model)
     }
-    .navigationTitle("App Icon")
     .onAppear(perform: model.onAppear)
+  }
+}
+
+extension AppIconPickerView {
+  struct Row: View {
+    @ObservedObject var model: Model
+
+    var body: some View {
+      ScrollViewReader { proxy in
+        ScrollView(.horizontal, showsIndicators: false) {
+          HStack(spacing: 16) {
+            ForEach(Model.AppIcon.allCases) { icon in
+              iconButton(icon)
+            }
+          }
+          .padding(.vertical, 4)
+          .padding(.horizontal, 16)
+        }
+        .onAppear {
+          DispatchQueue.main.async {
+            proxy.scrollTo(model.currentIcon.id, anchor: .center)
+          }
+        }
+        .onChange(of: model.currentIcon) { _, newValue in
+          withAnimation {
+            proxy.scrollTo(newValue.id, anchor: .center)
+          }
+        }
+      }
+      .padding(.horizontal, -16)
+    }
+
+    @ViewBuilder
+    private func iconButton(_ icon: Model.AppIcon) -> some View {
+      Button {
+        model.setAlternateAppIcon(icon: icon)
+      } label: {
+        VStack(spacing: 8) {
+          HStack(spacing: 6) {
+            iconImage(icon, scheme: .light)
+            iconImage(icon, scheme: .dark)
+          }
+          .padding(4)
+          .overlay(
+            RoundedRectangle(cornerRadius: 14)
+              .stroke(model.currentIcon == icon ? Color.accentColor : .clear, lineWidth: 2)
+          )
+
+          Text(icon.displayName)
+            .font(.caption)
+            .foregroundStyle(.primary)
+        }
+      }
+      .buttonStyle(.plain)
+      .disabled(model.isChanging)
+      .id(icon.id)
+    }
+
+    @ViewBuilder
+    private func iconImage(_ icon: Model.AppIcon, scheme: ColorScheme) -> some View {
+      Image(icon.previewImageName)
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+        .frame(width: 52, height: 52)
+        .cornerRadius(11)
+        .colorScheme(scheme)
+    }
   }
 }
 
@@ -102,11 +120,29 @@ extension AppIconPickerView.Model {
     var id: String { self.rawValue }
 
     var previewImageName: String { "IconPreviews/" + self.rawValue }
+
+    var displayName: LocalizedStringKey {
+      switch self {
+      case .default: "Default"
+      case .blue: "Blue"
+      case .purple: "Purple"
+      case .green: "Green"
+      case .dark: "Dark"
+      case .red: "Red"
+      case .yellow: "Yellow"
+      case .teal: "Teal"
+      case .pink: "Pink"
+      }
+    }
   }
 }
 
 #Preview {
-  NavigationStack {
-    AppIconPickerView(model: AppIconPickerView.Model())
+  ScrollView {
+    AppIconPickerView()
+      .padding()
+      .background(Color.Background.card)
+      .padding()
+      .background(Color.Background.page)
   }
 }

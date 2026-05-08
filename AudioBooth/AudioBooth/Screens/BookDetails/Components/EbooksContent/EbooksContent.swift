@@ -46,7 +46,7 @@ struct EbooksContent: View {
       }
     }
     .padding()
-    .background(Color.secondary.opacity(0.1))
+    .background(Color.Background.card)
     .cornerRadius(8)
     .fullScreenCover(item: $model.ebookReader) { readerModel in
       NavigationStack {

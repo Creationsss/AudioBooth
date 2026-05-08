@@ -20,6 +20,7 @@ struct PlayerQueueView: View {
               onClear: model.onClearCurrentTapped
             )
           }
+          .listRowBackground(Color.Background.card)
         }
 
         Section {
@@ -35,6 +36,7 @@ struct PlayerQueueView: View {
               QueueRow(item: item) {
                 model.onPlayTapped(item)
               }
+              .listRowBackground(Color.Background.card)
             }
             .onDelete(perform: model.onDelete)
             .onMove(perform: model.onMove)
@@ -53,6 +55,8 @@ struct PlayerQueueView: View {
           }
         }
       }
+      .scrollContentBackground(.hidden)
+      .background(Color.Background.page)
       .navigationTitle("Queue")
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {

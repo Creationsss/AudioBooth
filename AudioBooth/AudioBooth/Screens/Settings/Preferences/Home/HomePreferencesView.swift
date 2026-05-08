@@ -9,40 +9,36 @@ struct HomePreferencesView: View {
   var body: some View {
     Form {
       Section {
-        Picker("Continue Section Size", selection: $preferences.continueSectionSize) {
-          ForEach(ContinueSectionSize.allCases, id: \.self) { size in
-            Text(size.displayText).tag(size)
-          }
-        }
+        CoverSizePickerView(selection: $preferences.continueSectionSize)
+          .listRowBackground(Color.Background.card)
+      } header: {
+        Text("Cover Size")
       } footer: {
-        Text("Adjusts the cover size for Continue Listening and Continue Reading sections.")
+        Text("Cover art size for Continue Listening and Continue Reading.")
           .font(.caption)
       }
 
       Section {
         List {
           ForEach(allSections) { section in
-            HStack {
-              Text(section.displayName)
-                .font(.subheadline)
-                .bold()
-
-              Spacer()
-
-              if section.canBeDisabled {
-                Toggle(isOn: binding(for: section)) {}
-              }
-            }
+            sectionRow(section)
+              .listRowBackground(Color.Background.card)
           }
           .onMove(perform: move)
         }
-      } footer: {
-        Text(
-          "Drag to reorder enabled sections. Continue Listening and Continue Reading cannot be disabled."
-        )
-        .font(.caption)
+      } header: {
+        HStack {
+          Text("Sections")
+          Spacer()
+          Button("Reset Order", action: resetOrder)
+            .font(.caption)
+            .fontWeight(.semibold)
+            .textCase(nil)
+        }
       }
     }
+    .scrollContentBackground(.hidden)
+    .background(Color.Background.page)
     .navigationTitle("Home")
     .environment(\.editMode, .constant(.active))
     .onAppear {
@@ -79,6 +75,35 @@ struct HomePreferencesView: View {
     allSections.move(fromOffsets: source, toOffset: destination)
   }
 
+  private func resetOrder() {
+    let defaults = HomeSection.defaultCases
+    let defaultSet = Set(defaults)
+    let remaining = HomeSection.allCases.filter {
+      !defaultSet.contains($0) && $0.canBeDisabled
+    }
+    allSections = defaults + remaining
+    enabledSections = defaultSet
+  }
+
+  @ViewBuilder
+  private func sectionRow(_ section: HomeSection) -> some View {
+    HStack(spacing: 12) {
+      PreferenceRow(
+        systemImage: section.systemImage,
+        tint: section.tint,
+        title: section.displayName,
+        subtitle: section.canBeDisabled ? nil : String(localized: "Always visible")
+      )
+
+      Spacer()
+
+      if section.canBeDisabled {
+        Toggle(isOn: binding(for: section)) {}
+          .labelsHidden()
+      }
+    }
+  }
+
   private func binding(for section: HomeSection) -> Binding<Bool> {
     Binding(
       get: {
@@ -92,6 +117,42 @@ struct HomePreferencesView: View {
         }
       }
     )
+  }
+}
+
+extension HomeSection {
+  var systemImage: String {
+    switch self {
+    case .listeningStats: "chart.bar"
+    case .pinnedPlaylist: "pin.fill"
+    case .continueListening: "play.circle"
+    case .continueReading: "book"
+    case .continueSeries: "rectangle.stack"
+    case .recentlyAdded: "clock"
+    case .recentSeries: "rectangle.stack.badge.plus"
+    case .discover: "sparkles"
+    case .listenAgain: "arrow.clockwise"
+    case .newestAuthors: "person.circle"
+    case .newestEpisodes: "dot.radiowaves.left.and.right"
+    case .readAgain: "book.closed"
+    }
+  }
+
+  var tint: Color {
+    switch self {
+    case .listeningStats: .orange
+    case .pinnedPlaylist: .yellow
+    case .continueListening: .orange
+    case .continueReading: .brown
+    case .continueSeries: .purple
+    case .recentlyAdded: .blue
+    case .recentSeries: .blue
+    case .discover: .pink
+    case .listenAgain: .green
+    case .newestAuthors: .mint
+    case .newestEpisodes: .blue
+    case .readAgain: .brown
+    }
   }
 }
 

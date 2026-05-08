@@ -30,6 +30,7 @@ struct NarratorsPage: View {
         }
       }
     }
+    .background(Color.Background.page)
     .navigationTitle("Narrators")
     .navigationBarTitleDisplayMode(.inline)
     .refreshable {
@@ -138,7 +139,7 @@ struct NarratorsPage: View {
       .frame(maxWidth: .infinity, alignment: .leading)
       .padding(.horizontal)
       .padding(.vertical, 8)
-      .background(Color(uiColor: .systemBackground))
+      .background(Color.Background.page)
   }
 }
 

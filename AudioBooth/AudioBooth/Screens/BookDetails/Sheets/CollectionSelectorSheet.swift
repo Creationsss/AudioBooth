@@ -22,6 +22,7 @@ struct CollectionSelectorSheet: View {
           createFieldView
         }
       }
+      .background(Color.Background.page)
       .navigationTitle(navigationTitle)
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
@@ -161,8 +162,10 @@ struct CollectionSelectorSheet: View {
           }
         }
         .contentShape(Rectangle())
+        .listRowBackground(Color.Background.card)
       }
     }
+    .scrollContentBackground(.hidden)
   }
 
   private var createFieldView: some View {

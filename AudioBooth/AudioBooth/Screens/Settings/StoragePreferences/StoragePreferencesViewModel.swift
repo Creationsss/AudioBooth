@@ -98,14 +98,73 @@ final class StoragePreferencesViewModel: StoragePreferencesView.Model {
     let total = await storageManager.getTotalStorageUsed()
     let downloads = await storageManager.getDownloadedContentSize()
     let cache = await storageManager.getImageCacheSize()
+    let breakdown = await computeContentBreakdown()
 
     totalSize = total.formattedByteSize
     downloadSize = downloads.formattedByteSize
     cacheSize = cache.formattedByteSize
 
+    audiobooksBytes = breakdown.audiobooksBytes
+    audiobooksCount = breakdown.audiobooksCount
+    ebooksBytes = breakdown.ebooksBytes
+    ebooksCount = breakdown.ebooksCount
+    imageCacheBytes = cache
+    totalBytes = total
+
     serverDownloads = buildServerDownloads()
 
     isLoading = false
+  }
+
+  private func computeContentBreakdown() async -> (
+    audiobooksBytes: Int64, audiobooksCount: Int, ebooksBytes: Int64, ebooksCount: Int
+  ) {
+    guard
+      let appGroupURL = FileManager.default.containerURL(
+        forSecurityApplicationGroupIdentifier: "group.me.jgrenier.audioBS"
+      )
+    else {
+      return (0, 0, 0, 0)
+    }
+
+    var audiobooksBytes: Int64 = 0
+    var audiobooksCount = 0
+    var ebooksBytes: Int64 = 0
+    var ebooksCount = 0
+
+    let servers =
+      (try? FileManager.default.contentsOfDirectory(
+        at: appGroupURL,
+        includingPropertiesForKeys: [.isDirectoryKey],
+        options: [.skipsHiddenFiles]
+      )) ?? []
+
+    for server in servers {
+      let audiobooksDir = server.appendingPathComponent("audiobooks")
+      let ebooksDir = server.appendingPathComponent("ebooks")
+
+      if let books = try? FileManager.default.contentsOfDirectory(at: audiobooksDir, includingPropertiesForKeys: nil) {
+        for book in books {
+          let size = directorySize(at: book)
+          if size > 0 {
+            audiobooksBytes += size
+            audiobooksCount += 1
+          }
+        }
+      }
+
+      if let books = try? FileManager.default.contentsOfDirectory(at: ebooksDir, includingPropertiesForKeys: nil) {
+        for book in books {
+          let size = directorySize(at: book)
+          if size > 0 {
+            ebooksBytes += size
+            ebooksCount += 1
+          }
+        }
+      }
+    }
+
+    return (audiobooksBytes, audiobooksCount, ebooksBytes, ebooksCount)
   }
 
   private func buildServerDownloads() -> [StoragePreferencesView.ServerDownloads] {

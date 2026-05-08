@@ -26,6 +26,7 @@ struct ServerListPage: View {
           if model.servers.isEmpty {
             Text("No servers connected")
               .foregroundColor(.secondary)
+              .listRowBackground(Color.Background.card)
           } else {
             ForEach(model.servers, id: \.id) { server in
               Button {
@@ -58,6 +59,7 @@ struct ServerListPage: View {
                   }
                 }
               }
+              .listRowBackground(Color.Background.card)
             }
           }
 
@@ -66,8 +68,11 @@ struct ServerListPage: View {
           } label: {
             Label("Add Server", systemImage: "plus.circle.fill")
           }
+          .listRowBackground(Color.Background.card)
         }
       }
+      .scrollContentBackground(.hidden)
+      .background(Color.Background.page)
       .navigationTitle("Servers")
       .navigationDestination(item: $model.selected) { model in
         ServerView(model: model)

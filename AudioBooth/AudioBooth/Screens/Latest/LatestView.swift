@@ -8,6 +8,7 @@ struct LatestView: View {
   var body: some View {
     NavigationStack {
       content
+        .background(Color.Background.page)
         .navigationTitle("Latest")
         .navigationDestination(for: NavigationDestination.self) { destination in
           switch destination {

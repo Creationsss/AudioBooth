@@ -2,67 +2,41 @@ import SwiftUI
 
 struct GeneralPreferencesView: View {
   @ObservedObject var preferences = UserPreferences.shared
-  @StateObject private var iconModel = AppIconPickerViewModel()
+  @ObservedObject private var iconModel = AppIconPickerViewModel.shared
 
   var body: some View {
     Form {
-      Section {
+      Section("Behavior") {
         Toggle(isOn: $preferences.openPlayerOnLaunch) {
-          Text("Open Player on Launch")
-            .font(.subheadline)
-            .bold()
+          PreferenceRow(
+            systemImage: "play.circle",
+            tint: .green,
+            title: "Open Player on Launch",
+            subtitle: "Skip the home screen on reopen"
+          )
         }
+        .listRowBackground(Color.Background.card)
 
         Toggle(isOn: $preferences.hapticsEnabled) {
-          Text("Haptic Feedback")
-            .font(.subheadline)
-            .bold()
+          PreferenceRow(
+            systemImage: "bolt",
+            tint: .orange,
+            title: "Haptic Feedback",
+            subtitle: "Subtle vibrations on controls"
+          )
         }
+        .listRowBackground(Color.Background.card)
       }
 
       Section("Appearance") {
-        NavigationLink {
-          AppIconPickerView(model: iconModel)
-        } label: {
-          HStack {
-            Text("App Icon")
-              .font(.subheadline)
-              .bold()
-            Spacer()
-            Image(iconModel.currentIcon.previewImageName)
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .frame(width: 29, height: 29)
-              .cornerRadius(5)
-          }
-        }
+        AppIconPickerView()
+          .listRowBackground(Color.Background.card)
 
-        ColorPicker(
-          "Accent Color",
-          selection: Binding(
-            get: { preferences.accentColor ?? .accentColor },
-            set: { preferences.accentColor = $0 }
-          ),
-          supportsOpacity: false
-        )
-        .font(.subheadline)
-        .bold()
+        AccentColorPickerView()
+          .listRowBackground(Color.Background.card)
 
-        if preferences.accentColor != nil {
-          Button("Reset to Default") {
-            preferences.accentColor = nil
-          }
-          .font(.subheadline)
-          .foregroundStyle(.red)
-        }
-
-        Picker("Color Scheme", selection: $preferences.colorScheme) {
-          ForEach(ColorSchemeMode.allCases, id: \.rawValue) { mode in
-            Text(mode.displayText).tag(mode)
-          }
-        }
-        .font(.subheadline)
-        .bold()
+        ColorSchemePickerView()
+          .listRowBackground(Color.Background.card)
 
         #if targetEnvironment(macCatalyst)
         Stepper(value: $preferences.displayScale, in: 0.8...2.0, step: 0.05) {
@@ -76,11 +50,31 @@ struct GeneralPreferencesView: View {
               .foregroundStyle(.secondary)
           }
         }
+        .listRowBackground(Color.Background.card)
         #endif
+
+        if preferences.accentColor != nil || preferences.colorScheme != .auto || iconModel.currentIcon != .default {
+          Button {
+            preferences.accentColor = nil
+            preferences.colorScheme = .auto
+            iconModel.setAlternateAppIcon(icon: .default)
+          } label: {
+            Text("Reset Appearance to Default")
+              .font(.subheadline)
+              .bold()
+              .foregroundStyle(.primary)
+              .frame(maxWidth: .infinity, alignment: .center)
+          }
+          .buttonStyle(.plain)
+          .listRowBackground(Color.Background.card)
+        }
       }
     }
+    .scrollContentBackground(.hidden)
+    .background(Color.Background.page)
     .navigationTitle("General")
   }
+
 }
 
 #Preview {

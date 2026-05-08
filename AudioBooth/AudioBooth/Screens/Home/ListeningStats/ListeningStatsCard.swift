@@ -42,7 +42,7 @@ struct ListeningStatsCard: View {
         }
         .frame(minHeight: 180)
         .padding(.vertical, 12)
-        .background(.secondary.opacity(0.1))
+        .background(Color.Background.card)
         .clipShape(RoundedRectangle(cornerRadius: 8))
         .overlay(
           RoundedRectangle(cornerRadius: 8)
@@ -168,7 +168,7 @@ struct ListeningStatsCard: View {
             .foregroundColor(Color.accentColor)
             .padding(.vertical, 2)
             .padding(.horizontal, 4)
-            .background(.background)
+            .background(Color.Background.card)
             .clipShape(RoundedRectangle(cornerRadius: 8))
             .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.accentColor, lineWidth: 1))
             .fixedSize(horizontal: true, vertical: true)

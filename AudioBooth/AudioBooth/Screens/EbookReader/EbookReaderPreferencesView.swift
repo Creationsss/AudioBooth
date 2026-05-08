@@ -35,6 +35,7 @@ struct EbookReaderPreferencesView: View {
 
           Toggle("Text Normalization", isOn: $preferences.textNormalization)
         }
+        .listRowBackground(Color.Background.card)
 
         Section("Layout") {
           Toggle("Scroll Mode", isOn: $preferences.scroll)
@@ -82,6 +83,7 @@ struct EbookReaderPreferencesView: View {
             }
           }
         }
+        .listRowBackground(Color.Background.card)
 
         Section("Appearance") {
           Picker("Theme", selection: $preferences.theme) {
@@ -90,6 +92,7 @@ struct EbookReaderPreferencesView: View {
             }
           }
         }
+        .listRowBackground(Color.Background.card)
 
         Section("Advanced Typography") {
           Toggle("Publisher Styles", isOn: $preferences.publisherStyles)
@@ -141,7 +144,10 @@ struct EbookReaderPreferencesView: View {
             }
           }
         }
+        .listRowBackground(Color.Background.card)
       }
+      .scrollContentBackground(.hidden)
+      .background(Color.Background.page)
       .navigationTitle("Reader Settings")
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {

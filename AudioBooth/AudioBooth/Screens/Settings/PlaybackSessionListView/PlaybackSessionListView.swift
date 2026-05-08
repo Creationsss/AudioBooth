@@ -107,8 +107,11 @@ struct PlaybackSessionListView: View {
             .foregroundColor(.secondary)
             .padding(.top, 10)
         }
+        .listRowBackground(Color.Background.card)
       }
     }
+    .scrollContentBackground(.hidden)
+    .background(Color.Background.page)
     .navigationTitle("Playback Sessions")
     .navigationBarTitleDisplayMode(.inline)
     .onAppear(perform: model.onAppear)

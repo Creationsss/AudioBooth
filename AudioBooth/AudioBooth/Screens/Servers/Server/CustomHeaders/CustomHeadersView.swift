@@ -34,7 +34,10 @@ struct CustomHeadersView: View {
         Text("Custom headers will be sent with every request to your server.")
           .font(.caption)
       }
+      .listRowBackground(Color.Background.card)
     }
+    .scrollContentBackground(.hidden)
+    .background(Color.Background.page)
     .navigationTitle("Custom Headers")
     .navigationBarTitleDisplayMode(.inline)
     .sheet(isPresented: $model.showAddSheet) {
@@ -71,7 +74,10 @@ struct AddHeaderView: View {
           Text("Example: X-API-Key, Authorization, etc.")
             .font(.caption)
         }
+        .listRowBackground(Color.Background.card)
       }
+      .scrollContentBackground(.hidden)
+      .background(Color.Background.page)
       .navigationTitle("Add Header")
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {

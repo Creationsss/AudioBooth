@@ -67,6 +67,7 @@ struct CollectionsPage: View {
         }
         .buttonStyle(.plain)
         .listRowSeparator(.hidden)
+        .listRowBackground(Color.Background.page)
       }
       .onDelete { indexSet in
         model.onDelete(at: indexSet)
@@ -79,9 +80,12 @@ struct CollectionsPage: View {
           .onAppear {
             model.loadNextPageIfNeeded()
           }
+          .listRowBackground(Color.Background.page)
       }
     }
     .listStyle(.plain)
+    .scrollContentBackground(.hidden)
+    .background(Color.Background.page)
   }
 }
 

@@ -35,17 +35,15 @@ final class TipJarViewModel: TipJarView.Model {
 
         tips = packages.map { package in
           var title = package.storeProduct.localizedTitle
-          var price = package.localizedPriceString
+          let price = package.localizedPriceString
 
           switch package.identifier {
           case "tip_small":
-            title += " ☕"
+            title = String(localized: "Coffee")
           case "tip_medium":
-            title += " 🍕"
+            title = String(localized: "Lunch")
           case "tip_large":
-            title += " 🍱"
-          case "$rc_monthly":
-            price += "/mo"
+            title = String(localized: "Dinner")
           default:
             break
           }

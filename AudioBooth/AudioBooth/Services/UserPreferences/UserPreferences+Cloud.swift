@@ -124,6 +124,8 @@ extension UserPreferences {
     for key in Self.syncableKeys {
       if let value = UserDefaults.standard.object(forKey: key) {
         cloud?.set(value, forKey: key)
+      } else {
+        cloud?.removeObject(forKey: key)
       }
     }
 

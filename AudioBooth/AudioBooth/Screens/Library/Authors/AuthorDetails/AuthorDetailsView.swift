@@ -15,7 +15,7 @@ struct AuthorDetailsView: View {
       if model.isLoading {
         ProgressView("Loading author details...")
           .frame(maxWidth: .infinity, maxHeight: .infinity)
-          .background(.background)
+          .background(Color.Background.page)
       } else if let error = model.error {
         ContentUnavailableView {
           Label("Unable to Load Author", systemImage: "exclamationmark.triangle")
@@ -27,7 +27,7 @@ struct AuthorDetailsView: View {
           }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.background)
+        .background(Color.Background.page)
       } else {
         ScrollView {
           VStack(spacing: 24) {
@@ -51,6 +51,7 @@ struct AuthorDetailsView: View {
         }
       }
     }
+    .background(Color.Background.page)
     .navigationTitle(model.name)
     .navigationBarTitleDisplayMode(.inline)
     .onAppear(perform: model.onAppear)

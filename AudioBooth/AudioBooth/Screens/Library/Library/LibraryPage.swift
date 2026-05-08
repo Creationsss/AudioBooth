@@ -47,6 +47,7 @@ struct LibraryPage: View {
         }
       }
     }
+    .background(Color.Background.page)
     .navigationTitle(model.title)
     .sheet(isPresented: $model.showingFilterSelection) {
       if let filters = model.filters {

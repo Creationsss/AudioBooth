@@ -31,7 +31,7 @@ struct ChaptersContent: View {
       }
     }
     .padding()
-    .background(Color.secondary.opacity(0.1))
+    .background(Color.Background.card)
     .cornerRadius(8)
   }
 

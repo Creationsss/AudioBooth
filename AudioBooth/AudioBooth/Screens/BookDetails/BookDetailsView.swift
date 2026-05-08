@@ -27,6 +27,7 @@ struct BookDetailsView: View {
         portraitLayout
       }
     }
+    .background(Color.Background.page)
     .fullScreenCover(item: $model.ebookReader) { model in
       NavigationStack {
         EbookReaderView(model: model)
@@ -41,7 +42,7 @@ struct BookDetailsView: View {
       if model.isLoading {
         ProgressView("Loading book details...")
           .frame(maxWidth: .infinity, maxHeight: .infinity)
-          .background(.background)
+          .background(Color.Background.page)
       } else if let error = model.error {
         ContentUnavailableView {
           Label("Unable to Load Book", systemImage: "exclamationmark.triangle")
@@ -53,7 +54,7 @@ struct BookDetailsView: View {
           }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.background)
+        .background(Color.Background.page)
       }
     }
     .toolbar {
@@ -174,7 +175,7 @@ struct BookDetailsView: View {
 
           contentSections
             .padding()
-            .background()
+            .background(Color.Background.page)
         }
         .padding(.vertical)
       }
@@ -192,7 +193,7 @@ struct BookDetailsView: View {
         contentSections
           .padding()
       }
-      .background(.background)
+      .background(Color.Background.page)
     }
   }
 
@@ -562,7 +563,7 @@ struct BookDetailsView: View {
 
         if !isDescriptionExpanded {
           LinearGradient(
-            colors: [.clear, Color(.systemBackground)],
+            colors: [.clear, Color.Background.page],
             startPoint: .top,
             endPoint: .bottom
           )

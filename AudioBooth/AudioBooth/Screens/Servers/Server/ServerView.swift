@@ -69,6 +69,7 @@ struct ServerView: View {
           }
         customHeadersSection
       }
+      .listRowBackground(Color.Background.card)
 
       if let authModel = model.authenticationModel {
         AuthenticationView(model: authModel)
@@ -76,6 +77,8 @@ struct ServerView: View {
         account
       }
     }
+    .scrollContentBackground(.hidden)
+    .background(Color.Background.page)
     .navigationTitle("Server")
     .alert("Scan Local Network", isPresented: $model.showDiscoveryPortAlert) {
       TextField("Discovery Port", text: $model.discoveryPort)
@@ -129,6 +132,7 @@ struct ServerView: View {
         }
       }
     }
+    .listRowBackground(Color.Background.card)
   }
 
   @ViewBuilder
@@ -181,6 +185,7 @@ struct ServerView: View {
           }
         }
       }
+      .listRowBackground(Color.Background.card)
     }
 
     Section("Account") {
@@ -222,6 +227,7 @@ struct ServerView: View {
         }
       }
     }
+    .listRowBackground(Color.Background.card)
 
     Section("Advanced") {
       NavigationLink(
@@ -241,6 +247,7 @@ struct ServerView: View {
         }
       }
     }
+    .listRowBackground(Color.Background.card)
   }
 }
 

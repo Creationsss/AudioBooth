@@ -9,117 +9,168 @@ struct TipJarView: View {
   var body: some View {
     if !model.tips.isEmpty {
       Section {
-        VStack(spacing: 12) {
+        VStack(alignment: .leading, spacing: 16) {
+          header
+
           ForEach(model.subscriptionTips) { tip in
-            Button(action: { model.onTipSelected(tip) }) {
-              HStack(spacing: 12) {
-                Image(systemName: "heart")
-                  .font(.system(size: 28))
-                  .foregroundStyle(.pink)
-
-                Text(tip.description)
-                  .font(.footnote)
-                  .foregroundStyle(.primary)
-                  .frame(maxWidth: .infinity, alignment: .leading)
-
-                Text(tip.price)
-                  .font(.headline)
-                  .fontWeight(.semibold)
-                  .foregroundStyle(.primary)
-              }
-              .frame(maxWidth: .infinity)
-              .padding(.vertical, 20)
-              .padding(.horizontal, 20)
-              .background(
-                RoundedRectangle(cornerRadius: 20)
-                  .fill(.pink.opacity(0.05))
-              )
-              .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                  .strokeBorder(
-                    .pink.opacity(0.3),
-                    lineWidth: 2
-                  )
-              )
-            }
-            .buttonStyle(.plain)
-            .allowsHitTesting(model.isPurchasing == nil)
-            .opacity([nil, tip.id].contains(model.isPurchasing) ? 1.0 : 0.4)
+            subscriptionCard(tip)
+              .allowsHitTesting(model.isPurchasing == nil)
+              .opacity([nil, tip.id].contains(model.isPurchasing) ? 1.0 : 0.4)
           }
 
           if !model.oneTimeTips.isEmpty {
-            HStack(spacing: 12) {
+            Divider()
+
+            Text("ONE-TIME TIP")
+              .font(.caption2)
+              .fontWeight(.semibold)
+              .foregroundStyle(.secondary)
+
+            HStack(spacing: 10) {
               ForEach(model.oneTimeTips) { tip in
-                Button(action: { model.onTipSelected(tip) }) {
-                  VStack(spacing: 8) {
-                    Text(tip.title)
-                      .font(.callout)
-                      .allowsTightening(true)
-                      .foregroundStyle(.primary)
-                      .multilineTextAlignment(.center)
-                      .fixedSize(horizontal: false, vertical: true)
-
-                    Text(tip.price)
-                      .font(.title2)
-                      .fontWeight(.bold)
-                      .foregroundStyle(.primary)
-
-                    Text(tip.description)
-                      .font(.caption2)
-                      .foregroundStyle(.secondary)
-                      .multilineTextAlignment(.center)
-                  }
-                  .frame(maxWidth: .infinity, maxHeight: .infinity)
-                  .padding(.vertical, 20)
-                  .padding(.horizontal, 8)
-                  .background(
-                    RoundedRectangle(cornerRadius: 22)
-                      .fill(Color(.systemBackground))
-                  )
-                  .overlay(
-                    RoundedRectangle(cornerRadius: 22)
-                      .strokeBorder(Color(.systemGray5), lineWidth: 2)
-                  )
-                }
-                .buttonStyle(.plain)
-                .allowsHitTesting(model.isPurchasing == nil)
-                .opacity([nil, tip.id].contains(model.isPurchasing) ? 1.0 : 0.4)
+                oneTimeCard(tip)
+                  .allowsHitTesting(model.isPurchasing == nil)
+                  .opacity([nil, tip.id].contains(model.isPurchasing) ? 1.0 : 0.4)
               }
             }
+
+            Text("Tip to thank and support the developer.")
+              .font(.caption2)
+              .foregroundStyle(.secondary)
+          }
+
+          if model.isSandbox {
+            HStack(spacing: 4) {
+              Text("TestFlight:")
+                .foregroundStyle(.red)
+                .fontWeight(.semibold)
+              Text("Test purchases only.")
+                .foregroundStyle(.secondary)
+              Link(destination: URL(string: "https://apps.apple.com/us/app/id6753017503")!) {
+                HStack(spacing: 2) {
+                  Text("Open App Store")
+                  Image(systemName: "arrow.up.forward")
+                    .font(.caption2)
+                }
+                .foregroundStyle(.pink)
+              }
+              Spacer(minLength: 0)
+            }
+            .font(.caption)
           }
 
           if model.lastPurchaseSuccess {
             HStack(spacing: 8) {
               Image(systemName: "checkmark.circle.fill")
                 .foregroundStyle(.green)
-                .font(.body)
               Text("Thank you for your support!")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
             }
-            .padding(.top, 8)
             .transition(.scale.combined(with: .opacity))
           }
         }
+        .padding(16)
+        .listRowInsets(EdgeInsets())
+        .listRowBackground(Color.Background.card)
       } header: {
         Text("Sponsor")
-          .padding(.horizontal)
-      } footer: {
-        if model.isSandbox {
-          Group {
-            Text("TestFlight Notice: ").foregroundStyle(.red).bold()
-              + Text(
-                "These are test purchases only. Want to support development? Download from the App Store to leave a real tip. [Open App Store](https://apps.apple.com/us/app/id6753017503)"
-              )
-          }
-          .font(.footnote)
-        }
       }
       .dynamicTypeSize(...DynamicTypeSize.accessibility1)
       .animation(.easeInOut(duration: 0.3), value: model.lastPurchaseSuccess)
-      .listRowBackground(Color.clear)
-      .listRowInsets(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
     }
+  }
+
+  @ViewBuilder
+  private var header: some View {
+    HStack(spacing: 12) {
+      RoundedRectangle(cornerRadius: 12, style: .continuous)
+        .fill(.pink.opacity(0.15))
+        .frame(width: 44, height: 44)
+        .overlay(
+          Image(systemName: "heart")
+            .font(.system(size: 20, weight: .semibold))
+            .foregroundStyle(.pink)
+        )
+
+      VStack(alignment: .leading, spacing: 2) {
+        Text("Help sustain AudioBooth")
+          .font(.headline)
+          .foregroundStyle(.primary)
+        Text("Indie app. Powered by supporters.")
+          .font(.subheadline)
+          .foregroundStyle(.secondary)
+      }
+
+      Spacer(minLength: 0)
+    }
+  }
+
+  @ViewBuilder
+  private func subscriptionCard(_ tip: Model.Tip) -> some View {
+    HStack(spacing: 12) {
+      VStack(alignment: .leading, spacing: 4) {
+        Text("SUPPORTER")
+          .font(.caption2)
+          .fontWeight(.semibold)
+          .foregroundStyle(.secondary)
+        HStack(alignment: .firstTextBaseline, spacing: 0) {
+          Text(tip.price)
+            .font(.system(size: 28, weight: .bold))
+            .foregroundStyle(.pink)
+          Text(verbatim: "/mo")
+            .font(.subheadline)
+            .foregroundStyle(.secondary)
+        }
+      }
+
+      Spacer(minLength: 0)
+
+      Button(action: { model.onTipSelected(tip) }) {
+        Text("Subscribe")
+          .font(.subheadline)
+          .fontWeight(.semibold)
+          .foregroundStyle(.white)
+          .padding(.horizontal, 20)
+          .padding(.vertical, 12)
+          .background(
+            Capsule().fill(.pink)
+          )
+      }
+      .buttonStyle(.plain)
+    }
+    .padding(14)
+    .background(
+      RoundedRectangle(cornerRadius: 16, style: .continuous)
+        .fill(.pink.opacity(0.08))
+    )
+    .overlay(
+      RoundedRectangle(cornerRadius: 16, style: .continuous)
+        .strokeBorder(.pink.opacity(0.25), lineWidth: 1)
+    )
+  }
+
+  @ViewBuilder
+  private func oneTimeCard(_ tip: Model.Tip) -> some View {
+    Button(action: { model.onTipSelected(tip) }) {
+      VStack(spacing: 4) {
+        Text(tip.title)
+          .font(.subheadline)
+          .foregroundStyle(.secondary)
+          .lineLimit(1)
+        Text(tip.price)
+          .font(.title3)
+          .fontWeight(.bold)
+          .foregroundStyle(.primary)
+      }
+      .frame(maxWidth: .infinity)
+      .padding(.vertical, 14)
+      .background(
+        RoundedRectangle(cornerRadius: 14, style: .continuous)
+          .fill(Color.gray.opacity(0.08))
+      )
+    }
+    .buttonStyle(.plain)
   }
 }
 
