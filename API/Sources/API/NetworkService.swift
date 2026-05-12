@@ -14,6 +14,7 @@ enum NetworkError: LocalizedError {
   case httpError(statusCode: Int, message: String?)
   case invalidResponse
   case decodingError(Error)
+  case localNetworkPermission
 
   var errorDescription: String? {
     switch self {
@@ -34,6 +35,9 @@ enum NetworkError: LocalizedError {
       return "Invalid server response"
     case .decodingError(let error):
       return "Failed to decode server response: \(error.localizedDescription)"
+    case .localNetworkPermission:
+      return
+        "The internet connection appears to be offline. If connecting to a local address, check that Local Network access is enabled in Settings → Privacy & Security → Local Network."
     }
   }
 }
@@ -252,6 +256,9 @@ final class NetworkService {
       if let urlError = error as? URLError, urlError.code != .cancelled {
         AppLogger.network.error("Network request failed: \(urlError.localizedDescription)")
         server?.status = .connectionError
+        if urlError.code == .notConnectedToInternet, let url = urlRequest.url, url.isIPAddress {
+          throw NetworkError.localNetworkPermission
+        }
       }
       throw error
     }
@@ -299,6 +306,14 @@ final class NetworkService {
     }
 
     return urlRequest
+  }
+}
+
+private extension URL {
+  var isIPAddress: Bool {
+    guard let host else { return false }
+    if host.hasSuffix(".local") { return true }
+    return host.allSatisfy({ $0.isNumber || $0 == "." || $0 == ":" })
   }
 }
 
