@@ -169,46 +169,64 @@ final class StoragePreferencesViewModel: StoragePreferencesView.Model {
 
   private func buildServerDownloads() -> [StoragePreferencesView.ServerDownloads] {
     let servers = Audiobookshelf.shared.authentication.servers
-    let appGroupURL = FileManager.default.containerURL(
-      forSecurityApplicationGroupIdentifier: "group.me.jgrenier.audioBS"
-    )
+    guard
+      let appGroupURL = FileManager.default.containerURL(
+        forSecurityApplicationGroupIdentifier: "group.me.jgrenier.audioBS"
+      )
+    else { return [] }
 
-    var result: [StoragePreferencesView.ServerDownloads] = []
     let sortedServers = servers.values.sorted {
       ($0.alias ?? $0.baseURL.host() ?? $0.id) < ($1.alias ?? $1.baseURL.host() ?? $1.id)
     }
 
+    var result: [StoragePreferencesView.ServerDownloads] = []
+
     for server in sortedServers {
-      guard let context = try? ModelContextProvider.shared.context(for: server.id) else { continue }
+      let serverDir = appGroupURL.appendingPathComponent(server.id)
+      let context = try? ModelContextProvider.shared.context(for: server.id)
 
-      let descriptor = FetchDescriptor<LocalBook>()
-      guard let books = try? context.fetch(descriptor) else { continue }
+      var bookIDs = Set<String>()
+      let audiobooksDir = serverDir.appendingPathComponent("audiobooks")
+      let ebooksDir = serverDir.appendingPathComponent("ebooks")
 
-      let downloadedBooks = books.filter { $0.isDownloaded || $0.ebookFile != nil }
-      guard !downloadedBooks.isEmpty else { continue }
+      if let dirs = try? FileManager.default.contentsOfDirectory(at: audiobooksDir, includingPropertiesForKeys: nil) {
+        for dir in dirs where directorySize(at: dir) > 0 {
+          bookIDs.insert(dir.lastPathComponent)
+        }
+      }
+      if let dirs = try? FileManager.default.contentsOfDirectory(at: ebooksDir, includingPropertiesForKeys: nil) {
+        for dir in dirs where directorySize(at: dir) > 0 {
+          bookIDs.insert(dir.lastPathComponent)
+        }
+      }
 
-      let bookRows: [StoragePreferencesView.DownloadedBook] = downloadedBooks.map { book in
-        let size = bookSize(bookID: book.bookID, serverID: server.id, appGroupURL: appGroupURL)
+      guard !bookIDs.isEmpty else { continue }
+
+      let bookRows: [StoragePreferencesView.DownloadedBook] = bookIDs.sorted().map { bookID in
+        let size = bookSize(bookID: bookID, serverID: server.id, appGroupURL: appGroupURL)
+        let (title, author) = bookMetadata(bookID: bookID, context: context)
         return StoragePreferencesView.DownloadedBook(
-          id: book.bookID,
+          id: bookID,
           serverID: server.id,
-          title: book.title,
-          author: book.authors.first?.name,
+          title: title,
+          author: author,
           size: size.formattedByteSize
         )
       }
 
       let name = server.alias ?? server.baseURL.host() ?? server.id
-      result.append(
-        StoragePreferencesView.ServerDownloads(
-          id: server.id,
-          name: name,
-          books: bookRows
-        )
-      )
+      result.append(StoragePreferencesView.ServerDownloads(id: server.id, name: name, books: bookRows))
     }
 
     return result
+  }
+
+  private func bookMetadata(bookID: String, context: ModelContext?) -> (String, String?) {
+    guard let context else { return (bookID, nil) }
+    let predicate = #Predicate<LocalBook> { $0.bookID == bookID }
+    let descriptor = FetchDescriptor<LocalBook>(predicate: predicate)
+    guard let book = try? context.fetch(descriptor).first else { return (bookID, nil) }
+    return (book.title, book.authors.first?.name)
   }
 
   private func bookSize(bookID: String, serverID: String, appGroupURL: URL?) -> Int64 {
