@@ -4,6 +4,8 @@ import SwiftUI
 struct PlayerOptionsSheet: View {
   @Environment(\.dismiss) private var dismiss
 
+  @AppStorage("marqueeLoopMode") private var marqueeLoopMode: MarqueeLoopMode = .playOnce
+
   @ObservedObject var model: Model
 
   var body: some View {
@@ -40,6 +42,18 @@ struct PlayerOptionsSheet: View {
           Label("Download to Watch", systemImage: "icloud.and.arrow.down")
         }
       }
+
+      Picker(
+        selection: $marqueeLoopMode,
+        content: {
+          ForEach(MarqueeLoopMode.allCases) { mode in
+            Text(mode.title).tag(mode)
+          }
+        },
+        label: {
+          Label("Title Scrolling", systemImage: "text.append")
+        }
+      )
     }
     .navigationTitle("Options")
     .navigationBarTitleDisplayMode(.inline)

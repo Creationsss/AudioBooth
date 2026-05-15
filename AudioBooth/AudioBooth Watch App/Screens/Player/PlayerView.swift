@@ -7,6 +7,8 @@ struct PlayerView: View {
 
   private var playerManager: PlayerManager { .shared }
 
+  @AppStorage("marqueeLoopMode") private var marqueeLoopMode: MarqueeLoopMode = .playOnce
+
   @ObservedObject var model: Model
 
   var body: some View {
@@ -187,7 +189,7 @@ struct PlayerView: View {
   }
 
   private var content: some View {
-    Marquee {
+    Marquee(mode: marqueeLoopMode) {
       HStack {
         Text(model.title)
           .font(.caption2)
