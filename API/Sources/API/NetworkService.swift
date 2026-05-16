@@ -177,9 +177,8 @@ final class NetworkService {
   private func performRequest<T: Decodable>(_ request: NetworkRequest<T>) async throws -> NetworkResponse<T> {
     let urlRequest = try await buildURLRequest(from: request)
 
-    let redactedHost = server?.isUsingAlternativeURL == true ? "abs.alternative" : "abs.primary"
     AppLogger.network.info(
-      "Sending \(urlRequest.httpMethod ?? "GET") request to: \(urlRequest.url?.redactedString(host: redactedHost) ?? "unknown")"
+      "Sending \(urlRequest.httpMethod ?? "GET") request to: \(urlRequest.url?.absoluteString ?? "unknown")"
     )
 
     let selectedSession = request.discretionary ? discretionarySession : session
@@ -319,14 +318,41 @@ private extension URL {
 }
 
 extension URL {
-  public var redactedString: String {
-    redactedString(host: "abs.invalid")
+  public var redacted: URL {
+    var components = URLComponents(url: self, resolvingAgainstBaseURL: false)
+    let host = components?.host
+    components?.host = Self.redactedHost(for: host)
+    components?.port = nil
+    return components?.url ?? self
   }
 
-  public func redactedString(host: String) -> String {
-    var components = URLComponents(url: self, resolvingAgainstBaseURL: false)
-    components?.host = host
-    components?.port = nil
-    return components?.string ?? relativePath
+  static func redactedHost(for host: String?) -> String {
+    let server = Audiobookshelf.shared.authentication.server
+    if let server, host == server.alternativeURL?.host {
+      return "abs.alternative"
+    } else if let server, host == server.baseURL.host {
+      return "abs.primary"
+    }
+    return "abs.invalid"
+  }
+}
+
+extension String {
+  public var redactingURLs: String {
+    let pattern = #"https?://([^/\s:]+)(:\d+)?"#
+    guard let regex = try? NSRegularExpression(pattern: pattern) else { return self }
+    let range = NSRange(startIndex..<endIndex, in: self)
+    var result = self
+    let matches = regex.matches(in: self, range: range).reversed()
+    for match in matches {
+      guard let hostRange = Range(match.range(at: 1), in: result),
+        let fullRange = Range(match.range, in: result)
+      else { continue }
+      let scheme = result[fullRange].hasPrefix("https") ? "https" : "http"
+      let host = String(result[hostRange])
+      let redactedHost = URL.redactedHost(for: host)
+      result.replaceSubrange(fullRange, with: "\(scheme)://\(redactedHost)")
+    }
+    return result
   }
 }

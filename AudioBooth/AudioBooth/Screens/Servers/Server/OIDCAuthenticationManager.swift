@@ -51,7 +51,7 @@ final class OIDCAuthenticationManager {
     cookies: [HTTPCookie]
   ) async throws -> String {
     AppLogger.authentication.info(
-      "Received callback URL: \(callbackURL.redactedString)"
+      "Received callback URL: \(callbackURL)"
     )
 
     guard let components = URLComponents(url: callbackURL, resolvingAgainstBaseURL: false),
@@ -128,7 +128,7 @@ final class OIDCAuthenticationManager {
       throw OIDCError.failedToConstructURL
     }
 
-    AppLogger.authentication.info("Built OIDC URL: \(authURL.redactedString)")
+    AppLogger.authentication.info("Built OIDC URL: \(authURL)")
     AppLogger.authentication.debug("PKCE challenge: \(self.pkce.challenge)")
     AppLogger.authentication.debug(
       "PKCE verifier length: \(self.pkce.verifier.count)"
@@ -139,7 +139,7 @@ final class OIDCAuthenticationManager {
 
   private func makeInitialOAuthRequest(authURL: URL) async throws -> (URL, [HTTPCookie]) {
     AppLogger.authentication.info(
-      "Making initial OAuth request to: \(authURL.redactedString)"
+      "Making initial OAuth request to: \(authURL)"
     )
 
     var request = URLRequest(url: authURL)
@@ -173,7 +173,7 @@ final class OIDCAuthenticationManager {
         for: authURL
       )
       AppLogger.authentication.info(
-        "Received redirect to: \(redirectURL.redactedString)"
+        "Received redirect to: \(redirectURL)"
       )
       AppLogger.authentication.info(
         "Captured \(cookies.count) cookies: \(cookies.map { $0.name }.joined(separator: ", "))"

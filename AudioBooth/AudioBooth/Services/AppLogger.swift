@@ -1,3 +1,4 @@
+import API
 import Foundation
 import Logging
 import Pulse
@@ -26,7 +27,7 @@ enum AppLogger {
       stream.logLevel = .debug
       persistent.logLevel = .debug
 
-      return MultiplexLogHandler([stream, persistent])
+      return MultiplexLogHandler([stream, RedactingLogHandler(wrapped: persistent)])
     }
 
     general.info("Version \(UIApplication.appVersion)")
@@ -72,20 +73,49 @@ extension LoggerStore.Event {
   }
 }
 
+struct RedactingLogHandler: LogHandler {
+  var wrapped: PersistentLogHandler
+
+  var metadata: Logger.Metadata {
+    get { wrapped.metadata }
+    set { wrapped.metadata = newValue }
+  }
+
+  var logLevel: Logger.Level {
+    get { wrapped.logLevel }
+    set { wrapped.logLevel = newValue }
+  }
+
+  subscript(metadataKey key: String) -> Logger.Metadata.Value? {
+    get { wrapped[metadataKey: key] }
+    set { wrapped[metadataKey: key] = newValue }
+  }
+
+  func log(
+    level: Logger.Level,
+    message: Logger.Message,
+    metadata: Logger.Metadata?,
+    source: String,
+    file: String,
+    function: String,
+    line: UInt
+  ) {
+    let redacted = Logger.Message(stringLiteral: message.description.redactingURLs)
+    wrapped.log(
+      level: level,
+      message: redacted,
+      metadata: metadata,
+      file: file,
+      function: function,
+      line: line
+    )
+  }
+}
+
 extension NetworkLogger.Request {
   nonisolated var redacted: Self {
     var copy = self
     copy.url = url?.redacted
     return copy
   }
-}
-
-extension URL {
-  nonisolated var redacted: Self {
-    var components = URLComponents(url: self, resolvingAgainstBaseURL: false)
-    components?.host = "abs.invalid"
-    components?.port = nil
-    return components?.url ?? self
-  }
-
 }
