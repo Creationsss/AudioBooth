@@ -29,10 +29,9 @@ final class AudioPlayer {
   private let player = AVQueuePlayer()
   private let eqContext = EQContext()
   private let mediaProgress: MediaProgress
+  private var session: PlaybackSession
   private var tracks: [Track] = []
-  private var trackURLs: [URL] = []
   private(set) var currentTrackIndex: Int = 0
-  private var isPrepared: Bool = false
   private var timeObserver: Any?
   private var cancellables = Set<AnyCancellable>()
   private var itemObservers = Set<AnyCancellable>()
@@ -40,26 +39,16 @@ final class AudioPlayer {
   let events = PassthroughSubject<Event, Never>()
 
   var time: TimeInterval {
-    if isPrepared { return mediaProgress.currentTime }
     guard !tracks.isEmpty else { return player.currentSeconds }
     return tracks[currentTrackIndex].startOffset + player.currentSeconds
-  }
-
-  var duration: TimeInterval {
-    let d = player.currentItem?.duration.seconds ?? 0
-    return d.isNaN ? 0 : d
   }
 
   var isPlaying: Bool {
     player.timeControlStatus == .playing
   }
 
-  var isBuffering: Bool {
-    player.timeControlStatus == .waitingToPlayAtSpecifiedRate
-  }
-
-  var hasContent: Bool {
-    !trackURLs.isEmpty
+  var isUsingRemoteURLs: Bool {
+    tracks.contains { url(for: $0)?.isFileURL == false }
   }
 
   var volume: Float {
@@ -78,8 +67,9 @@ final class AudioPlayer {
     }
   }
 
-  init(mediaProgress: MediaProgress) {
+  init(mediaProgress: MediaProgress, session: PlaybackSession) {
     self.mediaProgress = mediaProgress
+    self.session = session
     player.allowsExternalPlayback = false
     setupObservers()
   }
@@ -88,22 +78,21 @@ final class AudioPlayer {
     removeTimeObserver()
   }
 
-  func prepare(
-    tracks: [Track],
-    urlResolver: (Track) -> URL?
-  ) {
-    var resolvedTracks: [Track] = []
-    var urls: [URL] = []
-    for track in tracks {
-      guard let url = urlResolver(track) else { continue }
-      resolvedTracks.append(track)
-      urls.append(url)
+  func setQueue(_ tracks: [Track], for session: PlaybackSession) {
+    let wasPlaying = isPlaying
+    self.session = session
+    self.tracks = tracks.filter { url(for: $0) != nil }
+
+    guard !self.tracks.isEmpty else {
+      player.removeAllItems()
+      return
     }
-    self.tracks = resolvedTracks
-    self.trackURLs = urls
-    self.isPrepared = !urls.isEmpty
 
     addTimeObserver()
+
+    let (trackIndex, offset) = trackAndOffset(for: mediaProgress.currentTime)
+    currentTrackIndex = trackIndex
+    loadQueue(from: trackIndex, seekTo: offset, autoPlay: wasPlaying)
   }
 
   func pause() {
@@ -111,23 +100,18 @@ final class AudioPlayer {
   }
 
   func resume() {
-    if isPrepared {
-      isPrepared = false
-      guard !trackURLs.isEmpty else {
-        events.send(.error(nil))
-        return
-      }
+    guard !tracks.isEmpty else {
+      events.send(.error(nil))
+      return
+    }
 
+    if player.currentItem == nil || player.currentItem?.status == .failed {
       let (trackIndex, offset) = trackAndOffset(for: mediaProgress.currentTime)
       currentTrackIndex = trackIndex
       loadQueue(from: trackIndex, seekTo: offset, autoPlay: true)
-    } else if player.currentItem != nil, player.currentItem?.status != .failed {
+    } else {
       seek(to: mediaProgress.currentTime)
       player.play()
-    } else {
-      let (trackIndex, offset) = trackAndOffset(for: mediaProgress.currentTime)
-      currentTrackIndex = trackIndex
-      loadQueue(from: trackIndex, seekTo: offset, autoPlay: true)
     }
   }
 
@@ -139,12 +123,6 @@ final class AudioPlayer {
   }
 
   func seek(to time: TimeInterval) {
-    if isPrepared {
-      events.send(.timeUpdate(time))
-      events.send(.seek(time))
-      return
-    }
-
     guard !tracks.isEmpty else {
       player.seek(to: CMTime(seconds: time, preferredTimescale: 1000)) { [weak self] _ in
         self?.events.send(.seek(time))
@@ -161,7 +139,7 @@ final class AudioPlayer {
       return
     }
 
-    guard targetIndex < trackURLs.count else { return }
+    guard targetIndex < tracks.count else { return }
 
     var existing = player.items()
     existing.first?.seek(to: .zero, completionHandler: nil)
@@ -191,33 +169,14 @@ final class AudioPlayer {
     }
   }
 
-  func rebuildQueue(urlResolver: (Track) -> URL?) {
-    let wasPlaying = isPlaying
-
-    var resolvedTracks: [Track] = []
-    var urls: [URL] = []
-    for track in tracks {
-      guard let url = urlResolver(track) else { continue }
-      resolvedTracks.append(track)
-      urls.append(url)
-    }
-    self.tracks = resolvedTracks
-    self.trackURLs = urls
-
-    guard !urls.isEmpty else { return }
-
-    let (trackIndex, offset) = trackAndOffset(for: mediaProgress.currentTime)
-    currentTrackIndex = trackIndex
-    loadQueue(from: trackIndex, seekTo: offset, autoPlay: wasPlaying)
-  }
 }
 
 private extension AudioPlayer {
   func loadQueue(from index: Int, seekTo offset: TimeInterval, autoPlay: Bool) {
-    guard index < trackURLs.count else { return }
+    guard index < tracks.count else { return }
 
     player.removeAllItems()
-    for i in index..<trackURLs.count {
+    for i in index..<tracks.count {
       guard let item = makeItem(at: i) else { continue }
       player.insert(item, after: nil)
     }
@@ -236,11 +195,15 @@ private extension AudioPlayer {
   }
 
   func makeItem(at index: Int) -> AVPlayerItem? {
-    guard index < trackURLs.count else { return nil }
+    guard index < tracks.count, let url = url(for: tracks[index]) else { return nil }
     return AVPlayerItem(
-      url: trackURLs[index],
+      url: url,
       headers: Audiobookshelf.shared.authentication.server?.customHeaders
     )
+  }
+
+  func url(for track: Track) -> URL? {
+    session.url(for: track)
   }
 
   func applyEQToUpcoming() {
@@ -277,7 +240,7 @@ private extension AudioPlayer {
           self.events.send(.stateChanged(.paused))
         case .playing:
           self.events.send(.stateChanged(.playing))
-        case .waitingToPlayAtSpecifiedRate where player.status != .readyToPlay:
+        case .waitingToPlayAtSpecifiedRate:
           self.events.send(.stateChanged(.buffering))
         default:
           break
@@ -294,12 +257,7 @@ private extension AudioPlayer {
 
   func handleCurrentItemChange(_ item: AVPlayerItem?) {
     guard let item else { return }
-    if let url = (item.asset as? AVURLAsset)?.url,
-      let index = trackURLs.firstIndex(of: url)
-    {
-      currentTrackIndex = index
-      AppLogger.player.debug("Now playing track \(index)/\(self.tracks.count)")
-    }
+    AppLogger.player.debug("Now playing track \(self.currentTrackIndex)/\(self.tracks.count)")
     observeItem(item)
     applyEQToUpcoming()
   }
@@ -325,8 +283,12 @@ private extension AudioPlayer {
 
     NotificationCenter.default.publisher(for: .AVPlayerItemDidPlayToEndTime, object: item)
       .sink { [weak self] _ in
-        guard let self, self.currentTrackIndex == self.tracks.count - 1 else { return }
-        self.events.send(.finished)
+        guard let self else { return }
+        if self.currentTrackIndex == self.tracks.count - 1 {
+          self.events.send(.finished)
+        } else {
+          self.currentTrackIndex += 1
+        }
       }
       .store(in: &itemObservers)
 
@@ -357,7 +319,7 @@ private extension AudioPlayer {
     removeTimeObserver()
     let interval = CMTime(seconds: 0.5, preferredTimescale: 1000)
     timeObserver = player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] _ in
-      guard let self, !self.isPrepared, self.player.currentSeconds > 0 else { return }
+      guard let self, self.player.currentSeconds > 0 else { return }
       self.events.send(.timeUpdate(self.time))
     }
   }

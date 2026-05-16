@@ -260,6 +260,8 @@ final class BookPlayerModel: BookPlayer.Model {
       return
     }
 
+    isLoading = true
+
     if sessionManager.current == nil {
       AppLogger.player.warning("Session was closed, recreating and reloading player")
 
@@ -636,28 +638,18 @@ extension BookPlayerModel {
   }
 
   private func setupAudioPlayer() throws {
-    guard let item else {
-      throw Audiobookshelf.AudiobookshelfError.networkError("No item available")
-    }
-
-    let player = AudioPlayer(mediaProgress: mediaProgress)
-    self.player = player
-
-    let session = sessionManager.current
-    let tracks = item.orderedTracks
-
-    player.prepare(
-      tracks: tracks,
-      urlResolver: { track in
-        session?.url(for: track) ?? track.localPath
-      }
-    )
-
-    guard player.hasContent else {
-      self.player = nil
+    guard let item, !item.orderedTracks.isEmpty else {
       throw Audiobookshelf.AudiobookshelfError.networkError("No playable audio files available")
     }
 
+    guard let session = sessionManager.current else {
+      throw Audiobookshelf.AudiobookshelfError.networkError("No active session")
+    }
+
+    let player = AudioPlayer(mediaProgress: mediaProgress, session: session)
+    self.player = player
+
+    player.setQueue(item.orderedTracks, for: session)
     player.volume = Float(userPreferences.volumeLevel)
 
     configurePlayerComponents(player: player)
@@ -727,22 +719,13 @@ extension BookPlayerModel {
 
     do {
       if let existingItem = try LocalBook.fetch(bookID: id) {
-        AppLogger.player.info("Book is downloaded, loading local files instantly")
-
         self.item = existingItem
         AppLogger.player.debug(
           "Found existing progress: \(self.mediaProgress.currentTime)s"
         )
-
-        if existingItem.isDownloaded {
-          try setupAudioPlayer()
-          isLoading = false
-        }
       }
     } catch {
-      downloadManager.deleteDownload(for: id)
       AppLogger.player.error("Failed to load local book item: \(error)")
-      Toast(error: "Can't access download. Streaming instead.").show()
     }
   }
 
@@ -750,16 +733,8 @@ extension BookPlayerModel {
     guard let episodeID else { return }
 
     do {
-      if let existingEpisode = try LocalEpisode.fetch(episodeID: episodeID),
-        existingEpisode.isDownloaded
-      {
-        AppLogger.player.info("Episode is downloaded, loading local file instantly")
+      if let existingEpisode = try LocalEpisode.fetch(episodeID: episodeID) {
         self.item = existingEpisode
-
-        if existingEpisode.isDownloaded {
-          try setupAudioPlayer()
-          isLoading = false
-        }
       }
     } catch {
       AppLogger.player.error("Failed to load local episode: \(error)")
@@ -767,31 +742,22 @@ extension BookPlayerModel {
   }
 
   private func isPlayerUsingRemoteURL() -> Bool {
-    guard player != nil else { return false }
-    return item?.isDownloaded != true
+    player?.isUsingRemoteURLs == true
   }
 
   private func reloadPlayer() {
-    guard let player else {
-      AppLogger.player.warning("Cannot reload player - missing player or item")
+    guard let player, let session = sessionManager.current else {
+      AppLogger.player.warning("Cannot reload player - missing player or session")
       return
     }
 
     let currentTimeSeconds = max(player.time, mediaProgress.currentTime)
     AppLogger.player.info("Reloading player at position: \(currentTimeSeconds)s")
 
-    let wasPlaying = isPlaying
-    let session = sessionManager.current
-
-    player.rebuildQueue(
-      urlResolver: { track in
-        session?.url(for: track) ?? track.localPath
-      }
-    )
-
+    player.setQueue(item?.orderedTracks ?? [], for: session)
     player.volume = Float(userPreferences.volumeLevel)
 
-    if wasPlaying || pendingPlay {
+    if pendingPlay {
       player.resume()
       pendingPlay = false
     }
@@ -861,8 +827,8 @@ extension BookPlayerModel {
           case .buffering:
             self.isLoading = true
           case .ready:
-            self.isLoading = false
             if self.pendingPlay {
+              self.isLoading = false
               self.onPlayTapped()
             }
           case .error:
