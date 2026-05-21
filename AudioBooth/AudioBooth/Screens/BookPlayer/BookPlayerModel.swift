@@ -260,6 +260,12 @@ final class BookPlayerModel: BookPlayer.Model {
       return
     }
 
+    if mediaProgress.isFinished || mediaProgress.remaining <= 1 {
+      let newTime = max(0, mediaProgress.currentTime - 15)
+      mediaProgress.currentTime = newTime
+      player.seek(to: newTime)
+    }
+
     isLoading = true
 
     if sessionManager.current == nil {
@@ -513,6 +519,7 @@ extension BookPlayerModel {
 
     let newTime = max(0, rewindTarget)
     mediaProgress.currentTime = newTime
+    mediaProgress.lastPlayedAt = Date()
 
     player?.seek(to: newTime)
 
@@ -648,6 +655,8 @@ extension BookPlayerModel {
 
     let player = AudioPlayer(mediaProgress: mediaProgress, session: session)
     self.player = player
+
+    lastSyncedTime = mediaProgress.currentTime
 
     player.setQueue(item.orderedTracks, for: session)
     player.volume = Float(userPreferences.volumeLevel)
