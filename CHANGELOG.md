@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Lock screen and player preferences - Added more preferences to customize the lock screen and player experience
 - Haptic feedback - Add haptic feedback throughout the app for improved tactile interaction
 - Watch app custom header - Add custom header to the watch app for a more refined look
 - Book subtitle preference - Add preference to display book subtitles in the library
