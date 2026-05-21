@@ -137,7 +137,7 @@ extension ContinueListeningView {
         availableOfflineRows: [
           ContinueListeningRow.Model(
             id: "3",
-            title: "The Foundation",
+            title: "Foundation",
             author: "Isaac Asimov",
             coverURL: URL(string: "https://m.media-amazon.com/images/I/51I5xPlDi9L._SL500_.jpg"),
             timeRemaining: "633 hr left"

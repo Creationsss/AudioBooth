@@ -291,7 +291,7 @@ extension SearchView.Model {
         cover: Cover.Model(url: URL(string: "https://m.media-amazon.com/images/I/41rrXYM-wHL._SL500_.jpg"))
       ),
       BookCard.Model(
-        title: "The Foundation",
+        title: "Foundation",
         details: "Isaac Asimov",
         cover: Cover.Model(url: URL(string: "https://m.media-amazon.com/images/I/51I5xPlDi9L._SL500_.jpg"))
       ),

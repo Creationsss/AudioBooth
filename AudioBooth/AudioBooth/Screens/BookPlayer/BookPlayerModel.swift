@@ -901,6 +901,10 @@ extension BookPlayerModel {
       lastSyncedTime = globalTime
       self.updateMediaProgress()
       self.checkAutoDownloadAfterListening()
+
+      if UserPreferences.shared.lockScreenShowRemainingInTitle {
+        self.nowPlaying.update()
+      }
     }
   }
 }

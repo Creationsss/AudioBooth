@@ -11,6 +11,7 @@ struct LockScreenPreferencesView: View {
           usesChapters: preferences.lockScreenNextPreviousUsesChapters,
           allowsScrubbing: preferences.lockScreenAllowPlaybackPositionChange,
           showsChapterTitle: !preferences.showFullBookDuration,
+          showsRemainingInTitle: preferences.lockScreenShowRemainingInTitle,
           skipBackwardSeconds: Int(preferences.skipBackwardInterval),
           skipForwardSeconds: Int(preferences.skipForwardInterval)
         )
@@ -26,11 +27,30 @@ struct LockScreenPreferencesView: View {
           SkipBySegmented(usesChapters: $preferences.lockScreenNextPreviousUsesChapters)
         }
         .listRowBackground(theme.colors.background.card)
+
+        Toggle(isOn: $preferences.lockScreenShowRemainingInTitle) {
+          PreferenceRow(
+            systemImage: "clock",
+            tint: .blue,
+            title: "Show Remaining In Title",
+            subtitle: "Append time remaining to the lock screen title"
+          )
+        }
+        .listRowBackground(theme.colors.background.card)
+
+        if #available(iOS 26.0, *) {
+          Toggle(isOn: $preferences.lockScreenImmersiveCover) {
+            PreferenceRow(
+              systemImage: "rectangle.portrait.fill",
+              tint: .indigo,
+              title: "Immersive Cover",
+              subtitle: "Show the cover full screen on the Lock Screen player"
+            )
+          }
+          .listRowBackground(theme.colors.background.card)
+        }
       } header: {
-        Text("Skip Buttons")
-      } footer: {
-        Text("Choose what the lock screen previous and next buttons do.")
-          .font(.caption)
+        Text("Appearance")
       }
 
       Section {
@@ -48,25 +68,6 @@ struct LockScreenPreferencesView: View {
       } footer: {
         Text("Chapter title and cover art are controlled from Playback Display.")
           .font(.caption)
-      }
-
-      if #available(iOS 26.0, *) {
-        Section {
-          Toggle(isOn: $preferences.lockScreenImmersiveCover) {
-            PreferenceRow(
-              systemImage: "rectangle.portrait.fill",
-              tint: .indigo,
-              title: "Immersive Cover",
-              subtitle: "Show the cover full screen on the Lock Screen player"
-            )
-          }
-          .listRowBackground(theme.colors.background.card)
-        } header: {
-          Text("Appearance")
-        } footer: {
-          Text("Fills the expanded Now Playing view with the book cover.")
-            .font(.caption)
-        }
       }
     }
     .scrollContentBackground(.hidden)
@@ -106,8 +107,18 @@ private struct NowPlayingPreviewCard: View {
   let usesChapters: Bool
   let allowsScrubbing: Bool
   let showsChapterTitle: Bool
+  let showsRemainingInTitle: Bool
   let skipBackwardSeconds: Int
   let skipForwardSeconds: Int
+
+  private var titleText: String {
+    let base = showsChapterTitle ? "Chapter 14" : "Foundation"
+    return showsRemainingInTitle ? "\(base) (4h 36m remaining)" : base
+  }
+
+  private var subtitleText: String {
+    showsChapterTitle ? "Foundation · Isaac Asimov" : "Isaac Asimov"
+  }
 
   var body: some View {
     VStack(alignment: .leading, spacing: 12) {
@@ -122,12 +133,13 @@ private struct NowPlayingPreviewCard: View {
           .frame(width: 56, height: 56)
 
         VStack(alignment: .leading, spacing: 2) {
-          Text(verbatim: showsChapterTitle ? "Chapter 14" : "The Wandering Earth")
+          Text(verbatim: titleText)
             .font(.subheadline)
             .fontWeight(.semibold)
             .foregroundStyle(.white)
+            .lineLimit(1)
 
-          Text(verbatim: showsChapterTitle ? "The Wandering Earth · Liu Cixin" : "Liu Cixin")
+          Text(verbatim: subtitleText)
             .font(.caption)
             .foregroundStyle(.white.opacity(0.6))
         }

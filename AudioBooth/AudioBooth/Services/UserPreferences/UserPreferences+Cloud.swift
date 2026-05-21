@@ -16,6 +16,7 @@ extension UserPreferences {
     "timerFadeOut",
     "lockScreenNextPreviousUsesChapters",
     "lockScreenAllowPlaybackPositionChange",
+    "lockScreenShowRemainingInTitle",
     "timeRemainingAdjustsWithSpeed",
     "chapterProgressionAdjustsWithSpeed",
     "showFullBookDuration",

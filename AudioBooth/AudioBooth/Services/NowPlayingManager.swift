@@ -127,6 +127,8 @@ final class NowPlayingManager {
     withObservationTracking {
       _ = preferences.showFullBookDuration
       _ = preferences.lockScreenImmersiveCover
+      _ = preferences.lockScreenShowRemainingInTitle
+      _ = preferences.timeRemainingAdjustsWithSpeed
     } onChange: { [weak self] in
       guard let self else { return }
       RunLoop.main.perform {
@@ -156,7 +158,7 @@ final class NowPlayingManager {
     info[MPNowPlayingInfoPropertyPlaybackRate] = player.isPlaying ? player.rate : 0.0
 
     if !preferences.showFullBookDuration, let chapters, let current = chapters.current {
-      info[MPMediaItemPropertyTitle] = current.title
+      info[MPMediaItemPropertyTitle] = decoratedTitle(current.title)
       info[MPMediaItemPropertyArtist] = title
       info[MPMediaItemPropertyAlbumTitle] = author
       info[MPMediaItemPropertyPlaybackDuration] = current.end - current.start
@@ -165,7 +167,7 @@ final class NowPlayingManager {
       )
       info[MPNowPlayingInfoPropertyExternalContentIdentifier] = "\(id)-\(current.id)"
     } else {
-      info[MPMediaItemPropertyTitle] = title
+      info[MPMediaItemPropertyTitle] = decoratedTitle(title)
       info[MPMediaItemPropertyArtist] = author
       info[MPMediaItemPropertyAlbumTitle] = nil
       info[MPMediaItemPropertyPlaybackDuration] = mediaProgress.duration
@@ -175,6 +177,19 @@ final class NowPlayingManager {
 
     MPNowPlayingInfoCenter.default().nowPlayingInfo = info
     MPNowPlayingInfoCenter.default().playbackState = playbackState
+  }
+
+  private func decoratedTitle(_ base: String) -> String {
+    guard preferences.lockScreenShowRemainingInTitle, let mediaProgress else { return base }
+
+    var remaining = mediaProgress.duration - mediaProgress.currentTime
+    guard remaining > 0 else { return base }
+
+    if let player, preferences.timeRemainingAdjustsWithSpeed, player.rate > 0 {
+      remaining /= Double(player.rate)
+    }
+
+    return "\(base) (\(remaining.formattedTimeRemaining))"
   }
 }
 

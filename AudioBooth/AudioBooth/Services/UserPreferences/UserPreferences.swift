@@ -70,6 +70,9 @@ final class UserPreferences: ObservableObject {
   @AppStorage("lockScreenImmersiveCover")
   var lockScreenImmersiveCover: Bool = false
 
+  @AppStorage("lockScreenShowRemainingInTitle")
+  var lockScreenShowRemainingInTitle: Bool = false
+
   @AppStorage("timeRemainingAdjustsWithSpeed")
   var timeRemainingAdjustsWithSpeed: Bool = true
 
