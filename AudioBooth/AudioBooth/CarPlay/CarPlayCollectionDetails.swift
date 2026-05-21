@@ -1,6 +1,7 @@
 import API
 @preconcurrency import CarPlay
 import Foundation
+import Models
 import Nuke
 
 final class CarPlayCollectionDetails {
@@ -78,8 +79,10 @@ final class CarPlayCollectionDetails {
 
   private func onPlayAll() {
     loadingTask?.cancel()
+    let notCompleted = items.filter { MediaProgress.progress(for: $0.bookID) < 1.0 }
+    let playlist = notCompleted.isEmpty ? items : notCompleted
     loadingTask = Task {
-      PlayerManager.shared.playAll(items)
+      PlayerManager.shared.playAll(playlist)
       await waitForPlayerReady()
       try? await Task.sleep(for: .milliseconds(500))
       nowPlaying?.showNowPlaying()

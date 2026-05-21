@@ -198,7 +198,9 @@ final class CollectionDetailPageModel: CollectionDetailPage.Model {
   }
 
   override func onPlayAll() {
-    let items = books.map { book in
+    let notCompleted = books.filter { MediaProgress.progress(for: $0.id) < 1.0 }
+    let source = notCompleted.isEmpty ? books : notCompleted
+    let items = source.map { book in
       QueueItem(
         bookID: book.id,
         title: book.title,
