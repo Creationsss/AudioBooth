@@ -20,7 +20,7 @@ struct GeneralPreferencesView: View {
       }
 
       Section("Appearance") {
-        #if targetEnvironment(macCatalyst)
+        #if !targetEnvironment(macCatalyst)
         AppIconPickerView()
           .listRowBackground(theme.colors.background.card)
         #endif
