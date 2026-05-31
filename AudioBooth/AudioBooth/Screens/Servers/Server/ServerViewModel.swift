@@ -490,7 +490,11 @@ final class ServerViewModel: ServerView.Model {
         currentLibraryID != nil
         && !fetchedLibraries.contains(where: { $0.id == currentLibraryID })
 
-      if selectedLibrary == nil || hasStaleSelection {
+      let isActiveOrPending =
+        pendingConnectionID != nil
+        || audiobookshelf.authentication.server?.id == connectionID
+
+      if isActiveOrPending, selectedLibrary == nil || hasStaleSelection {
         if let defaultID = audiobookshelf.authentication.servers[connectionID]?.defaultLibraryID,
           let defaultLibrary = libraries.first(where: { $0.id == defaultID })
         {

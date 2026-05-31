@@ -217,15 +217,25 @@ struct ServerView: View {
 
       Button(
         role: .destructive,
-        action: {
-          model.onLogoutTapped()
-          dismiss()
-        }
+        action: { model.showLogoutConfirmation = true }
       ) {
         HStack {
           Image(systemName: "rectangle.portrait.and.arrow.right")
           Text("Logout")
         }
+      }
+      .confirmationDialog(
+        "Logout",
+        isPresented: $model.showLogoutConfirmation,
+        titleVisibility: .visible
+      ) {
+        Button("Logout", role: .destructive) {
+          model.onLogoutTapped()
+          dismiss()
+        }
+        Button("Cancel", role: .cancel) {}
+      } message: {
+        Text("Logging out will remove all downloads for this connection.")
       }
     }
     .listRowBackground(theme.colors.background.card)
@@ -284,6 +294,7 @@ extension ServerView {
     var isDiscovering: Bool
     var isLoadingLibraries: Bool
     var showDiscoveryPortAlert: Bool
+    var showLogoutConfirmation: Bool = false
 
     var serverURL: String
     var serverScheme: ServerScheme
