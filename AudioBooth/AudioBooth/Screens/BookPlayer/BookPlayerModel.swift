@@ -848,10 +848,12 @@ extension BookPlayerModel {
 
         case .stalled:
           AppLogger.player.warning("Playback stalled, pausing")
+          self.isLoading = false
           player.pause()
 
         case .error(let error):
           AppLogger.player.error("Player error: \(error?.localizedDescription ?? "Unknown")")
+          self.isLoading = false
           self.handleStreamFailure(error: error)
 
         case .finished:
