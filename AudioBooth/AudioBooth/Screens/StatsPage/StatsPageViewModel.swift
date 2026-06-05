@@ -132,7 +132,7 @@ final class StatsPageViewModel: StatsPageView.Model {
 
     for item in items.values {
       guard let metadata = item.mediaMetadata else { continue }
-      let seconds = item.timeListening
+      let seconds = item.timeListening ?? 0
 
       if let genres = metadata.genres {
         let share = genres.isEmpty ? seconds : seconds / Double(genres.count)
