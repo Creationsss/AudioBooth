@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.10.0]
+
 ### Added
 - Alarm support - Set an alarm to interrupt playback at a specific time or after a duration (thanks @DonQuinleone)
 - Repeat support - Repeat the current book, episode, or chapter during playback

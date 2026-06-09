@@ -5,7 +5,7 @@
 ![iOS](https://img.shields.io/badge/iOS-17.0+-green?logo=apple&logoColor=white)
 ![watchOS](https://img.shields.io/badge/watchOS-10+-green?style=flat&logo=apple&logoColor=white)
 
-[![AudioBooth App](https://github.com/AudioBooth/AudioBooth/raw/main/images/AudioBooth.png)](https://apps.apple.com/us/app/id6753017503?platform=iphone)
+[![AudioBooth App](https://raw.githubusercontent.com/AudioBooth/AudioBooth/refs/heads/main/images/AudioBooth.png)](https://apps.apple.com/us/app/id6753017503?platform=iphone)
 
 Your personal audiobook companion for Audiobookshelf.
 
