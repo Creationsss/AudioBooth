@@ -206,8 +206,10 @@ final class WatchConnectivityManager: NSObject, ObservableObject {
     guard let url = url else { return nil }
 
     var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-    components?.queryItems = [URLQueryItem(name: "width", value: "200")]
-    components?.queryItems = [URLQueryItem(name: "format", value: "jpg")]
+    components?.queryItems = [
+      URLQueryItem(name: "width", value: "200"),
+      URLQueryItem(name: "format", value: "jpg"),
+    ]
     return components?.url?.absoluteString ?? url.absoluteString
   }
 }
@@ -285,11 +287,9 @@ extension WatchConnectivityManager: WCSessionDelegate {
       case "pause":
         PlayerManager.shared.current?.onPauseTapped()
       case "skipForward":
-        let interval = UserDefaults.standard.double(forKey: "skipForwardInterval")
-        PlayerManager.shared.current?.onSkipForwardTapped(seconds: interval)
+        PlayerManager.shared.current?.onSkipForwardTapped(seconds: UserPreferences.shared.skipForwardInterval)
       case "skipBackward":
-        let interval = UserDefaults.standard.double(forKey: "skipBackwardInterval")
-        PlayerManager.shared.current?.onSkipBackwardTapped(seconds: interval)
+        PlayerManager.shared.current?.onSkipBackwardTapped(seconds: UserPreferences.shared.skipBackwardInterval)
       case "changePlaybackRate":
         if let rate = message["rate"] as? Float {
           PlayerManager.shared.current?.speed.onValueChanged(Double(rate))

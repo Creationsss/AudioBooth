@@ -1,6 +1,7 @@
 import API
 import Combine
 import Foundation
+import Logging
 
 final class CollectionsPageModel: CollectionsPage.Model {
   private var audiobookshelf: Audiobookshelf { Audiobookshelf.shared }
@@ -49,7 +50,7 @@ final class CollectionsPageModel: CollectionsPage.Model {
           try await audiobookshelf.playlists.delete(playlistID: collection.id)
           collections.remove(at: index)
         } catch {
-          print("Failed to delete playlist: \(error)")
+          AppLogger.viewModel.error("Failed to delete playlist: \(error)")
         }
       }
     }

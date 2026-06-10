@@ -12,6 +12,8 @@ final class DownloadManager: NSObject, ObservableObject {
 
   static let appGroupIdentifier = "group.me.jgrenier.audioBS"
 
+  static let backgroundSessionPrefix = "me.jgrenier.AudioBS.download."
+
   static let appGroupContainer: URL = {
     guard let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupIdentifier) else {
       fatalError("App group container '\(appGroupIdentifier)' not configured")
@@ -158,6 +160,40 @@ final class DownloadManager: NSObject, ObservableObject {
       downloadInfos.removeValue(forKey: bookID)
     }
   }
+
+  func handleBackgroundSessionEvents(identifier: String, completionHandler: @escaping () -> Void) {
+    backgroundCompletionHandler = completionHandler
+
+    let bookID = identifier.replacingOccurrences(of: Self.backgroundSessionPrefix, with: "")
+    guard activeOperations[bookID] == nil else { return }
+
+    AppLogger.download.info("Reconnecting to orphaned background session: \(identifier)")
+    let config = URLSessionConfiguration.background(withIdentifier: identifier)
+    _ = URLSession(
+      configuration: config,
+      delegate: OrphanedDownloadSessionDelegate(),
+      delegateQueue: nil
+    )
+  }
+}
+
+private final class OrphanedDownloadSessionDelegate: NSObject, URLSessionDownloadDelegate, @unchecked Sendable {
+  nonisolated func urlSession(
+    _ session: URLSession,
+    downloadTask: URLSessionDownloadTask,
+    didFinishDownloadingTo location: URL
+  ) {
+    try? FileManager.default.removeItem(at: location)
+  }
+
+  nonisolated func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
+    session.finishTasksAndInvalidate()
+    Task { @MainActor in
+      let manager = DownloadManager.shared
+      manager.backgroundCompletionHandler?()
+      manager.backgroundCompletionHandler = nil
+    }
+  }
 }
 
 extension DownloadManager {
@@ -165,7 +201,7 @@ extension DownloadManager {
     Task {
       guard let serverID = Audiobookshelf.shared.authentication.server?.id else {
         AppLogger.download.error("No active server for deletion")
-        Toast(error: "Failed to access app group container").show()
+        Toast(error: "No active server").show()
         return
       }
 
@@ -188,7 +224,7 @@ extension DownloadManager {
     Task {
       guard let serverID = Audiobookshelf.shared.authentication.server?.id else {
         AppLogger.download.error("No active server for deletion")
-        Toast(error: "Failed to access app group container").show()
+        Toast(error: "No active server").show()
         return
       }
 
@@ -266,12 +302,13 @@ private final class DownloadOperation: Operation, @unchecked Sendable {
 
   private var currentTrack: URLSessionDownloadTask?
   private var continuation: CheckedContinuation<Void, Error>?
+  private let continuationLock = NSLock()
   private var trackDestination: URL?
   private var lastResumeData: Data?
 
   private lazy var downloadSession: URLSession = {
     let config = URLSessionConfiguration.background(
-      withIdentifier: "me.jgrenier.AudioBS.download.\(bookID)"
+      withIdentifier: DownloadManager.backgroundSessionPrefix + bookID
     )
     config.timeoutIntervalForRequest = 300
     config.sessionSendsLaunchEvents = true
@@ -684,16 +721,14 @@ private final class DownloadOperation: Operation, @unchecked Sendable {
           downloadTask.priority = priority
 
           self.currentTrack = downloadTask
-          self.continuation = continuation
+          self.storeContinuation(continuation)
           self.trackDestination = destination
           self.lastResumeData = nil
 
           downloadTask.resume()
         }
-        self.continuation = nil
         return
       } catch {
-        self.continuation = nil
         lastError = error
         lastResumeData = (error as NSError).userInfo[NSURLSessionDownloadTaskResumeData] as? Data
         let isCancelled = (error as? URLError)?.code == .cancelled || error is CancellationError
@@ -744,7 +779,21 @@ private final class DownloadOperation: Operation, @unchecked Sendable {
     }
 
     try FileManager.default.moveItem(at: location, to: destination)
-    continuation?.resume()
+    takeContinuation()?.resume()
+  }
+
+  private func storeContinuation(_ continuation: CheckedContinuation<Void, Error>) {
+    continuationLock.lock()
+    self.continuation = continuation
+    continuationLock.unlock()
+  }
+
+  private func takeContinuation() -> CheckedContinuation<Void, Error>? {
+    continuationLock.lock()
+    defer { continuationLock.unlock() }
+    let taken = continuation
+    continuation = nil
+    return taken
   }
 
 }
@@ -765,12 +814,10 @@ extension DownloadOperation: URLSessionDownloadDelegate {
     guard
       let downloadTask = task as? URLSessionDownloadTask,
       currentTrack == downloadTask,
-      continuation != nil
+      let error
     else { return }
 
-    if let error {
-      continuation?.resume(throwing: error)
-    }
+    takeContinuation()?.resume(throwing: error)
   }
 
   func urlSession(
@@ -778,7 +825,7 @@ extension DownloadOperation: URLSessionDownloadDelegate {
     downloadTask: URLSessionDownloadTask,
     didFinishDownloadingTo location: URL
   ) {
-    guard currentTrack == downloadTask, continuation != nil else { return }
+    guard currentTrack == downloadTask else { return }
 
     if let httpResponse = downloadTask.response as? HTTPURLResponse {
       guard (200...299).contains(httpResponse.statusCode) else {
@@ -790,7 +837,7 @@ extension DownloadOperation: URLSessionDownloadDelegate {
           .badServerResponse,
           userInfo: [NSLocalizedDescriptionKey: statusDescription]
         )
-        continuation?.resume(throwing: error)
+        takeContinuation()?.resume(throwing: error)
         return
       }
     }
@@ -798,14 +845,15 @@ extension DownloadOperation: URLSessionDownloadDelegate {
     do {
       try trackDownloadCompleted(location: location)
     } catch {
-      continuation?.resume(throwing: error)
+      takeContinuation()?.resume(throwing: error)
     }
   }
 
   func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
-    if let completionHandler = DownloadManager.shared.backgroundCompletionHandler {
-      DownloadManager.shared.backgroundCompletionHandler = nil
-      completionHandler()
+    Task { @MainActor in
+      let manager = DownloadManager.shared
+      manager.backgroundCompletionHandler?()
+      manager.backgroundCompletionHandler = nil
     }
   }
 }

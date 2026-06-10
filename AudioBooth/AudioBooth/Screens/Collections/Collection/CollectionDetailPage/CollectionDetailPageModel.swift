@@ -1,5 +1,6 @@
 import API
 import Foundation
+import Logging
 import Models
 import SwiftUI
 
@@ -67,7 +68,7 @@ final class CollectionDetailPageModel: CollectionDetailPage.Model {
         }
         onDeleted?()
       } catch {
-        print("Failed to delete: \(error)")
+        AppLogger.viewModel.error("Failed to delete: \(error)")
       }
     }
   }
@@ -94,7 +95,7 @@ final class CollectionDetailPageModel: CollectionDetailPage.Model {
           collectionDescription = updatedCollection.description
         }
       } catch {
-        print("Failed to update: \(error)")
+        AppLogger.viewModel.error("Failed to update: \(error)")
         await loadCollection()
       }
     }
@@ -124,7 +125,7 @@ final class CollectionDetailPageModel: CollectionDetailPage.Model {
           }
         }
       } catch {
-        print("Failed to reorder items: \(error)")
+        AppLogger.viewModel.error("Failed to reorder items: \(error)")
         await loadCollection()
       }
     }
@@ -159,7 +160,7 @@ final class CollectionDetailPageModel: CollectionDetailPage.Model {
           }
         }
       } catch {
-        print("Failed to remove items: \(error)")
+        AppLogger.viewModel.error("Failed to remove items: \(error)")
         await loadCollection()
       }
     }
@@ -278,7 +279,7 @@ final class CollectionDetailPageModel: CollectionDetailPage.Model {
       }
 
       books = []
-      print("Failed to load collection: \(error)")
+      AppLogger.viewModel.error("Failed to load collection: \(error)")
     }
 
     isLoading = false

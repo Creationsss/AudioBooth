@@ -327,19 +327,19 @@ public final class LibrariesService: ObservableObject, @unchecked Sendable {
 
       return response.value.filterdata
     } catch {
-      print("❌ FilterData decoding error: \(error)")
+      AppLogger.libraries.error("FilterData decoding error: \(error)")
       if let decodingError = error as? DecodingError {
         switch decodingError {
         case .keyNotFound(let key, let context):
-          print("  Missing key: \(key.stringValue) at path: \(context.codingPath)")
+          AppLogger.libraries.error("Missing key: \(key.stringValue) at path: \(context.codingPath)")
         case .typeMismatch(let type, let context):
-          print("  Type mismatch for type: \(type) at path: \(context.codingPath)")
+          AppLogger.libraries.error("Type mismatch for type: \(type) at path: \(context.codingPath)")
         case .valueNotFound(let type, let context):
-          print("  Value not found for type: \(type) at path: \(context.codingPath)")
+          AppLogger.libraries.error("Value not found for type: \(type) at path: \(context.codingPath)")
         case .dataCorrupted(let context):
-          print("  Data corrupted at path: \(context.codingPath)")
+          AppLogger.libraries.error("Data corrupted at path: \(context.codingPath)")
         @unknown default:
-          print("  Unknown decoding error")
+          AppLogger.libraries.error("Unknown decoding error")
         }
       }
       throw Audiobookshelf.AudiobookshelfError.networkError(

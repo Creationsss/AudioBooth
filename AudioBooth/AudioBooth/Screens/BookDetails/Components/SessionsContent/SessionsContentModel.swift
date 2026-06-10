@@ -1,5 +1,6 @@
 import API
 import Foundation
+import Logging
 
 final class SessionsContentModel: SessionsContent.Model {
   private let bookID: String
@@ -40,7 +41,9 @@ final class SessionsContentModel: SessionsContent.Model {
         allSessions.append(contentsOf: response.sessions)
         sessions = Self.mapSessions(allSessions, bookDuration: bookDuration)
         hasMorePages = response.page < response.numPages - 1
-      } catch {}
+      } catch {
+        AppLogger.viewModel.error("Failed to load more listening sessions: \(error)")
+      }
       isLoadingMore = false
     }
   }

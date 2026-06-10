@@ -1,5 +1,5 @@
-import Combine
 import AVFoundation
+import Combine
 import Foundation
 import Logging
 import Models
@@ -659,7 +659,9 @@ extension TimerPickerSheetViewModel {
         guard !Task.isCancelled else { return }
         endLiveActivity()
         AppLogger.player.info("Live Activity cleaned up after 5 minutes of inactivity")
-      } catch {}
+      } catch {
+        AppLogger.player.debug("Live Activity cleanup task cancelled")
+      }
     }
   }
 

@@ -1,5 +1,6 @@
 import API
 import Foundation
+import Logging
 
 final class CollectionSelectorSheetModel: CollectionSelectorSheet.Model {
   private let audiobookshelf = Audiobookshelf.shared
@@ -51,7 +52,7 @@ final class CollectionSelectorSheetModel: CollectionSelectorSheet.Model {
           playlists[index] = CollectionRowModel(collection: updatedCollection)
         }
       } catch {
-        print("Failed to add book: \(error)")
+        AppLogger.viewModel.error("Failed to add book: \(error)")
       }
     }
   }
@@ -85,7 +86,7 @@ final class CollectionSelectorSheetModel: CollectionSelectorSheet.Model {
           }
         }
       } catch {
-        print("Failed to remove book: \(error)")
+        AppLogger.viewModel.error("Failed to remove book: \(error)")
       }
     }
   }
@@ -118,7 +119,7 @@ final class CollectionSelectorSheetModel: CollectionSelectorSheet.Model {
         playlistsContainingBook.insert(newCollection.id)
         newPlaylistName = ""
       } catch {
-        print("Failed to create: \(error)")
+        AppLogger.viewModel.error("Failed to create: \(error)")
       }
     }
   }
@@ -165,7 +166,7 @@ final class CollectionSelectorSheetModel: CollectionSelectorSheet.Model {
     } catch {
       playlists = []
       playlistsContainingBook = []
-      print("Failed to load collections: \(error)")
+      AppLogger.viewModel.error("Failed to load collections: \(error)")
     }
 
     isLoading = false

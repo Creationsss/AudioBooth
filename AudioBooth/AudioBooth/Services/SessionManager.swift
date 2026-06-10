@@ -430,7 +430,11 @@ extension SessionManager {
       using: nil
     ) { [weak self] task in
       AppLogger.session.debug("Task triggered")
-      self?.handleBackgroundTask(task as! BGAppRefreshTask)
+      guard let refreshTask = task as? BGAppRefreshTask else {
+        task.setTaskCompleted(success: false)
+        return
+      }
+      self?.handleBackgroundTask(refreshTask)
     }
 
     if success {
@@ -482,6 +486,10 @@ extension SessionManager {
   }
 
   private func handleBackgroundTask(_ task: BGAppRefreshTask) {
+    task.expirationHandler = {
+      task.setTaskCompleted(success: false)
+    }
+
     let retryCount = UserDefaults.standard.integer(forKey: retryCountKey)
     AppLogger.session.info(
       "Background task executing - checking if session should be closed (retry: \(retryCount))"

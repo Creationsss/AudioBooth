@@ -137,7 +137,9 @@ final class BookDetailsViewModel: BookDetailsView.Model {
         Task { @MainActor in
           self.coverURL = coverURL
         }
-      } catch {}
+      } catch {
+        AppLogger.viewModel.debug("Failed to refresh cover: \(error)")
+      }
     }
   }
 

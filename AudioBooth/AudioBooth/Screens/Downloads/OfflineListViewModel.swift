@@ -1,5 +1,6 @@
 import API
 import Foundation
+import Logging
 import Models
 import SwiftUI
 
@@ -323,7 +324,7 @@ extension OfflineListViewModel {
     do {
       try LocalBook.updateDisplayOrders(bookIDs)
     } catch {
-      print("Failed to save display order: \(error)")
+      AppLogger.viewModel.error("Failed to save display order: \(error)")
     }
   }
 }
@@ -358,7 +359,7 @@ extension OfflineListViewModel {
         do {
           try await book.markAsFinished()
         } catch {
-          print("Failed to mark book \(id) as finished: \(error)")
+          AppLogger.viewModel.error("Failed to mark book \(id) as finished: \(error)")
         }
       } else if let episode = allEpisodes.first(where: { $0.episodeID == id }) {
         do {
@@ -367,7 +368,7 @@ extension OfflineListViewModel {
           try MediaProgress.markAsFinished(for: episode.episodeID)
           try await audiobookshelf.libraries.markAsFinished(bookID: episodeProgressID)
         } catch {
-          print("Failed to mark episode \(id) as finished: \(error)")
+          AppLogger.viewModel.error("Failed to mark episode \(id) as finished: \(error)")
         }
       }
     }
@@ -386,7 +387,7 @@ extension OfflineListViewModel {
         do {
           try await book.resetProgress()
         } catch {
-          print("Failed to reset progress for book \(id): \(error)")
+          AppLogger.viewModel.error("Failed to reset progress for book \(id): \(error)")
         }
       } else if let episode = allEpisodes.first(where: { $0.episodeID == id }) {
         do {
@@ -410,7 +411,7 @@ extension OfflineListViewModel {
             try progress.delete()
           }
         } catch {
-          print("Failed to reset progress for episode \(id): \(error)")
+          AppLogger.viewModel.error("Failed to reset progress for episode \(id): \(error)")
         }
       }
     }

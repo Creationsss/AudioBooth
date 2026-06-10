@@ -1,5 +1,6 @@
 import API
 import Foundation
+import Logging
 
 final class FilterPickerModel: FilterPicker.Model {
   private let audiobookshelf = Audiobookshelf.shared
@@ -33,7 +34,7 @@ final class FilterPickerModel: FilterPicker.Model {
       let data = try await audiobookshelf.libraries.fetchFilterData()
       applyFilterData(data)
     } catch {
-      print("Failed to fetch filter data: \(error)")
+      AppLogger.viewModel.error("Failed to fetch filter data: \(error)")
     }
   }
 

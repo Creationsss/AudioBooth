@@ -10,13 +10,13 @@ enum HTTPMethod: String {
   case delete = "DELETE"
 }
 
-enum NetworkError: LocalizedError {
+public enum NetworkError: LocalizedError {
   case httpError(statusCode: Int, message: String?)
   case invalidResponse
   case decodingError(Error)
   case localNetworkPermission
 
-  var errorDescription: String? {
+  public var errorDescription: String? {
     switch self {
     case .httpError(let statusCode, let message):
       switch statusCode {

@@ -2,6 +2,7 @@ import API
 @preconcurrency import CarPlay
 import Combine
 import Foundation
+import Logging
 import Models
 import Nuke
 
@@ -139,7 +140,9 @@ final class CarPlayHome: CarPlayPageProtocol {
 
         PlayerManager.shared.play()
         nowPlaying?.showNowPlaying()
-      } catch {}
+      } catch {
+        AppLogger.player.error("Failed to play episode from CarPlay: \(error)")
+      }
 
       completion()
       loadingCancellable = nil

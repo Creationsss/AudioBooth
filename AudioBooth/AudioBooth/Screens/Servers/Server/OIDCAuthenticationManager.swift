@@ -169,7 +169,7 @@ final class OIDCAuthenticationManager {
       let redirectURL = URL(string: locationString)
     {
       let cookies = HTTPCookie.cookies(
-        withResponseHeaderFields: httpResponse.allHeaderFields as! [String: String],
+        withResponseHeaderFields: (httpResponse.allHeaderFields as? [String: String]) ?? [:],
         for: authURL
       )
       AppLogger.authentication.info(

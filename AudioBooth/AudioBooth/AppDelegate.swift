@@ -85,7 +85,10 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     handleEventsForBackgroundURLSession identifier: String,
     completionHandler: @escaping () -> Void
   ) {
-    DownloadManager.shared.backgroundCompletionHandler = completionHandler
+    DownloadManager.shared.handleBackgroundSessionEvents(
+      identifier: identifier,
+      completionHandler: completionHandler
+    )
   }
 
   func application(

@@ -1,4 +1,5 @@
 import Foundation
+import Logging
 import UIKit
 
 public final class SessionService {
@@ -251,7 +252,7 @@ public final class SessionService {
 
     do {
       _ = try await networkService.send(request)
-      print("syncLocalSessions successful!")
+      AppLogger.network.info("syncLocalSessions successful")
     } catch {
       throw Audiobookshelf.AudiobookshelfError.networkError(
         "Failed to sync local sessions: \(error.localizedDescription)"

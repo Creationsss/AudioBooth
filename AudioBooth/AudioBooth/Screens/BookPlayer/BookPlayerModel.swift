@@ -447,11 +447,13 @@ extension BookPlayerModel {
   }
 
   private func isSessionNotFoundError(_ error: Error) -> Bool {
-    let errorString = error.localizedDescription.lowercased()
-    let nsError = error as NSError
-
-    return errorString.contains("404") || errorString.contains("file not found")
-      || errorString.contains("-1011") || nsError.code == -1011 || nsError.code == 404
+    if case NetworkError.httpError(let statusCode, _) = error {
+      return statusCode == 404
+    }
+    if let urlError = error as? URLError {
+      return urlError.code == .badServerResponse || urlError.code == .fileDoesNotExist
+    }
+    return false
   }
 
   func closeSession() {
@@ -881,6 +883,8 @@ extension BookPlayerModel {
   }
 
   private func setupInterruptionObservers() {
+    guard volumeObservation == nil else { return }
+
     NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)
       .receive(on: DispatchQueue.main)
       .sink { [weak self] notification in
@@ -1025,14 +1029,22 @@ extension BookPlayerModel {
 
   private func handleMediaServicesReset() {
     AppLogger.player.warning(
-      "Media services were reset - reconfiguring audio session and remote commands"
+      "Media services were reset - recreating player and audio session"
     )
 
     let wasPlaying = isPlaying
+    player?.stop()
+    player = nil
     configureAudioSession()
 
-    if wasPlaying {
-      onPlayTapped()
+    do {
+      try setupAudioPlayer()
+      if wasPlaying {
+        onPlayTapped()
+      }
+    } catch {
+      AppLogger.player.error("Failed to recreate player after media services reset: \(error)")
+      Toast(error: "Playback failed, please try again").show()
     }
   }
 

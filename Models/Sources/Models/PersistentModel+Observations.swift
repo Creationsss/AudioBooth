@@ -1,4 +1,5 @@
 import CoreData
+import Logging
 import SwiftData
 
 extension PersistentModel {
@@ -19,7 +20,9 @@ extension PersistentModel {
             nonisolated(unsafe) let model = model
             continuation.yield(model)
           }
-        } catch {}
+        } catch {
+          AppLogger.persistence.error("Failed to fetch \(entityName) for observation: \(error)")
+        }
 
         for await notification in NotificationCenter.default.notifications(
           named: ModelContext.didSave

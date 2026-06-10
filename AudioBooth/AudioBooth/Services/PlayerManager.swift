@@ -121,6 +121,7 @@ final class PlayerManager: ObservableObject, Sendable {
       if let currentPlayer = current as? BookPlayerModel {
         currentPlayer.stopPlayer()
       }
+      removeFromQueue(bookID: episode.id)
       current = BookPlayerModel(
         episode,
         podcastID: podcastID,
@@ -128,6 +129,7 @@ final class PlayerManager: ObservableObject, Sendable {
         podcastAuthor: podcastAuthor,
         coverURL: coverURL
       )
+      WidgetCenter.shared.reloadAllTimelines()
     }
   }
 
@@ -138,7 +140,9 @@ final class PlayerManager: ObservableObject, Sendable {
       if let currentPlayer = current as? BookPlayerModel {
         currentPlayer.stopPlayer()
       }
+      removeFromQueue(bookID: episode.episodeID)
       current = BookPlayerModel(episode)
+      WidgetCenter.shared.reloadAllTimelines()
     }
   }
 
@@ -214,7 +218,7 @@ extension PlayerManager: PlayerManagerProtocol {
         }
       }
     } catch {
-      print("Failed to play book: \(error)")
+      AppLogger.player.error("Failed to play book: \(error)")
     }
   }
 
@@ -243,7 +247,7 @@ extension PlayerManager: PlayerManagerProtocol {
         play()
       }
     } catch {
-      print("Failed to play episode: \(error)")
+      AppLogger.player.error("Failed to play episode: \(error)")
     }
   }
 
@@ -268,7 +272,7 @@ extension PlayerManager: PlayerManagerProtocol {
         }
       }
     } catch {
-      print("Failed to open book: \(error)")
+      AppLogger.player.error("Failed to open book: \(error)")
     }
   }
 
@@ -297,7 +301,7 @@ extension PlayerManager: PlayerManagerProtocol {
         showFullPlayer()
       }
     } catch {
-      print("Failed to open episode: \(error)")
+      AppLogger.player.error("Failed to open episode: \(error)")
     }
   }
 }
@@ -348,11 +352,12 @@ extension PlayerManager {
 
     commandCenter.playCommand.isEnabled = true
     commandCenter.playCommand.addTarget { [weak self] _ in
-      guard
-        let self,
-        let current,
-        AVAudioSession.sharedInstance().outputVolume > 0
-      else { return .commandFailed }
+      guard let self, let current else { return .commandFailed }
+
+      if AVAudioSession.sharedInstance().outputVolume == 0 {
+        AppLogger.player.info("Play command received with volume at 0, raising system volume")
+        MPVolumeView.setSystemVolume(0.3)
+      }
 
       current.onPlayTapped()
 
