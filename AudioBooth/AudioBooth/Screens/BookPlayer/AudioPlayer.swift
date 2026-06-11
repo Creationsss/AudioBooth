@@ -32,6 +32,7 @@ final class AudioPlayer {
   private var session: PlaybackSession
   private var tracks: [Track] = []
   private(set) var currentTrackIndex: Int = 0
+  private var lastQueuedIndex: Int = -1
   private var timeObserver: Any?
   private var cancellables = Set<AnyCancellable>()
   private var itemObservers = Set<AnyCancellable>()
@@ -40,7 +41,8 @@ final class AudioPlayer {
 
   var time: TimeInterval {
     guard !tracks.isEmpty else { return player.currentSeconds }
-    return tracks[currentTrackIndex].startOffset + player.currentSeconds
+    let track = tracks[currentTrackIndex]
+    return track.startOffset + min(player.currentSeconds, track.duration)
   }
 
   var isPlaying: Bool {
@@ -149,65 +151,49 @@ final class AudioPlayer {
       return
     }
 
-    guard targetIndex < tracks.count else { return }
+    guard tracks.indices.contains(targetIndex) else { return }
 
-    var existing = player.items()
-    existing.first?.seek(to: .zero, completionHandler: nil)
-    player.removeAllItems()
-
-    if targetIndex < currentTrackIndex {
-      for index in targetIndex..<currentTrackIndex {
-        guard let item = makeItem(at: index) else { continue }
-        player.insert(item, after: nil)
-      }
-    } else {
-      existing = Array(existing.dropFirst(targetIndex - currentTrackIndex))
-    }
-
-    for item in existing {
-      player.insert(item, after: nil)
-    }
-    applyEQToUpcoming()
-
-    currentTrackIndex = targetIndex
-    player.seek(
-      to: CMTime(seconds: offset, preferredTimescale: 1000),
-      toleranceBefore: .zero,
-      toleranceAfter: .zero
-    ) { [weak self] _ in
-      self?.events.send(.seek(time))
-    }
-    if isPlaying {
-      player.play()
-      player.rate = player.defaultRate
-    }
+    loadQueue(from: targetIndex, seekTo: offset, autoPlay: isPlaying)
+    events.send(.seek(time))
   }
 
 }
 
 private extension AudioPlayer {
+  static let maxQueuedItems = 3
+
   func loadQueue(from index: Int, seekTo offset: TimeInterval, autoPlay: Bool) {
-    guard index < tracks.count else { return }
+    guard tracks.indices.contains(index) else { return }
 
     player.removeAllItems()
-    for i in index..<tracks.count {
-      guard let item = makeItem(at: i) else { continue }
-      if i == index, offset > 0 {
-        item.seek(
-          to: CMTime(seconds: offset, preferredTimescale: 1000),
-          toleranceBefore: .zero,
-          toleranceAfter: .zero,
-          completionHandler: nil
-        )
-      }
-      player.insert(item, after: nil)
+    currentTrackIndex = index
+    lastQueuedIndex = index - 1
+    topUpQueue()
+
+    if offset > 0, let firstItem = player.items().first {
+      firstItem.seek(
+        to: CMTime(seconds: offset, preferredTimescale: 1000),
+        toleranceBefore: .zero,
+        toleranceAfter: .zero,
+        completionHandler: nil
+      )
     }
-    applyEQToUpcoming()
 
     if autoPlay {
       player.play()
       player.rate = player.defaultRate
     }
+  }
+
+  func topUpQueue() {
+    while player.items().count < Self.maxQueuedItems {
+      let nextIndex = lastQueuedIndex + 1
+      guard tracks.indices.contains(nextIndex) else { break }
+      lastQueuedIndex = nextIndex
+      guard let item = makeItem(at: nextIndex) else { continue }
+      player.insert(item, after: nil)
+    }
+    applyEQToUpcoming()
   }
 
   func makeItem(at index: Int) -> AVPlayerItem? {
@@ -275,7 +261,7 @@ private extension AudioPlayer {
     guard let item else { return }
     AppLogger.player.debug("Now playing track \(self.currentTrackIndex)/\(self.tracks.count)")
     observeItem(item)
-    applyEQToUpcoming()
+    topUpQueue()
   }
 
   func observeItem(_ item: AVPlayerItem) {
