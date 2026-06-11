@@ -477,7 +477,7 @@ extension BookPlayer {
         badge(
           icon: "bell.fill",
           text: Text(
-            timerInterval: Date()...trigger,
+            timerInterval: min(Date(), trigger)...trigger,
             pauseTime: nil,
             countsDown: true,
             showsHours: true

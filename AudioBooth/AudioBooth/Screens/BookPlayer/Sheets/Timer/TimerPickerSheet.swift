@@ -115,7 +115,7 @@ struct TimerPickerSheet: View {
       Text(count == 1 ? "End of chapter" : "End of \(count) chapters")
     case .atTime(let trigger):
       Text(
-        timerInterval: Date()...trigger,
+        timerInterval: min(Date(), trigger)...trigger,
         pauseTime: nil,
         countsDown: true,
         showsHours: true
