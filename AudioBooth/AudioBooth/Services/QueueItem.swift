@@ -6,6 +6,7 @@ struct QueueItem: Codable, Identifiable, Equatable {
   let details: String?
   let coverURL: URL?
   let podcastID: String?
+  let publishedAt: Date?
 
   var id: String { bookID }
 
@@ -15,13 +16,22 @@ struct QueueItem: Codable, Identifiable, Equatable {
     self.details = book.details
     self.coverURL = book.coverURL
     self.podcastID = nil
+    self.publishedAt = nil
   }
 
-  init(bookID: String, title: String, details: String?, coverURL: URL?, podcastID: String? = nil) {
+  init(
+    bookID: String,
+    title: String,
+    details: String?,
+    coverURL: URL?,
+    podcastID: String? = nil,
+    publishedAt: Date? = nil
+  ) {
     self.bookID = bookID
     self.title = title
     self.details = details
     self.coverURL = coverURL
     self.podcastID = podcastID
+    self.publishedAt = publishedAt
   }
 }

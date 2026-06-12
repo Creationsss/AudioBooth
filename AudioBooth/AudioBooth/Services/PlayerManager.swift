@@ -510,6 +510,11 @@ extension PlayerManager {
   }
 }
 
+enum QueuePosition {
+  case top
+  case bottom
+}
+
 extension PlayerManager {
   func addToQueue(_ item: BookActionable) {
     guard item.bookID != current?.id else { return }
@@ -517,10 +522,15 @@ extension PlayerManager {
     queue.append(QueueItem(from: item))
   }
 
-  func addToQueue(_ item: QueueItem) {
+  func addToQueue(_ item: QueueItem, position: QueuePosition = .bottom) {
     guard item.bookID != current?.id else { return }
     guard !queue.contains(where: { $0.bookID == item.bookID }) else { return }
-    queue.append(item)
+    switch position {
+    case .top:
+      queue.insert(item, at: 0)
+    case .bottom:
+      queue.append(item)
+    }
   }
 
   func removeFromQueue(bookID: String) {

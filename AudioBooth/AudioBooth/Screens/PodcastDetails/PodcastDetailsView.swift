@@ -64,6 +64,14 @@ struct PodcastDetailsView: View {
       }
     }
     .toolbar {
+      ToolbarItem(placement: .topBarTrailing) {
+        autoQueueMenu
+      }
+
+      if #available(iOS 26.0, *) {
+        ToolbarSpacer(.fixed, placement: .topBarTrailing)
+      }
+
       if let feedURL = model.feedURL,
         let userType = audiobookshelf.authentication.server?.userType,
         [.root, .admin].contains(userType)
@@ -104,6 +112,59 @@ struct PodcastDetailsView: View {
       }
     }
     .onAppear(perform: model.onAppear)
+  }
+
+  private var autoQueueMenu: some View {
+    Menu {
+      Section("Auto-Add New Episodes") {
+        Button {
+          model.onAutoQueueChanged(.off, model.autoQueueLimit)
+        } label: {
+          if model.autoQueuePosition == .off {
+            Label("Off", systemImage: "checkmark")
+          } else {
+            Text("Off")
+          }
+        }
+
+        autoQueuePositionMenu(.top)
+        autoQueuePositionMenu(.bottom)
+      }
+    } label: {
+      Label("Auto-Add New Episodes", systemImage: "text.badge.plus")
+    }
+    .tint(.primary)
+  }
+
+  private func autoQueuePositionMenu(_ position: PodcastAutoQueueSettings.Position) -> some View {
+    Menu {
+      ForEach(PodcastAutoQueueLimit.allCases) { limit in
+        Button {
+          model.onAutoQueueChanged(position, limit)
+        } label: {
+          if model.autoQueuePosition == position && model.autoQueueLimit == limit {
+            Label {
+              Text(limit.title)
+            } icon: {
+              Image(systemName: "checkmark")
+            }
+          } else {
+            Text(limit.title)
+          }
+        }
+      }
+    } label: {
+      if model.autoQueuePosition == position {
+        Label {
+          Text(position.title)
+        } icon: {
+          Image(systemName: "checkmark")
+        }
+        Text(model.autoQueueLimit.title)
+      } else {
+        Text(position.title)
+      }
+    }
   }
 
   private func scrollToEpisode(id: String?, proxy: ScrollViewProxy) {
@@ -628,6 +689,9 @@ extension PodcastDetailsView {
     var currentlyPlayingEpisodeID: String?
     var isPlaying: Bool
 
+    var autoQueuePosition: PodcastAutoQueueSettings.Position = .off
+    var autoQueueLimit: PodcastAutoQueueLimit = .all
+
     var scrollToEpisodeID: String?
     var highlightedEpisodeID: String?
 
@@ -701,6 +765,7 @@ extension PodcastDetailsView {
     func onPlayEpisode(_ episode: Episode) {}
     func onPlayAllEpisodes() {}
     func onDownloadAllEpisodes() {}
+    func onAutoQueueChanged(_ position: PodcastAutoQueueSettings.Position, _ limit: PodcastAutoQueueLimit) {}
     func onFilterChanged(_ filter: EpisodeFilter) {}
     func onSortOptionTapped(_ sort: EpisodeSort) {
       if selectedSort == sort {

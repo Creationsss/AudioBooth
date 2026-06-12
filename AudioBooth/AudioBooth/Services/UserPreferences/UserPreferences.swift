@@ -186,6 +186,12 @@ final class UserPreferences: ObservableObject {
   @AppStorage("smartContinuePlayback")
   var smartContinuePlayback: Bool = true
 
+  @AppStorage("podcastAutoQueueSettings")
+  var podcastAutoQueueSettings: PodcastAutoQueueStore = .init()
+
+  @AppStorage("autoDownloadQueuedEpisodes")
+  var autoDownloadQueuedEpisodes: Bool = false
+
   @AppStorage("podcastEpisodeFilter")
   var podcastEpisodeFilter: PodcastDetailsView.Model.EpisodeFilter = .all
 
@@ -277,6 +283,22 @@ final class UserPreferences: ObservableObject {
     case "high": volumeLevel = 3.0
     default: break
     }
+  }
+}
+
+extension UserPreferences {
+  func podcastAutoQueueSetting(for podcastID: String) -> PodcastAutoQueueSettings {
+    podcastAutoQueueSettings.settings[podcastID] ?? PodcastAutoQueueSettings()
+  }
+
+  func setPodcastAutoQueueSetting(_ setting: PodcastAutoQueueSettings, for podcastID: String) {
+    var store = podcastAutoQueueSettings
+    if !setting.position.isEnabled {
+      store.settings.removeValue(forKey: podcastID)
+    } else {
+      store.settings[podcastID] = setting
+    }
+    podcastAutoQueueSettings = store
   }
 }
 

@@ -56,6 +56,16 @@ struct StoragePreferencesView: View {
           .listRowBackground(theme.colors.background.card)
         }
 
+        Toggle(isOn: $preferences.autoDownloadQueuedEpisodes) {
+          PreferenceRow(
+            systemImage: "text.badge.plus",
+            tint: .teal,
+            title: "Auto-Download Queued Episodes",
+            subtitle: "Download episodes auto-added to the queue"
+          )
+        }
+        .listRowBackground(theme.colors.background.card)
+
         Toggle(isOn: $preferences.removeDownloadOnCompletion) {
           PreferenceRow(
             systemImage: "trash",

@@ -20,8 +20,40 @@ final class PodcastDetailsViewModel: PodcastDetailsView.Model {
     selectedFilter = preferences.podcastEpisodeFilter
     selectedSort = preferences.podcastEpisodeSort
     ascending = preferences.podcastEpisodeSortAscending
+
+    let autoQueue = preferences.podcastAutoQueueSetting(for: podcastID)
+    autoQueuePosition = autoQueue.position
+    autoQueueLimit = autoQueue.limit
+
     observePlayer()
     observeDownloadStates()
+  }
+
+  override func onAutoQueueChanged(_ position: PodcastAutoQueueSettings.Position, _ limit: PodcastAutoQueueLimit) {
+    autoQueuePosition = position
+    autoQueueLimit = limit
+
+    var setting = preferences.podcastAutoQueueSetting(for: podcastID)
+    let wasEnabled = setting.position.isEnabled
+    setting.position = position
+    setting.limit = limit
+
+    if position.isEnabled && !wasEnabled {
+      setting.baselinePublishedAt = newestKnownPublishedAt() ?? Int64(Date().timeIntervalSince1970 * 1000)
+    }
+
+    preferences.setPodcastAutoQueueSetting(setting, for: podcastID)
+  }
+
+  private func newestKnownPublishedAt() -> Int64? {
+    if let newest = apiEpisodes.compactMap({ $0.publishedAt }).max() {
+      return newest
+    }
+    return
+      episodes
+      .compactMap { $0.publishedAt }
+      .map { Int64($0.timeIntervalSince1970 * 1000) }
+      .max()
   }
 
   override func onFilterChanged(_ filter: EpisodeFilter) {

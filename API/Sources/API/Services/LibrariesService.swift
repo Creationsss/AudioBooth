@@ -229,14 +229,18 @@ public final class LibrariesService: ObservableObject, @unchecked Sendable {
     }
   }
 
-  public func fetchRecentEpisodes(limit: Int = 50, page: Int = 0) async throws -> [RecentEpisode] {
+  public func fetchRecentEpisodes(
+    libraryID: String? = nil,
+    limit: Int = 50,
+    page: Int = 0
+  ) async throws -> [RecentEpisode] {
     guard let networkService = audiobookshelf.networkService else {
       throw Audiobookshelf.AudiobookshelfError.networkError(
         "Network service not configured. Please login first."
       )
     }
 
-    guard let library = audiobookshelf.libraries.current else {
+    guard let libraryID = libraryID ?? audiobookshelf.libraries.current?.id else {
       throw Audiobookshelf.AudiobookshelfError.networkError(
         "No library selected. Please select a library first."
       )
@@ -247,7 +251,7 @@ public final class LibrariesService: ObservableObject, @unchecked Sendable {
     }
 
     let request = NetworkRequest<Response>(
-      path: "/api/libraries/\(library.id)/recent-episodes",
+      path: "/api/libraries/\(libraryID)/recent-episodes",
       method: .get,
       query: [
         "limit": "\(limit)",

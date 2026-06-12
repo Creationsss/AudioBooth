@@ -42,6 +42,7 @@ struct AudioBoothApp: App {
       case .active:
         guard Audiobookshelf.shared.authentication.isAuthenticated else { return }
         SessionManager.shared.syncUnsyncedSessions()
+        PodcastAutoQueueManager.shared.refresh()
       default:
         break
       }

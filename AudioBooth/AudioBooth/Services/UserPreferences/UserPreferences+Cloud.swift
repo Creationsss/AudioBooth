@@ -64,6 +64,8 @@ extension UserPreferences {
     "podcastEpisodeFilter",
     "podcastEpisodeSort",
     "podcastEpisodeSortAscending",
+    "podcastAutoQueueSettings",
+    "autoDownloadQueuedEpisodes",
     "openPlayerOnLaunch",
     "playbackSpeed",
     "speedPresets",
