@@ -21,32 +21,18 @@ struct WatchComplicationProvider: TimelineProvider {
     in context: Context,
     completion: @escaping (Timeline<WatchComplicationEntry>) -> Void
   ) {
-    guard let state = WatchComplicationStorage.load() else {
-      completion(Timeline(entries: [.empty], policy: .never))
-      return
+    let entry = currentEntry()
+
+    let policy: TimelineReloadPolicy
+    if let chapterEnd = entry.chapterInterval?.upperBound {
+      policy = .after(chapterEnd)
+    } else if let bookEnd = entry.bookInterval?.upperBound {
+      policy = .after(bookEnd)
+    } else {
+      policy = .never
     }
 
-    guard state.isPlaying, let savedAt = state.savedAt else {
-      completion(Timeline(entries: [currentEntry()], policy: .never))
-      return
-    }
-
-    let now = Date()
-    let rate = state.playbackRate ?? 1
-
-    var entries: [WatchComplicationEntry] = []
-    for minute in 0...60 {
-      let entryDate = now.addingTimeInterval(Double(minute) * 60)
-      let projectedTime = state.currentTime + entryDate.timeIntervalSince(savedAt) * rate
-
-      entries.append(entry(for: state, currentTime: min(projectedTime, state.duration), date: entryDate))
-
-      if projectedTime >= state.duration {
-        break
-      }
-    }
-
-    completion(Timeline(entries: entries, policy: .atEnd))
+    completion(Timeline(entries: [entry], policy: policy))
   }
 
   private func currentEntry() -> WatchComplicationEntry {
@@ -54,28 +40,49 @@ struct WatchComplicationProvider: TimelineProvider {
       return .empty
     }
 
-    return entry(for: state, currentTime: state.currentTime, date: Date())
+    return entry(for: state)
   }
 
-  private func entry(
-    for state: WatchComplicationState,
-    currentTime: Double,
-    date: Date
-  ) -> WatchComplicationEntry {
-    let chapterProgress: Double?
+  private func entry(for state: WatchComplicationState) -> WatchComplicationEntry {
+    let staticChapterProgress: Double?
     if let start = state.chapterStart, let end = state.chapterEnd, end > start {
-      chapterProgress = min(1, max(0, (currentTime - start) / (end - start)))
+      staticChapterProgress = min(1, max(0, (state.currentTime - start) / (end - start)))
     } else {
-      chapterProgress = state.chapterProgress
+      staticChapterProgress = state.chapterProgress
+    }
+
+    var bookInterval: ClosedRange<Date>?
+    var chapterInterval: ClosedRange<Date>?
+
+    if state.isPlaying, let savedAt = state.savedAt {
+      let rate = max(0.1, state.playbackRate ?? 1)
+
+      if state.duration > 0 {
+        let start = savedAt.addingTimeInterval(-state.currentTime / rate)
+        let end = savedAt.addingTimeInterval((state.duration - state.currentTime) / rate)
+        if start < end {
+          bookInterval = start...end
+        }
+      }
+
+      if let chapterStart = state.chapterStart, let chapterEnd = state.chapterEnd, chapterEnd > chapterStart {
+        let start = savedAt.addingTimeInterval(-(state.currentTime - chapterStart) / rate)
+        let end = savedAt.addingTimeInterval((chapterEnd - state.currentTime) / rate)
+        if start < end {
+          chapterInterval = start...end
+        }
+      }
     }
 
     return WatchComplicationEntry(
-      date: date,
+      date: Date(),
       bookTitle: state.bookTitle,
-      progress: state.duration > 0 ? min(1, currentTime / state.duration) : 0,
-      chapterProgress: chapterProgress,
-      timeRemaining: max(0, state.duration - currentTime),
-      isPlaying: state.isPlaying
+      progress: state.duration > 0 ? min(1, state.currentTime / state.duration) : 0,
+      chapterProgress: staticChapterProgress,
+      timeRemaining: max(0, state.duration - state.currentTime),
+      isPlaying: state.isPlaying,
+      bookInterval: bookInterval,
+      chapterInterval: chapterInterval
     )
   }
 }

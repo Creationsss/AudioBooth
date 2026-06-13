@@ -26,11 +26,20 @@ struct RectangularComplicationView: View {
           .lineLimit(1)
       }
 
-      Gauge(value: entry.progress, in: 0...1) {
-        EmptyView()
+      if let bookInterval = entry.bookInterval {
+        ProgressView(timerInterval: bookInterval, countsDown: false) {
+          EmptyView()
+        } currentValueLabel: {
+          EmptyView()
+        }
+        .tint(.accentColor)
+      } else {
+        Gauge(value: entry.progress, in: 0...1) {
+          EmptyView()
+        }
+        .gaugeStyle(.linearCapacity)
+        .tint(.accentColor)
       }
-      .gaugeStyle(.linearCapacity)
-      .tint(.accentColor)
     }
     .frame(maxWidth: .infinity, alignment: .leading)
   }

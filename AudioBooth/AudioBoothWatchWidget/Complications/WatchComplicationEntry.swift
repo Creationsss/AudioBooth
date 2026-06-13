@@ -8,6 +8,8 @@ struct WatchComplicationEntry: TimelineEntry {
   let chapterProgress: Double?
   let timeRemaining: TimeInterval?
   let isPlaying: Bool
+  var bookInterval: ClosedRange<Date>? = nil
+  var chapterInterval: ClosedRange<Date>? = nil
 
   static let empty = WatchComplicationEntry(
     date: Date(),

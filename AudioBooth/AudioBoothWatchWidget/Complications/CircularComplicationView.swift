@@ -19,12 +19,47 @@ struct CircularComplicationView: View {
     ZStack {
       AccessoryWidgetBackground()
 
-      if let chapterProgress = entry.chapterProgress {
+      if let chapterInterval = entry.chapterInterval {
+        dualRingTimerView(bookInterval: entry.bookInterval, chapterInterval: chapterInterval)
+      } else if let chapterProgress = entry.chapterProgress {
         dualRingView(bookProgress: entry.progress, chapterProgress: chapterProgress)
       } else {
         singleRingView(progress: entry.progress)
       }
     }
+  }
+
+  private func dualRingTimerView(
+    bookInterval: ClosedRange<Date>?,
+    chapterInterval: ClosedRange<Date>
+  ) -> some View {
+    ZStack {
+      timerRing(interval: chapterInterval)
+        .padding(2)
+
+      Group {
+        if let bookInterval {
+          timerRing(interval: bookInterval)
+        } else {
+          progressRing(progress: entry.progress)
+        }
+      }
+      .padding(2 + ringWidth + ringSpacing)
+
+      Image("audiobooth.fill")
+        .font(.system(size: 18))
+        .padding(.top, -2)
+    }
+  }
+
+  private func timerRing(interval: ClosedRange<Date>) -> some View {
+    ProgressView(timerInterval: interval, countsDown: false) {
+      EmptyView()
+    } currentValueLabel: {
+      EmptyView()
+    }
+    .progressViewStyle(.circular)
+    .widgetAccentable()
   }
 
   private func dualRingView(bookProgress: Double, chapterProgress: Double) -> some View {
