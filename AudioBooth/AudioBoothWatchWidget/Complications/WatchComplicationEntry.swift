@@ -7,7 +7,6 @@ struct WatchComplicationEntry: TimelineEntry {
   let progress: Double
   let chapterProgress: Double?
   let timeRemaining: TimeInterval?
-  let isPlaying: Bool
   var bookInterval: ClosedRange<Date>? = nil
   var chapterInterval: ClosedRange<Date>? = nil
 
@@ -16,8 +15,7 @@ struct WatchComplicationEntry: TimelineEntry {
     bookTitle: nil,
     progress: 0,
     chapterProgress: nil,
-    timeRemaining: nil,
-    isPlaying: false
+    timeRemaining: nil
   )
 }
 

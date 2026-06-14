@@ -2,7 +2,6 @@ import API
 import Combine
 import Foundation
 import Logging
-import Models
 
 final class AuthorDetailsViewModel: AuthorDetailsView.Model {
   private var authorsService: AuthorsService { Audiobookshelf.shared.authors }

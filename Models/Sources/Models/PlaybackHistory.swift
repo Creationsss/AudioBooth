@@ -75,32 +75,4 @@ extension PlaybackHistory {
     try? context.save()
   }
 
-  public func delete() throws {
-    let context = ModelContextProvider.shared.context
-    context.delete(self)
-    try? context.save()
-  }
-
-  public static func deleteAll(for itemID: String) throws {
-    let context = ModelContextProvider.shared.context
-    let entries = try fetch(itemID: itemID)
-    for entry in entries {
-      context.delete(entry)
-    }
-    try? context.save()
-  }
-
-  public static func cleanup(olderThan days: Int = 7) throws {
-    let context = ModelContextProvider.shared.context
-    let cutoffDate = Calendar.current.date(byAdding: .day, value: -days, to: Date()) ?? Date()
-    let predicate = #Predicate<PlaybackHistory> { history in
-      history.timestamp < cutoffDate
-    }
-    let descriptor = FetchDescriptor<PlaybackHistory>(predicate: predicate)
-    let oldEntries = try context.fetch(descriptor)
-    for entry in oldEntries {
-      context.delete(entry)
-    }
-    try? context.save()
-  }
 }

@@ -320,18 +320,6 @@ public final class AuthenticationService: ObservableObject {
     removeServer(serverID)
   }
 
-  public func logoutAll() {
-    for server in servers.values {
-      server.clearStorage()
-    }
-    connections = [:]
-    servers = [:]
-    server = nil
-    audiobookshelf.libraries.current = nil
-    audiobookshelf.libraries.clearAllCaches()
-    ImagePipeline.shared.cache.removeAll()
-  }
-
   public func authorize() async throws -> Authorize {
     guard let networkService = audiobookshelf.networkService else {
       throw Audiobookshelf.AudiobookshelfError.networkError(
@@ -350,34 +338,6 @@ public final class AuthenticationService: ObservableObject {
       let authorize = response.value
       server?.update(with: authorize)
       return authorize
-    } catch {
-      throw Audiobookshelf.AudiobookshelfError.networkError(
-        "Failed to fetch user data: \(error.localizedDescription)"
-      )
-    }
-  }
-
-  public func fetchMe() async throws -> User {
-    guard let networkService = audiobookshelf.networkService else {
-      throw Audiobookshelf.AudiobookshelfError.networkError(
-        "Network service not configured. Please login first."
-      )
-    }
-
-    let request = NetworkRequest<User>(
-      path: "/api/me",
-      method: .get
-    )
-
-    do {
-      let response = try await networkService.send(request)
-      let user = response.value
-      server?.permissions = user.permissions
-      if let username = user.username {
-        server?.username = username
-      }
-      server?.userType = user.type
-      return user
     } catch {
       throw Audiobookshelf.AudiobookshelfError.networkError(
         "Failed to fetch user data: \(error.localizedDescription)"

@@ -211,19 +211,6 @@ extension MediaProgress {
     MediaProgress.cache.removeValue(forKey: self.bookID)
   }
 
-  public static func deleteAll() throws {
-    let context = ModelContextProvider.shared.context
-    let descriptor = FetchDescriptor<MediaProgress>()
-    let allProgress = try context.fetch(descriptor)
-
-    for progress in allProgress {
-      context.delete(progress)
-    }
-
-    try? context.save()
-    cache.removeAll()
-  }
-
   public static func getOrCreate(
     for bookID: String,
     duration: TimeInterval

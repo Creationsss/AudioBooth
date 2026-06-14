@@ -19,11 +19,10 @@ public final class Audiobookshelf: @unchecked Sendable {
   public lazy var playlists = PlaylistsService(audiobookshelf: self)
   public lazy var collections = CollectionsService(audiobookshelf: self)
   public lazy var bookmarks = BookmarksService(audiobookshelf: self)
-  public lazy var networkDiscovery = NetworkDiscoveryService(audiobookshelf: self)
+  public lazy var networkDiscovery = NetworkDiscoveryService()
   public lazy var misc = MiscService(audiobookshelf: self)
 
   public var serverURL: URL? { authentication.serverURL }
-  public var isAuthenticated: Bool { authentication.isAuthenticated }
 
   private init() {
     setupNetworkService()
@@ -40,10 +39,6 @@ public final class Audiobookshelf: @unchecked Sendable {
 
   public func logout(serverID: String) {
     authentication.logout(serverID: serverID)
-  }
-
-  public func logoutAll() {
-    authentication.logoutAll()
   }
 
   func setupNetworkService() {

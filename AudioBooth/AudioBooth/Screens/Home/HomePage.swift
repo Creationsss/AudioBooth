@@ -268,7 +268,7 @@ struct HomePage: View {
         ScrollView(.horizontal, showsIndicators: false) {
           HStack(alignment: .top, spacing: 16) {
             ForEach(items) { series in
-              SeriesCard(model: series, titleFont: .footnote)
+              SeriesCard(model: series)
             }
           }
           .padding(.horizontal)

@@ -6,8 +6,6 @@ struct ServerView: View {
   @Environment(\.appTheme) var theme
   enum FocusField: Hashable {
     case serverURL
-    case username
-    case password
   }
 
   @Environment(\.dismiss) var dismiss
@@ -273,12 +271,6 @@ extension ServerView {
 
     func hash(into hasher: inout Hasher) {
       hasher.combine(id)
-    }
-
-    enum AuthenticationMethod: CaseIterable {
-      case usernamePassword
-      case oidc
-      case apiKey
     }
 
     enum ServerScheme: String, CaseIterable {

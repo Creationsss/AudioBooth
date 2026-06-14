@@ -2,13 +2,8 @@ import Foundation
 import Network
 
 public final class NetworkDiscoveryService: @unchecked Sendable {
-  private let audiobookshelf: Audiobookshelf
   private let defaultPort = 13378
   private let timeout: TimeInterval = 3.0
-
-  init(audiobookshelf: Audiobookshelf) {
-    self.audiobookshelf = audiobookshelf
-  }
 
   public func fetchServerStatus(
     serverURL: URL,

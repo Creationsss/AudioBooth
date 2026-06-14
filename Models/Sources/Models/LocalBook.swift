@@ -171,18 +171,6 @@ extension LocalBook {
     try? context.save()
   }
 
-  public static func deleteAll() throws {
-    let context = ModelContextProvider.shared.context
-    let descriptor = FetchDescriptor<LocalBook>()
-    let allItems = try context.fetch(descriptor)
-
-    for item in allItems {
-      context.delete(item)
-    }
-
-    try? context.save()
-  }
-
   public static func updateDisplayOrders(_ bookIDsInOrder: [String]) throws {
     let context = ModelContextProvider.shared.context
     for (index, bookID) in bookIDsInOrder.enumerated() {
@@ -191,21 +179,6 @@ extension LocalBook {
       }
     }
     try? context.save()
-  }
-
-  public func track(at time: TimeInterval) -> Track? {
-    let tracks = orderedTracks
-    guard !tracks.isEmpty else { return nil }
-
-    var currentTime: TimeInterval = 0
-    for track in tracks {
-      if time >= currentTime && time < currentTime + track.duration {
-        return track
-      }
-      currentTime += track.duration
-    }
-
-    return nil
   }
 
   public var orderedChapters: [Chapter] {
@@ -261,7 +234,6 @@ extension LocalBook {
 }
 
 extension LocalBook: PlayableItem {
-  public var itemID: String { bookID }
   public var details: String { authorNames }
 }
 

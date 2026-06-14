@@ -183,9 +183,6 @@ final class PlayerManager: ObservableObject, Sendable {
     }
   }
 
-  func closeEbookReader() {
-    reader = nil
-  }
 }
 
 extension PlayerManager: PlayerManagerProtocol {

@@ -41,7 +41,7 @@ final class PlaybackHistorySheetViewModel: PlaybackHistorySheet.Model {
     var dateOrder: [String] = []
 
     for entry in entries {
-      let sectionTitle = sectionTitle(for: entry.timestamp, calendar: calendar, now: now)
+      let sectionTitle = sectionTitle(for: entry.timestamp, calendar: calendar)
 
       if grouped[sectionTitle] == nil {
         grouped[sectionTitle] = []
@@ -57,7 +57,7 @@ final class PlaybackHistorySheetViewModel: PlaybackHistorySheet.Model {
     }
   }
 
-  private func sectionTitle(for date: Date, calendar: Calendar, now: Date) -> String {
+  private func sectionTitle(for date: Date, calendar: Calendar) -> String {
     if calendar.isDateInToday(date) {
       return String(localized: "Today")
     } else if calendar.isDateInYesterday(date) {

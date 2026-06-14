@@ -13,8 +13,6 @@ public final class Bookmark {
 
   public enum Error: Swift.Error {
     case notFound
-    case saveFailed
-    case syncFailed(Swift.Error)
   }
 
   public var bookID: String
@@ -98,18 +96,6 @@ extension Bookmark {
   public func delete() throws {
     let context = ModelContextProvider.shared.context
     context.delete(self)
-    try? context.save()
-  }
-
-  public static func deleteAll() throws {
-    let context = ModelContextProvider.shared.context
-    let descriptor = FetchDescriptor<Bookmark>()
-    let allBookmarks = try context.fetch(descriptor)
-
-    for bookmark in allBookmarks {
-      context.delete(bookmark)
-    }
-
     try? context.save()
   }
 

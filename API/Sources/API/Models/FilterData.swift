@@ -30,23 +30,4 @@ public struct FilterData: Codable, Sendable {
   public let publishers: [String]
   public let publishedDecades: [String]
 
-  public init(
-    authors: [Author],
-    genres: [String],
-    tags: [String],
-    series: [Series],
-    narrators: [String],
-    languages: [String],
-    publishers: [String],
-    publishedDecades: [String]
-  ) {
-    self.authors = authors
-    self.genres = genres
-    self.tags = tags
-    self.series = series
-    self.narrators = narrators
-    self.languages = languages
-    self.publishers = publishers
-    self.publishedDecades = publishedDecades
-  }
 }

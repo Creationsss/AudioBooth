@@ -394,14 +394,6 @@ extension BookCard {
   }
 }
 
-extension BookCard.Model {
-  static let mock = BookCard.Model(
-    title: "The Lord of the Rings",
-    details: "J.R.R. Tolkien",
-    cover: Cover.Model(url: URL(string: "https://m.media-amazon.com/images/I/51YHc7SK5HL._SL500_.jpg"))
-  )
-}
-
 #Preview("BookCard - Card Mode") {
   NavigationStack {
     LazyVGrid(

@@ -217,9 +217,6 @@ extension SettingsView {
 
     var appVersion: String = "Version \(UIApplication.appVersion)"
 
-    func onClearStorageTapped() {}
-    func onExportLogsTapped() {}
-
     init(
       tipJar: TipJarView.Model = .mock,
       playbackSessionList: PlaybackSessionListView.Model? = nil,

@@ -20,7 +20,7 @@ final class CarPlayChapters {
     }
 
     let items = remainingChapters.map { index, chapter in
-      createListItem(for: chapter, at: index, isCurrent: index == currentIndex)
+      createListItem(for: chapter, at: index)
     }
 
     let section = CPListSection(items: items)
@@ -31,8 +31,7 @@ final class CarPlayChapters {
 
   private func createListItem(
     for chapter: ChapterPickerSheet.Model.Chapter,
-    at index: Int,
-    isCurrent: Bool
+    at index: Int
   ) -> CPListItem {
     let duration = formatDuration(chapter.end - chapter.start)
 

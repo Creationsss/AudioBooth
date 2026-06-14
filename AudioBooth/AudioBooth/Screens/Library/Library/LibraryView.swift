@@ -32,7 +32,7 @@ struct LibraryView: View {
                 alignment: preferences.cardCoverDynamicRatio ? .bottom : .top
               )
           case .series(let model):
-            SeriesCard(model: model, titleFont: .headline)
+            SeriesCard(model: model)
               .frame(
                 maxWidth: .infinity,
                 maxHeight: .infinity,
@@ -57,7 +57,7 @@ struct LibraryView: View {
           case .book(let model):
             BookCard(model: model)
           case .series(let model):
-            SeriesCard(model: model, titleFont: .headline)
+            SeriesCard(model: model)
           }
         }
 

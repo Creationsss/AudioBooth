@@ -40,10 +40,6 @@ public final class LocalEpisode {
     return url
   }
 
-  public func track(at time: TimeInterval) -> Track? {
-    track
-  }
-
   public init(
     episodeID: String,
     podcast: LocalPodcast,
@@ -72,7 +68,6 @@ public final class LocalEpisode {
 }
 
 extension LocalEpisode: PlayableItem {
-  public var itemID: String { episodeID }
   public var details: String { podcast?.author ?? "" }
 }
 

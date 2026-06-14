@@ -51,7 +51,6 @@ final class TipJarViewModel: TipJarView.Model {
           return Tip(
             id: package.identifier,
             title: title,
-            description: package.storeProduct.localizedDescription,
             price: price
           )
         }

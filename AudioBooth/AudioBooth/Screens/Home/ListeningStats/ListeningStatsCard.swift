@@ -199,7 +199,6 @@ extension ListeningStatsCard {
       let id: String
       let label: String
       let timeInSeconds: Double
-      let normalizedValue: Double
     }
 
     func onAppear() {}
@@ -223,13 +222,13 @@ extension ListeningStatsCard {
 extension ListeningStatsCard.Model {
   static var mock: ListeningStatsCard.Model {
     let days = [
-      DayData(id: "2025-10-11", label: "Sat", timeInSeconds: 1800, normalizedValue: 0.15),
-      DayData(id: "2025-10-12", label: "Sun", timeInSeconds: 0, normalizedValue: 0.0),
-      DayData(id: "2025-10-13", label: "Mon", timeInSeconds: 3600, normalizedValue: 0.3),
-      DayData(id: "2025-10-14", label: "Tue", timeInSeconds: 7200, normalizedValue: 0.6),
-      DayData(id: "2025-10-15", label: "Wed", timeInSeconds: 10800, normalizedValue: 0.9),
-      DayData(id: "2025-10-16", label: "Thu", timeInSeconds: 5400, normalizedValue: 0.45),
-      DayData(id: "2025-10-17", label: "Fri", timeInSeconds: 12000, normalizedValue: 1.0),
+      DayData(id: "2025-10-11", label: "Sat", timeInSeconds: 1800),
+      DayData(id: "2025-10-12", label: "Sun", timeInSeconds: 0),
+      DayData(id: "2025-10-13", label: "Mon", timeInSeconds: 3600),
+      DayData(id: "2025-10-14", label: "Tue", timeInSeconds: 7200),
+      DayData(id: "2025-10-15", label: "Wed", timeInSeconds: 10800),
+      DayData(id: "2025-10-16", label: "Thu", timeInSeconds: 5400),
+      DayData(id: "2025-10-17", label: "Fri", timeInSeconds: 12000),
     ]
 
     return ListeningStatsCard.Model(

@@ -10,11 +10,6 @@ public final class ModelContextProvider {
   private var contexts: [String: ModelContext] = [:]
   public private(set) var activeServerID: String?
 
-  public var container: ModelContainer? {
-    guard let serverID = activeServerID else { return nil }
-    return containers[serverID]
-  }
-
   public var context: ModelContext {
     if let activeServerID, let context = contexts[activeServerID] {
       return context
@@ -56,29 +51,13 @@ public final class ModelContextProvider {
     return container.mainContext
   }
 
-  public func switchToServer(_ serverID: String, serverURL: URL) throws {
+  public func switchToServer(_ serverID: String) throws {
     if containers[serverID] == nil {
       let container = try createContainer(for: serverID)
       containers[serverID] = container
       contexts[serverID] = container.mainContext
     }
     activeServerID = serverID
-  }
-
-  public func removeServer(_ serverID: String) throws {
-    containers[serverID] = nil
-    contexts[serverID] = nil
-
-    if activeServerID == serverID {
-      activeServerID = nil
-    }
-
-    let dbURL = databaseURL(for: serverID)
-    let fileExtensions = ["", "-shm", "-wal"]
-    for ext in fileExtensions {
-      let fileURL = URL(fileURLWithPath: dbURL.path + ext)
-      try? FileManager.default.removeItem(at: fileURL)
-    }
   }
 
   private func createContainer(for serverID: String) throws -> ModelContainer {

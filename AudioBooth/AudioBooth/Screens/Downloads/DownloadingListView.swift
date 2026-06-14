@@ -1,5 +1,4 @@
 import Combine
-import Models
 import SwiftUI
 
 struct DownloadingListView: View {

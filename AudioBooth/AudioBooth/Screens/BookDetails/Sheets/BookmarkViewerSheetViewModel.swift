@@ -11,7 +11,6 @@ final class BookmarkViewerSheetViewModel: BookmarkViewerSheet.Model {
     case remote(Book)
   }
 
-  private let audiobookshelf = Audiobookshelf.shared
   private let playerManager = PlayerManager.shared
 
   private var item: Item

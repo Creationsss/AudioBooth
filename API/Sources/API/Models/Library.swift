@@ -11,13 +11,6 @@ public struct Library: Codable, Sendable, Equatable {
     case podcast
   }
 
-  public init(id: String, name: String, mediaType: MediaType = .book, serverID: String = "") {
-    self.id = id
-    self.name = name
-    self.mediaType = mediaType
-    self.serverID = serverID
-  }
-
   enum CodingKeys: String, CodingKey {
     case id
     case name

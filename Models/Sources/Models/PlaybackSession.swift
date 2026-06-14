@@ -116,23 +116,4 @@ extension PlaybackSession {
     try? context.save()
   }
 
-  public func delete() throws {
-    let context = ModelContextProvider.shared.context
-    context.delete(self)
-    try? context.save()
-  }
-
-  public static func cleanupOldSessions() throws {
-    let context = ModelContextProvider.shared.context
-    let sevenDaysAgo = Date().addingTimeInterval(-7 * 24 * 60 * 60)
-    let predicate = #Predicate<PlaybackSession> { session in
-      session.pendingListeningTime == 0 && session.updatedAt < sevenDaysAgo
-    }
-    let descriptor = FetchDescriptor<PlaybackSession>(predicate: predicate)
-    let oldSessions = try context.fetch(descriptor)
-    for session in oldSessions {
-      context.delete(session)
-    }
-    try? context.save()
-  }
 }

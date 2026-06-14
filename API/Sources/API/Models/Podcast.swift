@@ -209,12 +209,6 @@ extension Podcast {
         public let length: String?
         public let type: String?
         public let url: String
-
-        public init(length: String? = nil, type: String? = nil, url: String) {
-          self.length = length
-          self.type = type
-          self.url = url
-        }
       }
 
       public struct Chapter: Codable, Sendable {
@@ -222,13 +216,6 @@ extension Podcast {
         public let start: Double?
         public let end: Double?
         public let title: String?
-
-        public init(id: Int? = nil, start: Double? = nil, end: Double? = nil, title: String? = nil) {
-          self.id = id
-          self.start = start
-          self.end = end
-          self.title = title
-        }
       }
     }
   }

@@ -39,11 +39,6 @@ final class WatchAudioPlayer {
     return trackStartOffsets[currentTrackIndex] + player.currentSeconds
   }
 
-  var duration: TimeInterval {
-    let d = player.currentItem?.duration.seconds ?? 0
-    return d.isNaN ? 0 : d
-  }
-
   var isPlaying: Bool {
     player.timeControlStatus == .playing
   }
@@ -56,10 +51,6 @@ final class WatchAudioPlayer {
         player.rate = newValue
       }
     }
-  }
-
-  var hasContent: Bool {
-    !trackURLs.isEmpty
   }
 
   init() {
@@ -153,28 +144,6 @@ final class WatchAudioPlayer {
     events.send(.seek(time))
   }
 
-  func rebuildQueue(urlResolver: (WatchTrack) -> URL?) {
-    let currentGlobal = time
-    let wasPlaying = isPlaying
-
-    let sorted = tracks.sorted { $0.index < $1.index }
-    var resolvedTracks: [WatchTrack] = []
-    var urls: [URL] = []
-    for track in sorted {
-      guard let url = urlResolver(track) else { continue }
-      resolvedTracks.append(track)
-      urls.append(url)
-    }
-    self.tracks = resolvedTracks
-    self.trackURLs = urls
-    self.trackStartOffsets = computeStartOffsets(resolvedTracks)
-
-    guard !urls.isEmpty else { return }
-
-    let (trackIndex, offset) = trackAndOffset(for: currentGlobal)
-    currentTrackIndex = trackIndex
-    loadTrack(at: trackIndex, seekTo: offset, autoPlay: wasPlaying)
-  }
 }
 
 private extension WatchAudioPlayer {

@@ -56,6 +56,7 @@ public final class Server: @unchecked Sendable {
   }
 
   public func update(with authorize: Authorize) {
+    status = .connected
     permissions = authorize.user.permissions
     username = authorize.user.username
     userType = authorize.user.type

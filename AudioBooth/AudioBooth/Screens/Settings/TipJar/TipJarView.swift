@@ -181,7 +181,6 @@ extension TipJarView {
     struct Tip: Identifiable {
       let id: String
       let title: String
-      let description: String
       let price: String
     }
 
@@ -220,19 +219,16 @@ extension TipJarView.Model {
       Tip(
         id: "coffee",
         title: "Buy Me a Coffee ☕",
-        description: "A small way to say thanks!",
         price: "$2.99"
       ),
       Tip(
         id: "lunch",
         title: "Buy Me Lunch 🍕",
-        description: "Your support means a lot!",
         price: "$4.99"
       ),
       Tip(
         id: "dinner",
         title: "Buy Me Dinner 🍱",
-        description: "You're amazing! Thank you!",
         price: "$9.99"
       ),
     ]

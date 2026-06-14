@@ -19,7 +19,6 @@ final class SessionManager {
   private let retryCountKey = "sessionCloseRetryCount"
   private let inactivityTimeout: TimeInterval = 10 * 60
   private let audiobookshelf = Audiobookshelf.shared
-  private let downloadManager = DownloadManager.shared
 
   private(set) var current: PlaybackSession?
   private var lastSyncAt = Date()

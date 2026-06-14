@@ -7,10 +7,6 @@ public final class Series {
   public var name: String
   public var sequence: String
 
-  public var displayName: String {
-    "\(name) #\(sequence)"
-  }
-
   public init(id: String, name: String, sequence: String) {
     self.id = id
     self.name = name

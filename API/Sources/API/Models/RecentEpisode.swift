@@ -43,12 +43,4 @@ public struct RecentEpisode: Codable, Sendable {
     return serverURL.appendingPathComponent("api/items/\(libraryItemID)/cover")
   }
 
-  public func coverURL(raw: Bool) -> URL? {
-    guard let serverURL = Audiobookshelf.shared.serverURL else { return nil }
-    var url = serverURL.appendingPathComponent("api/items/\(libraryItemID)/cover")
-    if raw {
-      url.append(queryItems: [URLQueryItem(name: "raw", value: "1")])
-    }
-    return url
-  }
 }

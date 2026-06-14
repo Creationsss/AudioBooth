@@ -372,8 +372,6 @@ extension EbookReaderView {
       isLoading: Bool = true,
       error: String? = nil,
       readerViewController: UIViewController? = nil,
-      bookTitle: String = "",
-      currentChapter: String? = nil,
       progress: Double = 0.0,
       page: (current: Int, total: Int)? = nil,
       chapters: EbookChapterPickerSheet.Model? = nil,

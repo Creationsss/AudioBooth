@@ -10,7 +10,6 @@ final class ContinueListeningBookCardModel: BookCard.Model {
     case localEpisode(LocalEpisode)
   }
 
-  private let item: Item
   private var progressObservation: Task<Void, Never>?
   private var downloadStateCancellable: AnyCancellable?
 
@@ -22,8 +21,6 @@ final class ContinueListeningBookCardModel: BookCard.Model {
 
   init(book: Book, onRemoved: @escaping () -> Void) {
     let timeRemaining = book.duration.formattedTimeRemaining
-
-    self.item = .remote(book)
 
     super.init(
       id: book.id,
@@ -52,8 +49,6 @@ final class ContinueListeningBookCardModel: BookCard.Model {
   init(localBook: LocalBook, onRemoved: @escaping () -> Void) {
     let timeRemaining = localBook.duration.formattedTimeRemaining
 
-    self.item = .local(localBook)
-
     super.init(
       id: localBook.bookID,
       title: localBook.title,
@@ -80,8 +75,6 @@ final class ContinueListeningBookCardModel: BookCard.Model {
 
   init(localEpisode episode: LocalEpisode) {
     let timeRemaining = episode.duration.formattedTimeRemaining
-
-    self.item = .localEpisode(episode)
 
     super.init(
       id: episode.episodeID,

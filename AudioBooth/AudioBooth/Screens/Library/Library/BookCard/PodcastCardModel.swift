@@ -3,12 +3,9 @@ import Foundation
 import Models
 
 final class PodcastCardModel: BookCard.Model {
-  private let podcast: Podcast
   private var progressObservation: Task<Void, Never>?
 
   init(_ podcast: Podcast, sortBy: SortBy?) {
-    self.podcast = podcast
-
     let id = podcast.recentEpisode?.id ?? podcast.id
 
     let title = podcast.recentEpisode?.title ?? podcast.title

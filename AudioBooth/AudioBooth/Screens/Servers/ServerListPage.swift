@@ -115,7 +115,3 @@ extension ServerListPage {
     }
   }
 }
-
-extension ServerListPage.Model {
-  static var mock = ServerListPage.Model()
-}

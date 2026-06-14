@@ -262,7 +262,6 @@ public final class SessionService {
 
   public struct ListeningSessionsResponse: Sendable {
     public let sessions: [SessionSync]
-    public let total: Int
     public let numPages: Int
     public let page: Int
   }
@@ -279,7 +278,6 @@ public final class SessionService {
     }
 
     struct Response: Codable {
-      let total: Int
       let numPages: Int
       let page: Int
       let itemsPerPage: Int
@@ -304,7 +302,6 @@ public final class SessionService {
       let response = try await networkService.send(request)
       return ListeningSessionsResponse(
         sessions: response.value.sessions,
-        total: response.value.total,
         numPages: response.value.numPages,
         page: response.value.page
       )

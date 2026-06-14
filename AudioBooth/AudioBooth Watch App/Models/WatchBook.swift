@@ -24,20 +24,6 @@ struct WatchBook: Codable, Identifiable {
     !tracks.isEmpty && tracks.allSatisfy { $0.relativePath != nil }
   }
 
-  func track(at time: Double) -> WatchTrack? {
-    let sortedTracks = tracks.sorted { $0.index < $1.index }
-    var accumulatedTime: Double = 0
-
-    for track in sortedTracks {
-      if time >= accumulatedTime && time < accumulatedTime + track.duration {
-        return track
-      }
-      accumulatedTime += track.duration
-    }
-
-    return sortedTracks.last
-  }
-
   func localURL(for track: WatchTrack) -> URL? {
     guard let relativePath = track.relativePath else { return nil }
     return URL.documentsDirectory.appendingPathComponent(relativePath)

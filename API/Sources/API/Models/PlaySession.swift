@@ -17,10 +17,6 @@ public struct PlaySession: Sendable {
     case podcast(Podcast)
   }
 
-  public struct StreamingTrack {
-    public var track: AudioTrack
-    public var url: URL
-  }
 }
 
 extension PlaySession: Codable {

@@ -23,27 +23,6 @@ public final class Track {
 
   public var relativePath: URL?
 
-  public init(from streamingTrack: PlaySession.StreamingTrack) {
-    self.index = streamingTrack.track.index
-    self.startOffset = streamingTrack.track.startOffset
-    self.duration = streamingTrack.track.duration
-    self.title = streamingTrack.track.title
-    self.updatedAt = streamingTrack.track.updatedAt
-
-    self.filename = streamingTrack.track.metadata?.filename
-    self.ext = streamingTrack.track.metadata?.ext
-    self.size = streamingTrack.track.metadata?.size
-
-    self.format = streamingTrack.track.format
-    self.bitRate = streamingTrack.track.bitRate
-    self.codec = streamingTrack.track.codec
-    self.channels = streamingTrack.track.channels
-    self.channelLayout = streamingTrack.track.channelLayout
-    self.mimeType = streamingTrack.track.mimeType
-
-    self.relativePath = nil
-  }
-
   public init(from track: AudioTrack) {
     self.index = track.index
     self.startOffset = track.startOffset

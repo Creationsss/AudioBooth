@@ -4,5 +4,4 @@ enum AppLogger {
   static let network = Logger(label: "api.network")
   static let authentication = Logger(label: "api.authentication")
   static let libraries = Logger(label: "api.libraries")
-  static let download = Logger(label: "api.download")
 }

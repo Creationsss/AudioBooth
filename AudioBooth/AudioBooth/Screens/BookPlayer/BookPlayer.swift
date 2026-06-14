@@ -542,7 +542,6 @@ extension BookPlayer {
     func onPlayTapped() {}
     func onSkipForwardTapped(seconds: Double) {}
     func onSkipBackwardTapped(seconds: Double) {}
-    func onProgressChanged(to progress: Double) {}
     func onDownloadTapped() {}
     func onBookmarksTapped() {}
     func onHistoryTapped() {}

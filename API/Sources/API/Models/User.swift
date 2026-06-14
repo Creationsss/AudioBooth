@@ -45,34 +45,6 @@ extension User {
     public let currentTime: Double
     public let lastUpdate: Int64
 
-    public init(
-      id: String,
-      libraryItemId: String,
-      episodeId: String? = nil,
-      duration: Double,
-      progress: Double,
-      ebookProgress: Double,
-      ebookLocation: String?,
-      isFinished: Bool,
-      startedAt: Int64,
-      finishedAt: Int64?,
-      currentTime: Double,
-      lastUpdate: Int64
-    ) {
-      self.id = id
-      self.libraryItemId = libraryItemId
-      self.episodeId = episodeId
-      self.duration = duration
-      self.progress = progress
-      self.ebookProgress = ebookProgress
-      self.ebookLocation = ebookLocation
-      self.isFinished = isFinished
-      self.startedAt = startedAt
-      self.finishedAt = finishedAt
-      self.currentTime = currentTime
-      self.lastUpdate = lastUpdate
-    }
-
     public init(from decoder: any Decoder) throws {
       let container = try decoder.container(keyedBy: CodingKeys.self)
       self.id = try container.decode(String.self, forKey: .id)

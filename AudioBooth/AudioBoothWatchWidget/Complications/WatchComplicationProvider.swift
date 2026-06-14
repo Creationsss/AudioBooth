@@ -8,8 +8,7 @@ struct WatchComplicationProvider: TimelineProvider {
       bookTitle: "Book Title",
       progress: 0.35,
       chapterProgress: 0.6,
-      timeRemaining: 3600,
-      isPlaying: false
+      timeRemaining: 3600
     )
   }
 
@@ -80,7 +79,6 @@ struct WatchComplicationProvider: TimelineProvider {
       progress: state.duration > 0 ? min(1, state.currentTime / state.duration) : 0,
       chapterProgress: staticChapterProgress,
       timeRemaining: max(0, state.duration - state.currentTime),
-      isPlaying: state.isPlaying,
       bookInterval: bookInterval,
       chapterInterval: chapterInterval
     )

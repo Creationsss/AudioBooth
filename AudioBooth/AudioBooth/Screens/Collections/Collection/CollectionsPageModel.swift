@@ -10,7 +10,6 @@ final class CollectionsPageModel: CollectionsPage.Model {
   private var isLoadingNextPage: Bool = false
   private let itemsPerPage: Int = 20
   private var loadTask: Task<Void, Never>?
-  private var cancellables = Set<AnyCancellable>()
 
   init(mode: CollectionMode) {
     let permissions = Audiobookshelf.shared.authentication.server?.permissions

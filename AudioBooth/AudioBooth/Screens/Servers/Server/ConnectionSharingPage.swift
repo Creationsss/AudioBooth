@@ -28,8 +28,8 @@ struct ConnectionSharingPage: View {
         Toggle("Include Credentials", isOn: $model.includeCredentials)
           .font(.subheadline)
           .bold()
-          .onChange(of: model.includeCredentials) { _, newValue in
-            model.onIncludeCredentialsChanged(newValue)
+          .onChange(of: model.includeCredentials) { _, _ in
+            model.onIncludeCredentialsChanged()
           }
 
         if model.includeCredentials, model.isCredentialsEphemeral {
@@ -90,7 +90,7 @@ extension ConnectionSharingPage {
     func onAppear() {}
     func onShareTapped() {}
     func onShareQRCodeTapped() {}
-    func onIncludeCredentialsChanged(_ newValue: Bool) {}
+    func onIncludeCredentialsChanged() {}
 
     init(
       qrCodeImage: UIImage? = nil,
@@ -104,10 +104,6 @@ extension ConnectionSharingPage {
       self.isCredentialsEphemeral = isCredentialsEphemeral
     }
   }
-}
-
-extension ConnectionSharingPage.Model {
-  static var mock = ConnectionSharingPage.Model()
 }
 
 #Preview {

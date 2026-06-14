@@ -5,8 +5,6 @@ import SwiftUI
 import WidgetKit
 
 struct CircularBookWidgetView: View {
-  @Environment(\.colorScheme) private var colorScheme
-
   let entry: AudioBoothWidgetEntry
 
   var body: some View {

@@ -78,7 +78,6 @@ final class ListeningStatsCardModel: ListeningStatsCard.Model {
     let today = Date()
 
     var weekDays: [DayData] = []
-    var maxTime: Double = 0
 
     for i in (0..<7).reversed() {
       guard let date = calendar.date(byAdding: .day, value: -i, to: today) else { continue }
@@ -88,7 +87,6 @@ final class ListeningStatsCardModel: ListeningStatsCard.Model {
       let dateString = dateFormatter.string(from: date)
 
       let timeInSeconds = days[dateString] ?? 0
-      maxTime = max(maxTime, timeInSeconds)
 
       let dayLabel = calendar.component(.weekday, from: date)
       let label = calendar.shortWeekdaySymbols[dayLabel - 1]
@@ -97,24 +95,12 @@ final class ListeningStatsCardModel: ListeningStatsCard.Model {
         DayData(
           id: dateString,
           label: label,
-          timeInSeconds: timeInSeconds,
-          normalizedValue: 0,
+          timeInSeconds: timeInSeconds
         )
       )
     }
 
-    let normalizedDays = weekDays.map { day in
-      let normalizedValue = maxTime > 0 ? day.timeInSeconds / maxTime : 0
-
-      return DayData(
-        id: day.id,
-        label: day.label,
-        timeInSeconds: day.timeInSeconds,
-        normalizedValue: normalizedValue
-      )
-    }
-
-    return normalizedDays
+    return weekDays
   }
 
   private func calculateDaysInARow(_ days: [String: Double]) -> Int {

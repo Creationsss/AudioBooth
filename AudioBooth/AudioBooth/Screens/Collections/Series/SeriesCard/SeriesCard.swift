@@ -12,8 +12,6 @@ struct SeriesCard: View {
 
   @ObservedObject var model: Model
 
-  let titleFont: Font
-
   var body: some View {
     NavigationLink(value: NavigationDestination.series(id: model.id, name: model.title)) {
       content
@@ -199,12 +197,12 @@ extension SeriesCard.Model {
 }
 
 #Preview("SeriesCard - Row") {
-  SeriesCard(model: .mock, titleFont: .headline)
+  SeriesCard(model: .mock)
     .padding()
 }
 
 #Preview("SeriesCard - Card") {
-  SeriesCard(model: .mock, titleFont: .headline)
+  SeriesCard(model: .mock)
     .frame(width: 150)
     .padding()
     .environment(\.itemDisplayMode, .card)

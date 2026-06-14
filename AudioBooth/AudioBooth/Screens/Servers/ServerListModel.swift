@@ -1,12 +1,10 @@
 import API
 import Foundation
 import Logging
-import Models
 import SwiftUI
 
 final class ServerListModel: ServerListPage.Model {
   private let audiobookshelf = Audiobookshelf.shared
-  private var playerManager: PlayerManager { .shared }
 
   init(pendingExportConnection: DeepLinkManager.ExportConnection? = nil) {
     let allServers = audiobookshelf.authentication.servers.values

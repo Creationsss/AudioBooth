@@ -1,7 +1,6 @@
 import API
 import CoreImage.CIFilterBuiltins
 import Foundation
-import Models
 import SwiftUI
 import UIKit
 
@@ -23,7 +22,7 @@ final class ConnectionSharingPageViewModel: ConnectionSharingPage.Model {
     regenerateConnectionURL()
   }
 
-  override func onIncludeCredentialsChanged(_ newValue: Bool) {
+  override func onIncludeCredentialsChanged() {
     regenerateConnectionURL()
   }
 

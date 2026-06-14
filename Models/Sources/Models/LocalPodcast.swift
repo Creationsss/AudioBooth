@@ -69,12 +69,6 @@ public final class LocalPodcast {
 
 @MainActor
 extension LocalPodcast {
-  public static func fetchAll() throws -> [LocalPodcast] {
-    let context = ModelContextProvider.shared.context
-    let descriptor = FetchDescriptor<LocalPodcast>()
-    return try context.fetch(descriptor)
-  }
-
   public static func fetch(podcastID: String) throws -> LocalPodcast? {
     let context = ModelContextProvider.shared.context
     let predicate = #Predicate<LocalPodcast> { item in
@@ -103,19 +97,4 @@ extension LocalPodcast {
     try? context.save()
   }
 
-  public func delete() throws {
-    let context = ModelContextProvider.shared.context
-    context.delete(self)
-    try? context.save()
-  }
-
-  public static func deleteAll() throws {
-    let context = ModelContextProvider.shared.context
-    let descriptor = FetchDescriptor<LocalPodcast>()
-    let allItems = try context.fetch(descriptor)
-    for item in allItems {
-      context.delete(item)
-    }
-    try? context.save()
-  }
 }

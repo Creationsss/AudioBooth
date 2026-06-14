@@ -1,7 +1,6 @@
 import API
 import Combine
 import Foundation
-import Models
 import SwiftUI
 
 class DeepLinkManager: ObservableObject {

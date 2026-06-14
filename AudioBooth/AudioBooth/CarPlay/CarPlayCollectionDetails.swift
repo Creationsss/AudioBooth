@@ -7,7 +7,6 @@ import Nuke
 final class CarPlayCollectionDetails {
   private let interfaceController: CPInterfaceController
   private weak var nowPlaying: CarPlayNowPlaying?
-  private let name: String
   private let items: [QueueItem]
   private var loadingTask: Task<Void, Never>?
 
@@ -21,7 +20,6 @@ final class CarPlayCollectionDetails {
   ) {
     self.interfaceController = interfaceController
     self.nowPlaying = nowPlaying
-    self.name = name
     self.items = items
 
     template = CPListTemplate(title: name, sections: [])

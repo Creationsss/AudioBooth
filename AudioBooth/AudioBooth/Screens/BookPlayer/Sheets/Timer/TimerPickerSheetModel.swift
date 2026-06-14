@@ -21,12 +21,9 @@ final class TimerPickerSheetViewModel: TimerPickerSheet.Model {
   private var sleepTimer: Timer?
   private var alarmTimer: Timer?
   private var alarmSoundPlayer: AVAudioPlayer?
-  private var timerStartTime: Date?
   private var originalTimerDuration: TimeInterval = 0
   private var lastObservedChapterIndex: Int = 0
   private var cancellables = Set<AnyCancellable>()
-  private var playbackObserver: AnyCancellable?
-  private var seekObserver: AnyCancellable?
   private var liveActivityCleanupTask: Task<Void, Never>?
   #if !targetEnvironment(macCatalyst)
   private var liveActivity: Activity<SleepTimerActivityAttributes>?
@@ -223,7 +220,6 @@ final class TimerPickerSheetViewModel: TimerPickerSheet.Model {
 
   private func startSleepTimer(duration: TimeInterval) {
     stopSleepTimer()
-    timerStartTime = Date()
     originalTimerDuration = duration
 
     sleepTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
@@ -241,7 +237,6 @@ final class TimerPickerSheetViewModel: TimerPickerSheet.Model {
   private func stopSleepTimer() {
     sleepTimer?.invalidate()
     sleepTimer = nil
-    timerStartTime = nil
     originalTimerDuration = 0
 
     ShakeDetector.shared.stopMonitoring()
@@ -301,7 +296,6 @@ final class TimerPickerSheetViewModel: TimerPickerSheet.Model {
     current = .none
     sleepTimer?.invalidate()
     sleepTimer = nil
-    timerStartTime = nil
 
     pauseLiveActivity(remaining: originalTimerDuration)
     scheduleLiveActivityCleanup()
@@ -340,7 +334,6 @@ final class TimerPickerSheetViewModel: TimerPickerSheet.Model {
     current = .none
     sleepTimer?.invalidate()
     sleepTimer = nil
-    timerStartTime = nil
     originalTimerDuration = 0
 
     ShakeDetector.shared.stopMonitoring()

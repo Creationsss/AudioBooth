@@ -2,12 +2,6 @@ import API
 import Foundation
 
 final class YearInReviewCardModel: YearInReviewCard.Model {
-  private let dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-MM-dd"
-    return formatter
-  }()
-
   private var hasFetchedStats = false
 
   init(listeningDays: [String: Double]) {

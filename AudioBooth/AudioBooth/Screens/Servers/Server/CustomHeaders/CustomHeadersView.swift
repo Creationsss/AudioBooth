@@ -3,7 +3,6 @@ import SwiftUI
 
 struct CustomHeadersView: View {
   @Environment(\.appTheme) var theme
-  @Environment(\.dismiss) private var dismiss
 
   @StateObject var model: Model
 

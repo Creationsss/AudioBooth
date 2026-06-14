@@ -103,7 +103,7 @@ final class EbookReaderViewModel: EbookReaderView.Model {
 
       case .remote(let remoteURL):
         if let bookID {
-          localURL = try await downloadEbook(bookID: bookID, remoteURL: remoteURL)
+          localURL = try await downloadEbook(bookID: bookID)
         } else {
           localURL = try await downloadTemporaryFile(from: remoteURL)
           temporaryFileURL = localURL
@@ -461,7 +461,7 @@ extension EbookReaderViewModel {
 }
 
 extension EbookReaderViewModel {
-  private func downloadEbook(bookID: String, remoteURL: URL) async throws -> URL {
+  private func downloadEbook(bookID: String) async throws -> URL {
     DownloadManager.shared.startDownload(for: bookID, type: .ebook)
 
     for await updatedItem in LocalBook.observe(where: \.bookID, equals: bookID) {

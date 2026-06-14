@@ -354,10 +354,6 @@ extension AudioPlayer {
     set { eqContext.isEnabled = newValue }
   }
 
-  var eqBands: [Float] {
-    eqContext.bandGains
-  }
-
   final class EQContext {
     static let bandFrequencies: [Float] = [60, 150, 400, 1000, 2400, 15000]
 

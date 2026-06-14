@@ -14,13 +14,10 @@ final class BookCardModel: BookCard.Model {
     case local(LocalBook)
     case remote(Book)
   }
-  private let item: Item
   private var downloadStateCancellable: AnyCancellable?
 
   init(_ item: LocalBook, options: Options = []) {
     let id = item.bookID
-
-    self.item = .local(item)
 
     let hasLocalAudio = !item.tracks.isEmpty && item.tracks.allSatisfy { $0.relativePath != nil }
     let hasLocalEbook = item.ebookFile != nil
@@ -135,8 +132,6 @@ final class BookCardModel: BookCard.Model {
     default:
       details = nil
     }
-
-    self.item = .remote(item)
 
     let cover = Cover.Model(
       url: item.coverURL(),

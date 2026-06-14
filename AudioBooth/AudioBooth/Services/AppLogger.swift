@@ -7,7 +7,6 @@ import UIKit
 
 enum AppLogger {
   static let session = Logger(label: "session")
-  static let network = Logger(label: "network")
   static let watchConnectivity = Logger(label: "watch-connectivity")
   static let player = Logger(label: "player")
   static let download = Logger(label: "download")

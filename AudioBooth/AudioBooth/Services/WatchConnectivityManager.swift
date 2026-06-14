@@ -197,11 +197,6 @@ final class WatchConnectivityManager: NSObject, ObservableObject {
     updateContext()
   }
 
-  func clearAllState() {
-    context = [:]
-    updateContext()
-  }
-
   private func watchCompatibleCoverURL(from url: URL?) -> String? {
     guard let url = url else { return nil }
 

@@ -7,7 +7,6 @@ import SwiftUI
 final class OfflineListViewModel: OfflineListView.Model {
   private var audiobookshelf: Audiobookshelf { .shared }
   private var downloadManager: DownloadManager { .shared }
-  private var playerManager: PlayerManager { .shared }
 
   private var allBooks: [LocalBook] = []
   private var filteredBooks: [LocalBook] = []

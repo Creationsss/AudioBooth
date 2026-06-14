@@ -1,9 +1,5 @@
 import SwiftUI
 
-extension ProgressViewStyle where Self == GaugeProgressViewStyle {
-  static var gauge: GaugeProgressViewStyle { .init() }
-}
-
 struct GaugeProgressViewStyle: ProgressViewStyle {
   let tint: Color
   let lineWidth: Double

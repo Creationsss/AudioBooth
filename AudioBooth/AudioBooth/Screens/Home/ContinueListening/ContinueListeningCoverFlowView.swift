@@ -3,7 +3,6 @@ import SwiftUI
 
 struct ContinueListeningCoverFlowView: View {
   @ObservedObject var model: Model
-  @Environment(\.appTheme) private var theme
   @ObservedObject private var preferences = UserPreferences.shared
 
   @ScaledMetric(relativeTo: .title) private var baseCoverSize: CGFloat = 150

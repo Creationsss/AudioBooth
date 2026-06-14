@@ -37,9 +37,9 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
       _ = CrashReporter.shared
     }
 
-    Audiobookshelf.shared.onServerSwitched = { serverID, serverURL in
+    Audiobookshelf.shared.onServerSwitched = { serverID, _ in
       do {
-        try ModelContextProvider.shared.switchToServer(serverID, serverURL: serverURL)
+        try ModelContextProvider.shared.switchToServer(serverID)
       } catch {
         AppLogger.general.error("Failed to switch database: \(error.localizedDescription)")
       }
@@ -47,7 +47,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 
     if let server = Audiobookshelf.shared.authentication.server {
       do {
-        try ModelContextProvider.shared.switchToServer(server.id, serverURL: server.baseURL)
+        try ModelContextProvider.shared.switchToServer(server.id)
       } catch {
         AppLogger.general.error(
           "Failed to initialize database on app launch: \(error.localizedDescription)"

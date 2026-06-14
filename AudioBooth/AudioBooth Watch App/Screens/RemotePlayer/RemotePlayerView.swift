@@ -2,8 +2,6 @@ import SwiftUI
 import WatchKit
 
 struct RemotePlayerView: View {
-  @Environment(\.dismiss) private var dismiss
-
   @State private var showOptions = false
   @State private var speedPickerModel: SpeedPickerSheet.Model = RemoteSpeedPickerModel()
 
