@@ -176,10 +176,10 @@ struct PodcastEpisodeDetailView: View {
       RichText(
         html: description,
         configuration: Configuration(
-          customCSS: "body { font: -apple-system-subheadline; }"
+          customCSS: "body { font: -apple-system-subheadline; }",
+          linkOpenType: .SFSafariView()
         )
       )
-      .allowsHitTesting(false)
     }
     .textSelection(.enabled)
   }

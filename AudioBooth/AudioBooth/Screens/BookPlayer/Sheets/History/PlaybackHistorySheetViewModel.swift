@@ -35,7 +35,6 @@ final class PlaybackHistorySheetViewModel: PlaybackHistorySheet.Model {
     .Section]
   {
     let calendar = Calendar.current
-    let now = Date()
 
     var grouped: [String: [PlaybackHistoryRow.Model]] = [:]
     var dateOrder: [String] = []
