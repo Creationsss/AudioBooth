@@ -134,6 +134,8 @@ struct BookDetailsView: View {
             }
           }
 
+          shareActions
+
           ereaderDevices
 
           if model.actions.contains(.writeNFCTag) {
@@ -584,28 +586,46 @@ struct BookDetailsView: View {
 }
 
 extension BookDetailsView {
+  private var sharePreview: SharePreview<Image, Never> {
+    SharePreview(model.title, image: model.shareCoverImage ?? Image(systemName: "book.closed"))
+  }
+
   @ViewBuilder
-  private var ereaderDevices: some View {
-    if model.actions.contains(.openOnWeb) {
+  private var shareActions: some View {
+    if model.shareItems.count == 1, let item = model.shareItems.first {
       Divider()
 
-      Button(
-        action: { model.onOpenTapped() },
-        label: {
-          Label("Open on Web", systemImage: "globe")
-        }
-      )
+      ShareLink(item: item, preview: sharePreview) {
+        Label("Share Book", systemImage: "square.and.arrow.up")
+      }
+    } else if !model.shareItems.isEmpty {
+      Divider()
 
-      if model.actions.contains(.sendToEbook) {
-        Menu {
-          ForEach(model.ereaderDevices, id: \.self) { device in
-            Button(device) {
-              model.onSendToEbookTapped(device)
-            }
+      Menu {
+        ForEach(model.shareItems) { item in
+          ShareLink(item: item, preview: sharePreview) {
+            Label(item.label, systemImage: item.icon)
           }
-        } label: {
-          Label("Send Ebook to", systemImage: "paperplane")
         }
+      } label: {
+        Label("Share Book", systemImage: "square.and.arrow.up")
+      }
+    }
+  }
+
+  @ViewBuilder
+  private var ereaderDevices: some View {
+    if model.actions.contains(.sendToEbook) {
+      Divider()
+
+      Menu {
+        ForEach(model.ereaderDevices, id: \.self) { device in
+          Button(device) {
+            model.onSendToEbookTapped(device)
+          }
+        }
+      } label: {
+        Label("Send Ebook to", systemImage: "paperplane")
       }
     }
   }
@@ -631,7 +651,6 @@ extension BookDetailsView {
       static let markAsFinished = Actions(rawValue: 1 << 4)
       static let resetProgress = Actions(rawValue: 1 << 5)
       static let writeNFCTag = Actions(rawValue: 1 << 6)
-      static let openOnWeb = Actions(rawValue: 1 << 7)
       static let sendToEbook = Actions(rawValue: 1 << 8)
     }
 
@@ -647,6 +666,8 @@ extension BookDetailsView {
     var downloadState: DownloadManager.DownloadState
     var isLoading: Bool
     var isPlaying: Bool
+    var shareItems: [BookShareItem] = []
+    var shareCoverImage: Image? = nil
     var flags: Flags
     var error: String?
     var genres: [String]?
@@ -664,7 +685,6 @@ extension BookDetailsView {
     func onAppear() {}
     func onPlayTapped() {}
     func onReadTapped() {}
-    func onOpenTapped() {}
     func onDownloadTapped() {}
     func onMarkFinishedTapped() {}
     func onResetProgressTapped() {}
