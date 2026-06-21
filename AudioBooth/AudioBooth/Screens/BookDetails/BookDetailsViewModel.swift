@@ -4,8 +4,7 @@ import Foundation
 import Logging
 import Models
 import Nuke
-import SafariServices
-import UIKit
+import SwiftUI
 
 final class BookDetailsViewModel: BookDetailsView.Model {
   private var booksService: BooksService { Audiobookshelf.shared.books }
@@ -131,7 +130,8 @@ final class BookDetailsViewModel: BookDetailsView.Model {
     Task {
       do {
         let request = ImageRequest(url: coverURL, options: .reloadIgnoringCachedData)
-        _ = try await ImagePipeline.shared.image(for: request)
+        let image = try await ImagePipeline.shared.image(for: request)
+        shareCoverImage = Image(uiImage: image)
         let coverURL = self.coverURL
         self.coverURL = nil
         Task { @MainActor in
@@ -162,14 +162,24 @@ final class BookDetailsViewModel: BookDetailsView.Model {
 
       let narrators = book.media.metadata.narrators ?? []
 
+      let downloadedEbookURL = localBook?.ebookLocalPath
+      let downloadedEbookIno = book.media.ebookFile?.ino
       let ebooks = book.libraryFiles?
         .filter { $0.fileType == .ebook }
-        .map { libraryFile in
-          EbooksContent.SupplementaryEbook(
+        .map { libraryFile -> EbooksContent.SupplementaryEbook in
+          var ebook = EbooksContent.SupplementaryEbook(
             filename: libraryFile.metadata.filename,
             size: libraryFile.metadata.size,
             ino: libraryFile.ino
           )
+          let localURL = libraryFile.ino == downloadedEbookIno ? downloadedEbookURL : nil
+          if let shareURL = localURL ?? ebook.url(for: bookID) {
+            ebook.shareItem = BookShareItem(
+              content: .ebook(shareURL),
+              name: libraryFile.metadata.filename
+            )
+          }
+          return ebook
         }
 
       var flags: BookDetailsView.Model.Flags = []
@@ -379,6 +389,7 @@ final class BookDetailsViewModel: BookDetailsView.Model {
       .sink { [weak self] states in
         guard let self else { return }
         self.downloadState = states[bookID] ?? .notDownloaded
+        self.updateActions()
       }
       .store(in: &cancellables)
   }
@@ -388,6 +399,7 @@ final class BookDetailsViewModel: BookDetailsView.Model {
     itemObservation = Task { [weak self] in
       for await updatedItem in LocalBook.observe(where: \.bookID, equals: bookID) {
         self?.localBook = updatedItem
+        self?.updateActions()
       }
     }
   }
@@ -449,12 +461,24 @@ final class BookDetailsViewModel: BookDetailsView.Model {
       updatedActions.insert(.writeNFCTag)
     }
 
-    if metadata.isEbook {
-      updatedActions.insert(.openOnWeb)
-      if !ereaderDevices.isEmpty {
-        updatedActions.insert(.sendToEbook)
+    if metadata.isEbook, !ereaderDevices.isEmpty {
+      updatedActions.insert(.sendToEbook)
+    }
+
+    var shareItems: [BookShareItem] = []
+    if downloadState == .downloaded {
+      if let ebookURL = localBook?.ebookLocalPath {
+        let ext = ebookURL.pathExtension
+        let filename = ext.isEmpty ? title : "\(title).\(ext)"
+        shareItems.append(BookShareItem(content: .ebook(ebookURL), name: filename))
+      }
+
+      let trackURLs = localBook?.orderedTracks.compactMap(\.localPath) ?? []
+      if !trackURLs.isEmpty {
+        shareItems.append(BookShareItem(content: .audiobook(trackURLs), name: title))
       }
     }
+    self.shareItems = shareItems
 
     actions = updatedActions
   }
@@ -522,14 +546,6 @@ final class BookDetailsViewModel: BookDetailsView.Model {
     }
   }
 
-  override func onOpenTapped() {
-    if let url = book?.ebookURL {
-      openEbookInSafari(url)
-    } else {
-      Toast(error: "Unable to open ebook").show()
-    }
-  }
-
   override func onDownloadTapped() {
     switch downloadState {
     case .downloading:
@@ -552,6 +568,8 @@ final class BookDetailsViewModel: BookDetailsView.Model {
       downloadState = .downloading(progress: 0)
       try? book.download()
     }
+
+    updateActions()
   }
 
   override func onMarkFinishedTapped() {
@@ -624,20 +642,6 @@ final class BookDetailsViewModel: BookDetailsView.Model {
     updateActions()
   }
 
-}
-
-extension BookDetailsViewModel {
-  private func openEbookInSafari(_ url: URL) {
-    let safariViewController = SFSafariViewController(url: url)
-    safariViewController.modalPresentationStyle = .overFullScreen
-
-    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-      let window = windowScene.windows.first,
-      let rootViewController = window.rootViewController
-    {
-      rootViewController.present(safariViewController, animated: true)
-    }
-  }
 }
 
 extension BookDetailsViewModel {
