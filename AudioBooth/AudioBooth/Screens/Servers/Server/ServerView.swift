@@ -67,6 +67,16 @@ struct ServerView: View {
             }
           }
         customHeadersSection
+
+        if let serverVersion = model.serverVersion {
+          HStack {
+            Text("Server Version")
+            Spacer()
+            Text(serverVersion)
+              .foregroundStyle(.secondary)
+              .textSelection(.enabled)
+          }
+        }
       }
       .listRowBackground(theme.colors.background.card)
 
@@ -304,6 +314,7 @@ extension ServerView {
     var status: Server.Status?
     var warnings: String?
     var username: String?
+    var serverVersion: String?
     var canExportConnection: Bool
     var connectionSharingModel: ConnectionSharingPage.Model?
 
@@ -341,6 +352,7 @@ extension ServerView {
       status: Server.Status? = nil,
       warnings: String? = nil,
       username: String? = nil,
+      serverVersion: String? = nil,
       canExportConnection: Bool = true,
       connectionSharingModel: ConnectionSharingPage.Model? = nil
     ) {
@@ -363,6 +375,7 @@ extension ServerView {
       self.status = status
       self.warnings = warnings
       self.username = username
+      self.serverVersion = serverVersion
       self.canExportConnection = canExportConnection
       self.connectionSharingModel = connectionSharingModel
     }
