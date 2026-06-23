@@ -49,7 +49,7 @@ struct LibraryPage: View {
       }
     }
     .background(theme.colors.background.page)
-    .navigationTitle(model.title)
+    .navigationTitle(model.isSelecting ? selectionTitle : model.title)
     .sheet(isPresented: $model.showingFilterSelection) {
       if let filters = model.filters {
         NavigationStack {
@@ -57,8 +57,20 @@ struct LibraryPage: View {
         }
       }
     }
+    .sheet(item: $model.collectionSelector) { selector in
+      CollectionSelectorSheet(model: selector)
+    }
     .toolbar {
-      if model.isRoot {
+      if model.isSelecting {
+        ToolbarItem(placement: .topBarLeading) {
+          Button {
+            model.onCancelSelectTapped()
+          } label: {
+            Text("Cancel")
+          }
+          .tint(.primary)
+        }
+      } else if model.isRoot {
         ToolbarItem(placement: .topBarLeading) {
           Button {
             model.onFilterButtonTapped()
@@ -119,14 +131,42 @@ struct LibraryPage: View {
             Label("List View", systemImage: "rectangle.grid.1x3")
           }
 
-          if model.showCollapseSeries {
-            Divider()
+          if model.isSelecting {
+            if !model.selectedIDs.isEmpty {
+              Divider()
 
-            Toggle(isOn: $preferences.collapseSeriesInLibrary) {
-              Label("Collapse Series", systemImage: "rectangle.stack")
+              if model.actions.contains(.addToCollection) {
+                Button(action: { model.onAddSelectionTapped(mode: .collections) }) {
+                  Label("Add to Collection", systemImage: "square.stack.3d.up")
+                }
+              }
+
+              if model.actions.contains(.addToPlaylist) {
+                Button(action: { model.onAddSelectionTapped(mode: .playlists) }) {
+                  Label("Add to Playlist", systemImage: "music.note.list")
+                }
+              }
             }
-            .onChange(of: preferences.collapseSeriesInLibrary) { _, _ in
-              model.onCollapseSeriesToggled()
+          } else {
+            if model.actions.contains(.addToPlaylist),
+              !(model.isRoot && preferences.collapseSeriesInLibrary)
+            {
+              Divider()
+
+              Button(action: { model.onSelectTapped() }) {
+                Label("Select", systemImage: "checkmark.circle")
+              }
+            }
+
+            if model.showCollapseSeries {
+              Divider()
+
+              Toggle(isOn: $preferences.collapseSeriesInLibrary) {
+                Label("Collapse Series", systemImage: "rectangle.stack")
+              }
+              .onChange(of: preferences.collapseSeriesInLibrary) { _, _ in
+                model.onCollapseSeriesToggled()
+              }
             }
           }
 
@@ -186,14 +226,20 @@ struct LibraryPage: View {
             items: model.items,
             displayMode: preferences.libraryDisplayMode == .card ? .grid : .list,
             hasMorePages: model.hasMorePages,
-            onLoadMore: model.loadNextPageIfNeeded
+            onLoadMore: model.loadNextPageIfNeeded,
+            isSelecting: model.isSelecting,
+            selectedIDs: model.selectedIDs,
+            onToggleSelection: model.onToggleSelection
           )
         } else {
           LibraryView(
             items: model.items,
             displayMode: preferences.libraryDisplayMode == .card ? .grid : .list,
             hasMorePages: model.hasMorePages,
-            onLoadMore: model.loadNextPageIfNeeded
+            onLoadMore: model.loadNextPageIfNeeded,
+            isSelecting: model.isSelecting,
+            selectedIDs: model.selectedIDs,
+            onToggleSelection: model.onToggleSelection
           )
           .searchable(
             text: $model.search.searchText,
@@ -206,6 +252,14 @@ struct LibraryPage: View {
       }
       .padding(.horizontal)
       .environment(\.itemDisplayMode, preferences.libraryDisplayMode)
+    }
+  }
+
+  var selectionTitle: String {
+    if model.selectedIDs.isEmpty {
+      String(localized: "Select Items")
+    } else {
+      String(localized: "\(model.selectedIDs.count) Selected")
     }
   }
 
@@ -236,6 +290,8 @@ extension LibraryPage {
 
       static let markAsFinished = Actions(rawValue: 1 << 0)
       static let resetProgress = Actions(rawValue: 1 << 1)
+      static let addToPlaylist = Actions(rawValue: 1 << 2)
+      static let addToCollection = Actions(rawValue: 1 << 3)
     }
 
     var isLoading: Bool
@@ -258,6 +314,10 @@ extension LibraryPage {
     var filters: FilterPicker.Model?
     var showingFilterSelection: Bool = false
 
+    var isSelecting: Bool = false
+    var selectedIDs: [String] = []
+    var collectionSelector: CollectionSelectorSheet.Model?
+
     func onAppear() {}
     func refresh() async {}
     func onSortOptionTapped(_ sortBy: SortBy) {}
@@ -270,6 +330,10 @@ extension LibraryPage {
     func onMarkAllFinishedTapped() {}
     func onFilterButtonTapped() {}
     func onFilterPreferenceChanged(_ filter: LibraryPageModel.Filter) {}
+    func onSelectTapped() {}
+    func onCancelSelectTapped() {}
+    func onToggleSelection(_ id: String) {}
+    func onAddSelectionTapped(mode: CollectionMode) {}
 
     init(
       isLoading: Bool = true,

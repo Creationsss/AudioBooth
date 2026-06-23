@@ -33,6 +33,8 @@ final class LibraryPageModel: LibraryPage.Model {
     self.ascending = preferences.librarySortAscending
 
     self.filters = FilterPickerModel(currentFilter: filter)
+
+    self.actions = Self.collectionActions
   }
 
   init(destination: NavigationDestination) {
@@ -82,6 +84,16 @@ final class LibraryPageModel: LibraryPage.Model {
     }
 
     self.search = SearchViewModel()
+
+    self.actions = Self.collectionActions
+  }
+
+  private static var collectionActions: LibraryPage.Model.Actions {
+    var available: LibraryPage.Model.Actions = [.addToPlaylist]
+    if Audiobookshelf.shared.authentication.server?.permissions?.update == true {
+      available.insert(.addToCollection)
+    }
+    return available
   }
 
   override func onAppear() {
@@ -94,6 +106,7 @@ final class LibraryPageModel: LibraryPage.Model {
   }
 
   override func refresh() async {
+    exitSelection()
     isLoading = true
     currentPage = 0
     hasMorePages = true
@@ -157,9 +170,37 @@ final class LibraryPageModel: LibraryPage.Model {
   }
 
   override func onCollapseSeriesToggled() {
+    exitSelection()
     Task {
       await refresh()
     }
+  }
+
+  override func onSelectTapped() {
+    isSelecting = true
+    selectedIDs = []
+  }
+
+  override func onCancelSelectTapped() {
+    exitSelection()
+  }
+
+  override func onToggleSelection(_ id: String) {
+    if let index = selectedIDs.firstIndex(of: id) {
+      selectedIDs.remove(at: index)
+    } else {
+      selectedIDs.append(id)
+    }
+  }
+
+  override func onAddSelectionTapped(mode: CollectionMode) {
+    guard !selectedIDs.isEmpty else { return }
+    collectionSelector = CollectionSelectorSheetModel(bookIDs: selectedIDs, mode: mode)
+  }
+
+  private func exitSelection() {
+    isSelecting = false
+    selectedIDs = []
   }
 
   override func onDownloadAllTapped() {
@@ -186,7 +227,7 @@ final class LibraryPageModel: LibraryPage.Model {
 
   private func updateActions() {
     guard case .series = filter else { return }
-    var updatedActions: LibraryPage.Model.Actions = []
+    var updatedActions = actions.intersection([.addToPlaylist, .addToCollection])
     for case let .book(model) in items {
       let progress = MediaProgress.progress(for: model.id)
       if progress > 0 {

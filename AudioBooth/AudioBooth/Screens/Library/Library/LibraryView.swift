@@ -10,6 +10,9 @@ struct LibraryView: View {
   let displayMode: DisplayMode
   var hasMorePages: Bool = false
   var onLoadMore: (() -> Void)?
+  var isSelecting: Bool = false
+  var selectedIDs: [String] = []
+  var onToggleSelection: ((String) -> Void)?
 
   @ObservedObject private var preferences = UserPreferences.shared
 
@@ -23,22 +26,12 @@ struct LibraryView: View {
         spacing: 20
       ) {
         ForEach(items) { item in
-          switch item {
-          case .book(let model):
-            BookCard(model: model)
-              .frame(
-                maxWidth: .infinity,
-                maxHeight: .infinity,
-                alignment: preferences.cardCoverDynamicRatio ? .bottom : .top
-              )
-          case .series(let model):
-            SeriesCard(model: model)
-              .frame(
-                maxWidth: .infinity,
-                maxHeight: .infinity,
-                alignment: preferences.cardCoverDynamicRatio ? .bottom : .top
-              )
-          }
+          itemView(for: item)
+            .frame(
+              maxWidth: .infinity,
+              maxHeight: .infinity,
+              alignment: preferences.cardCoverDynamicRatio ? .bottom : .top
+            )
         }
 
         if hasMorePages {
@@ -53,12 +46,7 @@ struct LibraryView: View {
     case .list:
       LazyVStack(spacing: 12) {
         ForEach(items) { item in
-          switch item {
-          case .book(let model):
-            BookCard(model: model)
-          case .series(let model):
-            SeriesCard(model: model)
-          }
+          itemView(for: item)
         }
 
         if hasMorePages {
@@ -70,6 +58,26 @@ struct LibraryView: View {
             }
         }
       }
+    }
+  }
+
+  @ViewBuilder
+  private func itemView(for item: Item) -> some View {
+    switch item {
+    case .book(let model):
+      if isSelecting {
+        BookSelectCard(
+          model: model,
+          isSelected: selectedIDs.contains(model.id),
+          onTap: { onToggleSelection?(model.id) }
+        )
+      } else {
+        BookCard(model: model)
+      }
+    case .series(let model):
+      SeriesCard(model: model)
+        .opacity(isSelecting ? 0.4 : 1)
+        .allowsHitTesting(!isSelecting)
     }
   }
 }
