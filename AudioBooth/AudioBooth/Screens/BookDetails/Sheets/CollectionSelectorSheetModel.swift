@@ -4,11 +4,15 @@ import Logging
 
 final class CollectionSelectorSheetModel: CollectionSelectorSheet.Model {
   private let audiobookshelf = Audiobookshelf.shared
-  private let bookID: String
+  private let bookIDs: [String]
   private let episodeID: String?
 
-  init(bookID: String, episodeID: String? = nil, mode: CollectionMode = .playlists) {
-    self.bookID = bookID
+  convenience init(bookID: String, episodeID: String? = nil, mode: CollectionMode = .playlists) {
+    self.init(bookIDs: [bookID], episodeID: episodeID, mode: mode)
+  }
+
+  init(bookIDs: [String], episodeID: String? = nil, mode: CollectionMode = .playlists) {
+    self.bookIDs = bookIDs
     self.episodeID = episodeID
 
     let canEdit: Bool
@@ -37,13 +41,13 @@ final class CollectionSelectorSheetModel: CollectionSelectorSheet.Model {
         case .playlists:
           updatedCollection = try await audiobookshelf.playlists.addItems(
             playlistID: playlist.id,
-            items: [bookID],
+            items: bookIDs,
             episodeID: episodeID
           )
         case .collections:
           updatedCollection = try await audiobookshelf.collections.addItems(
             collectionID: playlist.id,
-            items: [bookID]
+            items: bookIDs
           )
         }
 
@@ -64,15 +68,22 @@ final class CollectionSelectorSheetModel: CollectionSelectorSheet.Model {
 
         switch mode {
         case .playlists:
-          updatedCollection = try await audiobookshelf.playlists.removeItem(
-            playlistID: playlist.id,
-            libraryItemID: bookID,
-            episodeID: episodeID
-          )
+          if let episodeID {
+            updatedCollection = try await audiobookshelf.playlists.removeItem(
+              playlistID: playlist.id,
+              libraryItemID: bookIDs[0],
+              episodeID: episodeID
+            )
+          } else {
+            updatedCollection = try await audiobookshelf.playlists.removeItems(
+              playlistID: playlist.id,
+              items: bookIDs
+            )
+          }
         case .collections:
-          updatedCollection = try await audiobookshelf.collections.removeItem(
+          updatedCollection = try await audiobookshelf.collections.removeItems(
             collectionID: playlist.id,
-            libraryItemID: bookID
+            items: bookIDs
           )
         }
 
@@ -103,13 +114,13 @@ final class CollectionSelectorSheetModel: CollectionSelectorSheet.Model {
         case .playlists:
           newCollection = try await audiobookshelf.playlists.create(
             name: name,
-            items: [bookID],
+            items: bookIDs,
             episodeID: episodeID
           )
         case .collections:
           newCollection = try await audiobookshelf.collections.create(
             name: name,
-            items: [bookID]
+            items: bookIDs
           )
         }
 
@@ -139,13 +150,13 @@ final class CollectionSelectorSheetModel: CollectionSelectorSheet.Model {
         if let episodeID {
           playlistsContainingBook = Set(
             response.results
-              .filter { $0.items.contains { $0.libraryItemID == bookID && $0.episodeID == episodeID } }
+              .filter { $0.items.contains { $0.libraryItemID == bookIDs[0] && $0.episodeID == episodeID } }
               .map { $0.id }
           )
         } else {
           playlistsContainingBook = Set(
             response.results
-              .filter { $0.books.contains { $0.id == bookID } }
+              .filter { playlist in bookIDs.allSatisfy { id in playlist.books.contains { $0.id == id } } }
               .map { $0.id }
           )
         }
@@ -159,7 +170,7 @@ final class CollectionSelectorSheetModel: CollectionSelectorSheet.Model {
 
         playlistsContainingBook = Set(
           response.results
-            .filter { $0.books.contains { $0.id == bookID } }
+            .filter { collection in bookIDs.allSatisfy { id in collection.books.contains { $0.id == id } } }
             .map { $0.id }
         )
       }

@@ -199,7 +199,8 @@ struct CollectionSelectorSheet: View {
 
 extension CollectionSelectorSheet {
   @Observable
-  class Model: ObservableObject {
+  class Model: ObservableObject, Identifiable {
+    let id = UUID()
     var isPresented: Bool
     var isLoading: Bool
     var playlists: [CollectionRow.Model]
