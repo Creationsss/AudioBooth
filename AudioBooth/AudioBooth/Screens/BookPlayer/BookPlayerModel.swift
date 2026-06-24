@@ -1129,7 +1129,7 @@ extension BookPlayerModel {
         mediaProgress.progress = mediaProgress.currentTime / mediaProgress.duration
       }
 
-      recordBookCompletionIfNeeded(autoPlayNext: false)
+      recordBookCompletionIfNeeded(autoPlayNext: true)
       sessionManager.notifyPlaybackStopped()
     } else {
       AppLogger.player.debug(
