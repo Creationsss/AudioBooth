@@ -524,6 +524,12 @@ extension BookPlayerModel {
     }
 
     let newTime = max(0, rewindTarget)
+
+    guard newTime < currentTime else {
+      AppLogger.player.debug("Smart rewind not applied - playhead would not move")
+      return
+    }
+
     mediaProgress.currentTime = newTime
     mediaProgress.lastPlayedAt = Date()
 
