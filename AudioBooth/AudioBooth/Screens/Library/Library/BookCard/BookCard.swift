@@ -120,12 +120,13 @@ extension BookCard {
             }
             .multilineTextAlignment(.leading)
           } else if preferences.showContinueTimeRemaining, let timeRemaining = model.timeRemaining {
-            Text(timeRemaining)
+            Text(timeRemaining.formattedTimeRemaining)
               .font(.caption2)
               .foregroundColor(.secondary)
               .lineLimit(1)
               .allowsTightening(true)
               .multilineTextAlignment(.leading)
+              .accessibilityLabel(timeRemaining.accessibilityTimeRemaining)
           }
         }
         .frame(maxWidth: coverWidth, alignment: .leading)
@@ -268,18 +269,25 @@ extension BookCard {
 
     @ViewBuilder
     private var details: some View {
-      if let text = detailsText {
-        Text(text)
-          .font(.caption2)
-          .foregroundColor(.secondary)
-          .lineLimit(1)
-          .allowsTightening(true)
+      if preferences.showContinueTimeRemaining, let timeRemaining = model.timeRemaining {
+        detailsLabel(timeRemaining.formattedTimeRemaining)
+          .accessibilityLabel(timeRemaining.accessibilityTimeRemaining)
+      } else if let text = detailsText {
+        detailsLabel(text)
       }
     }
 
+    private func detailsLabel(_ text: String) -> some View {
+      Text(text)
+        .font(.caption2)
+        .foregroundColor(.secondary)
+        .lineLimit(1)
+        .allowsTightening(true)
+    }
+
     private var detailsText: String? {
-      if let timeRemaining = model.timeRemaining {
-        return preferences.showContinueTimeRemaining ? timeRemaining : model.author
+      if model.timeRemaining != nil {
+        return model.author
       }
       return model.details ?? model.author
     }
@@ -354,7 +362,7 @@ extension BookCard {
     var episodeContextMenu: PodcastEpisodeContextMenu.Model?
     let hasEbook: Bool
     let isExplicit: Bool
-    var timeRemaining: String?
+    var timeRemaining: TimeInterval?
 
     func onAppear() {}
 
@@ -373,7 +381,7 @@ extension BookCard {
       episodeContextMenu: PodcastEpisodeContextMenu.Model? = nil,
       hasEbook: Bool = false,
       isExplicit: Bool = false,
-      timeRemaining: String? = nil
+      timeRemaining: TimeInterval? = nil
     ) {
       self.id = id
       self.podcastID = podcastID

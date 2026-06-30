@@ -87,6 +87,7 @@ struct PlaybackProgressView: View {
               .lineLimit(1)
           } else {
             Text(model.totalTimeRemaining.formattedTimeRemaining)
+              .accessibilityLabel(model.totalTimeRemaining.accessibilityTimeRemaining)
           }
         }
         .font(.caption)

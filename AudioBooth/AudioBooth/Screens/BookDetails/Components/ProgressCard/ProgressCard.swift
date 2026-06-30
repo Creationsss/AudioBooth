@@ -35,6 +35,7 @@ struct ProgressCard: View {
 
         Text(model.timeRemaining.formattedTimeRemaining)
           .foregroundStyle(.secondary)
+          .accessibilityLabel(model.timeRemaining.accessibilityTimeRemaining)
       }
     }
     .font(.subheadline)

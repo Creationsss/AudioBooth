@@ -139,9 +139,10 @@ struct ContinueListeningCoverFlowView: View {
         }
 
         if preferences.showContinueTimeRemaining, let remaining = focused.timeRemaining {
-          Text(remaining)
+          Text(remaining.formattedTimeRemaining)
             .font(.caption)
             .foregroundStyle(.secondary)
+            .accessibilityLabel(remaining.accessibilityTimeRemaining)
             .id("time-\(focused.id)")
             .transition(.opacity)
         }
@@ -189,7 +190,7 @@ extension ContinueListeningCoverFlowView {
             progress: 0.45
           ),
           author: "J.R.R. Tolkien",
-          timeRemaining: "8hr 32min remaining"
+          timeRemaining: 30720
         ),
         BookCard.Model(
           title: "Dune",
@@ -198,7 +199,7 @@ extension ContinueListeningCoverFlowView {
             progress: 0.12
           ),
           author: "Frank Herbert",
-          timeRemaining: "2hr 15min remaining"
+          timeRemaining: 8100
         ),
         BookCard.Model(
           title: "Foundation",
@@ -207,7 +208,7 @@ extension ContinueListeningCoverFlowView {
             progress: 0.78
           ),
           author: "Isaac Asimov",
-          timeRemaining: "1hr 03min remaining"
+          timeRemaining: 3780
         ),
       ])
     )

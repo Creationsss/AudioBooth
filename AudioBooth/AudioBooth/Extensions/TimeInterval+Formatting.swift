@@ -9,6 +9,14 @@ extension TimeInterval {
     return String(localized: "\(formatted) remaining")
   }
 
+  var accessibilityTimeRemaining: String {
+    let formatted =
+      Duration.seconds(self)
+      .formatted(.units(allowed: [.hours, .minutes], width: .wide))
+
+    return String(localized: "\(formatted) remaining")
+  }
+
   var formattedTimeLeft: String {
     let formatted =
       Duration.seconds(self)

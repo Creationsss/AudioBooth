@@ -51,6 +51,7 @@ struct MiniBookPlayer: View, Equatable {
           .font(.caption)
           .foregroundColor(.secondary)
           .fontWeight(.medium)
+          .accessibilityLabel(player.playbackProgress.totalTimeRemaining.accessibilityTimeRemaining)
       }
 
       buttons
@@ -139,6 +140,7 @@ struct LegacyMiniBookPlayer: View {
           .font(.caption)
           .foregroundColor(.secondary)
           .fontWeight(.medium)
+          .accessibilityLabel(player.playbackProgress.totalTimeRemaining.accessibilityTimeRemaining)
       }
 
       Spacer()

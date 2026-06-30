@@ -20,8 +20,6 @@ final class ContinueListeningBookCardModel: BookCard.Model {
   }
 
   init(book: Book, onRemoved: @escaping () -> Void) {
-    let timeRemaining = book.duration.formattedTimeRemaining
-
     super.init(
       id: book.id,
       title: book.title,
@@ -39,7 +37,7 @@ final class ContinueListeningBookCardModel: BookCard.Model {
         onRemoveFromContinueListening: onRemoved
       ),
       isExplicit: book.media.metadata.explicit ?? false,
-      timeRemaining: timeRemaining
+      timeRemaining: book.duration
     )
 
     observeMediaProgress()
@@ -47,8 +45,6 @@ final class ContinueListeningBookCardModel: BookCard.Model {
   }
 
   init(localBook: LocalBook, onRemoved: @escaping () -> Void) {
-    let timeRemaining = localBook.duration.formattedTimeRemaining
-
     super.init(
       id: localBook.bookID,
       title: localBook.title,
@@ -66,7 +62,7 @@ final class ContinueListeningBookCardModel: BookCard.Model {
         onRemoveFromContinueListening: onRemoved
       ),
       isExplicit: localBook.isExplicit,
-      timeRemaining: timeRemaining
+      timeRemaining: localBook.duration
     )
 
     observeMediaProgress()
@@ -74,8 +70,6 @@ final class ContinueListeningBookCardModel: BookCard.Model {
   }
 
   init(localEpisode episode: LocalEpisode) {
-    let timeRemaining = episode.duration.formattedTimeRemaining
-
     super.init(
       id: episode.episodeID,
       podcastID: episode.podcast?.podcastID,
@@ -88,7 +82,7 @@ final class ContinueListeningBookCardModel: BookCard.Model {
         progress: MediaProgress.progress(for: episode.episodeID)
       ),
       author: episode.podcast?.author,
-      timeRemaining: timeRemaining
+      timeRemaining: episode.duration
     )
 
     observeMediaProgress()
@@ -132,9 +126,9 @@ extension ContinueListeningBookCardModel {
         if let current = PlayerManager.shared.current,
           [id].contains(current.id)
         {
-          timeRemaining = current.playbackProgress.totalTimeRemaining.formattedTimeRemaining
+          timeRemaining = current.playbackProgress.totalTimeRemaining
         } else {
-          timeRemaining = remainingTime.formattedTimeRemaining
+          timeRemaining = remainingTime
         }
       }
     }
