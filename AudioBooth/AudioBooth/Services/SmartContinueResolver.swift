@@ -19,10 +19,10 @@ struct SmartContinueResolver {
     currentPodcastID: String?
   ) async -> ResolvedItem? {
     if let currentPodcastID {
-      if let next = await resolveNextEpisode(currentEpisodeID: currentItemID, podcastID: currentPodcastID) {
-        return next
+      guard let podcast = try? await audiobookshelf.podcasts.fetch(id: currentPodcastID) else {
+        return resolveNextOfflineEpisode(currentEpisodeID: currentItemID)
       }
-      return resolveNextOfflineEpisode(currentEpisodeID: currentItemID)
+      return nextEpisode(after: currentItemID, in: podcast)
     } else {
       if let next = await resolveNextBookInSeries(currentBookID: currentItemID) {
         return next
@@ -33,16 +33,6 @@ struct SmartContinueResolver {
 }
 
 extension SmartContinueResolver {
-  private func resolveNextEpisode(
-    currentEpisodeID: String,
-    podcastID: String
-  ) async -> ResolvedItem? {
-    guard let podcast = try? await audiobookshelf.podcasts.fetch(id: podcastID) else {
-      return nil
-    }
-    return nextEpisode(after: currentEpisodeID, in: podcast)
-  }
-
   private func nextEpisode(
     after currentEpisodeID: String,
     in podcast: Podcast
@@ -69,23 +59,9 @@ extension SmartContinueResolver {
   }
 
   private func sortedEpisodes(_ episodes: [PodcastEpisode]) -> [PodcastEpisode] {
-    let ascending = preferences.podcastEpisodeSortAscending
     let sort = preferences.podcastEpisodeSort
-
-    return episodes.sorted { a, b in
-      let result: Bool
-      switch sort {
-      case .pubDate:
-        result = (a.publishedAt ?? .min) < (b.publishedAt ?? .min)
-      case .title:
-        result = a.title.localizedStandardCompare(b.title) == .orderedAscending
-      case .season:
-        result = (a.season ?? "") < (b.season ?? "")
-      case .episode:
-        result = (a.episode ?? "") < (b.episode ?? "")
-      }
-      return ascending ? result : !result
-    }
+    let ascending = preferences.podcastEpisodeSortAscending
+    return episodes.sorted { sort.areInOrder($0, $1, ascending: ascending) }
   }
 
   private func resolveNextOfflineEpisode(currentEpisodeID: String) -> ResolvedItem? {

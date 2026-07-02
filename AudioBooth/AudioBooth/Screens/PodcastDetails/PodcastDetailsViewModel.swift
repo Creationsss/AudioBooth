@@ -185,17 +185,13 @@ final class PodcastDetailsViewModel: PodcastDetailsView.Model {
   private func updatePlayingState() {
     let current = playerManager.current
     if current?.podcastID == podcastID {
-      let previousID = currentlyPlayingEpisodeID
       currentlyPlayingEpisodeID = current?.id
       isPlaying = current?.isPlaying ?? false
-
-      if previousID != currentlyPlayingEpisodeID {
-        refreshEpisodeProgress()
-      }
     } else {
       currentlyPlayingEpisodeID = nil
       isPlaying = false
     }
+    refreshEpisodeProgress()
   }
 
   private func refreshEpisodeProgress() {
@@ -225,11 +221,7 @@ final class PodcastDetailsViewModel: PodcastDetailsView.Model {
       isLoading = false
       scrollToEpisodeID = episodeID
 
-      if NetworkMonitor.shared.isConnected {
-        episodesLoading = true
-      } else {
-        showCachedEpisodes(podcast)
-      }
+      showCachedEpisodes(podcast)
     } catch {
       AppLogger.viewModel.error("Failed to load local podcast: \(error)")
     }
@@ -392,14 +384,13 @@ final class PodcastDetailsViewModel: PodcastDetailsView.Model {
       episodesLoading = false
       scrollToEpisodeID = episodeID
     } catch {
-      if let localPodcast {
-        showCachedEpisodes(localPodcast)
-        Toast(error: "Couldn't refresh episodes. Showing downloaded episodes only.").show()
-      } else {
-        isLoading = false
-        episodesLoading = false
+      if localPodcast == nil {
         self.error = "Failed to load podcast details. Please check your connection and try again."
+      } else if NetworkMonitor.shared.isConnected {
+        Toast(error: "Couldn't refresh episodes. Showing downloaded episodes only.").show()
       }
+      isLoading = false
+      episodesLoading = false
       AppLogger.viewModel.error("Failed to load podcast: \(error)")
     }
   }
