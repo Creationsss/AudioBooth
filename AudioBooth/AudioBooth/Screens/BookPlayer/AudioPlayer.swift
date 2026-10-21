@@ -58,6 +58,10 @@ final class AudioPlayer {
     player.timeControlStatus == .playing
   }
 
+  var targetTime: TimeInterval {
+    pendingSeekTarget ?? time
+  }
+
   var isUsingRemoteURLs: Bool {
     tracks.contains { url(for: $0)?.isFileURL == false }
   }
